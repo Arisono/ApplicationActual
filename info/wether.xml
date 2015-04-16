@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<china dn="day" >
+    <city
+        cityname="哈尔滨"
+        pyName="heilongjiang"
+        quName="黑龙江"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="19"
+        tem2="6"
+        windState="西南风3-4级转小于3级" />
+
+    <city
+        cityname="长春"
+        pyName="jilin"
+        quName="吉林"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="19"
+        tem2="8"
+        windState="西南风3-4级" />
+
+    <city
+        cityname="沈阳"
+        pyName="liaoning"
+        quName="辽宁"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="20"
+        tem2="5"
+        windState="西风转南风小于3级" />
+
+    <city
+        cityname="海口"
+        pyName="hainan"
+        quName="海南"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="28"
+        tem2="17"
+        windState="微风" />
+
+    <city
+        cityname="呼和浩特"
+        pyName="neimenggu"
+        quName="内蒙古"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="17"
+        tem2="2"
+        windState="西南风3-4级" />
+
+    <city
+        cityname="乌鲁木齐"
+        pyName="xinjiang"
+        quName="新疆"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="20"
+        tem2="9"
+        windState="北风3-4级转微风" />
+
+    <city
+        cityname="拉萨"
+        pyName="xizang"
+        quName="西藏"
+        state1="2"
+        state2="1"
+        stateDetailed="阴转多云"
+        tem1="14"
+        tem2="1"
+        windState="微风" />
+
+    <city
+        cityname="西宁"
+        pyName="qinghai"
+        quName="青海"
+        state1="1"
+        state2="0"
+        stateDetailed="多云转晴"
+        tem1="17"
+        tem2="-1"
+        windState="微风" />
+
+    <city
+        cityname="银川"
+        pyName="ningxia"
+        quName="宁夏"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="22"
+        tem2="9"
+        windState="北风3-4级转微风" />
+
+    <city
+        cityname="兰州"
+        pyName="gansu"
+        quName="甘肃"
+        state1="1"
+        state2="0"
+        stateDetailed="多云转晴"
+        tem1="23"
+        tem2="7"
+        windState="微风" />
+
+    <city
+        cityname="石家庄"
+        pyName="hebei"
+        quName="河北"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="26"
+        tem2="13"
+        windState="南风3-4级转小于3级" />
+
+    <city
+        cityname="郑州"
+        pyName="henan"
+        quName="河南"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="24"
+        tem2="13"
+        windState="微风" />
+
+    <city
+        cityname="武汉"
+        pyName="hubei"
+        quName="湖北"
+        state1="0"
+        state2="1"
+        stateDetailed="晴转多云"
+        tem1="21"
+        tem2="10"
+        windState="微风" />
+
+    <city
+        cityname="长沙"
+        pyName="hunan"
+        quName="湖南"
+        state1="0"
+        state2="1"
+        stateDetailed="晴转多云"
+        tem1="24"
+        tem2="10"
+        windState="南风小于3级" />
+
+    <city
+        cityname="济南"
+        pyName="shandong"
+        quName="山东"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="22"
+        tem2="11"
+        windState="南风小于3级转3-4级" />
+
+    <city
+        cityname="南京"
+        pyName="jiangsu"
+        quName="江苏"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="19"
+        tem2="9"
+        windState="西风4-5级转西南风3-4级" />
+
+    <city
+        cityname="合肥"
+        pyName="anhui"
+        quName="安徽"
+        state1="0"
+        state2="1"
+        stateDetailed="晴转多云"
+        tem1="20"
+        tem2="10"
+        windState="西风转南风3-4级" />
+
+    <city
+        cityname="太原"
+        pyName="shanxi"
+        quName="山西"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="23"
+        tem2="3"
+        windState="微风转西风小于3级" />
+
+    <city
+        cityname="西安"
+        pyName="sanxi"
+        quName="陕西"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="23"
+        tem2="9"
+        windState="东北风小于3级" />
+
+    <city
+        cityname="成都"
+        pyName="sichuan"
+        quName="四川"
+        state1="2"
+        state2="1"
+        stateDetailed="阴转多云"
+        tem1="23"
+        tem2="13"
+        windState="南风小于3级" />
+
+    <city
+        cityname="昆明"
+        pyName="yunnan"
+        quName="云南"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="22"
+        tem2="12"
+        windState="微风" />
+
+    <city
+        cityname="贵阳"
+        pyName="guizhou"
+        quName="贵州"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="22"
+        tem2="10"
+        windState="东风小于3级" />
+
+    <city
+        cityname="杭州"
+        pyName="zhejiang"
+        quName="浙江"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="20"
+        tem2="10"
+        windState="西北风4-5级转3-4级" />
+
+    <city
+        cityname="福州"
+        pyName="fujian"
+        quName="福建"
+        state1="0"
+        state2="1"
+        stateDetailed="晴转多云"
+        tem1="23"
+        tem2="12"
+        windState="微风" />
+
+    <city
+        cityname="南昌"
+        pyName="jiangxi"
+        quName="江西"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="21"
+        tem2="12"
+        windState="微风" />
+
+    <city
+        cityname="广州"
+        pyName="guangdong"
+        quName="广东"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="28"
+        tem2="10"
+        windState="微风" />
+
+    <city
+        cityname="南宁"
+        pyName="guangxi"
+        quName="广西"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="31"
+        tem2="17"
+        windState="东风小于3级" />
+
+    <city
+        cityname="北京"
+        pyName="beijing"
+        quName="北京"
+        state1="0"
+        state2="1"
+        stateDetailed="晴转多云"
+        tem1="25"
+        tem2="8"
+        windState="微风" />
+
+    <city
+        cityname="天津"
+        pyName="tianjin"
+        quName="天津"
+        state1="0"
+        state2="1"
+        stateDetailed="晴转多云"
+        tem1="23"
+        tem2="12"
+        windState="西南风3-4级" />
+
+    <city
+        cityname="上海"
+        pyName="shanghai"
+        quName="上海"
+        state1="2"
+        state2="1"
+        stateDetailed="阴转多云"
+        tem1="14"
+        tem2="9"
+        windState="西北风4-5级转西南风小于3级" />
+
+    <city
+        cityname="重庆"
+        pyName="chongqing"
+        quName="重庆"
+        state1="0"
+        state2="3"
+        stateDetailed="晴转阵雨"
+        tem1="27"
+        tem2="13"
+        windState="微风" />
+
+    <city
+        cityname="香港"
+        pyName="xianggang"
+        quName="香港"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="26"
+        tem2="18"
+        windState="微风" />
+
+    <city
+        cityname="澳门"
+        pyName="aomen"
+        quName="澳门"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="26"
+        tem2="18"
+        windState="微风" />
+
+    <city
+        cityname="台北"
+        pyName="taiwan"
+        quName="台湾"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="21"
+        tem2="11"
+        windState="微风" />
+
+    <city
+        cityname="西沙"
+        pyName="xisha"
+        quName="西沙"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="29"
+        tem2="24"
+        windState="东北风4-5级" />
+
+    <city
+        cityname="南沙"
+        pyName="nanshadao"
+        quName="南沙"
+        state1="1"
+        state2="1"
+        stateDetailed="多云"
+        tem1="31"
+        tem2="26"
+        windState="东北风4-5级" />
+
+    <city
+        cityname="钓鱼岛"
+        pyName="diaoyudao"
+        quName="钓鱼岛"
+        state1="0"
+        state2="0"
+        stateDetailed="晴"
+        tem1="18"
+        tem2="16"
+        windState="北风4-5级转微风" />
+
+</china>
