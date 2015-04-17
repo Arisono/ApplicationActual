@@ -15,6 +15,10 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+/**
+ * @author Administrator
+ *  Ö÷½çÃæ
+ */
 public class MainActivity extends BaseAcivity {
 	
 	@ViewInject(R.id.rg_main_radio)
