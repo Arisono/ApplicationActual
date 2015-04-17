@@ -26,6 +26,8 @@ public class MainActivity extends BaseAcivity {
 	@ViewInject(R.id.vp_viewpager)
 	private ViewPager m_viewpager;
 	
+	
+	private String TAG="MainActivity";
 	private int curCheckId = R.id.rb_function;
 
 	/* (non-Javadoc)
