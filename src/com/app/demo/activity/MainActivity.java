@@ -17,7 +17,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * @author Administrator
- *  主界面
+ *  主界面  应用入口
  */
 public class MainActivity extends BaseAcivity {
 	
