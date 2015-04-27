@@ -3,38 +3,45 @@
  */
 package com.app.demo.base;
 
+import javax.security.auth.PrivateCredentialPermission;
+
 import com.app.demo.R;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 /**
  * @author LiuJie
- * ³éÏó¸¸Àà  
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Activity
  */
 public abstract class BaseAcivity extends Activity {
-   
+    
+	protected String TAG;
+	
+
 	/**
-	 * ÉèÖÃ²¼¾ÖÎÄ¼ş
+	 * ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 	 */
 	public abstract void setView();
 
 	/**
-	 * ³õÊ¼»¯²¼¾ÖÎÄ¼şÖĞµÄ¿Ø¼ş
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ĞµÄ¿Ø¼ï¿½
 	 */
 	public abstract void initView();
 
 	/**
-	 * ÉèÖÃ¿Ø¼şµÄ¼àÌı
+	 * ï¿½ï¿½ï¿½Ã¿Ø¼ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 	 */
 	public abstract void setListener();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.i(TAG, "onCreateï¼");
 		setView();
 		initView();
 		setListener();
@@ -66,6 +73,30 @@ public abstract class BaseAcivity extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.i(TAG, "onResumeï¼");
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Log.i(TAG, "onDestroyï¼");
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.i(TAG, "onPauseï¼");
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Log.i(TAG, "onStopï¼");
 	}
 
 }
