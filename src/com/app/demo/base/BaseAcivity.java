@@ -13,22 +13,22 @@ import android.view.MenuItem;
 
 /**
  * @author LiuJie
- * 抽象父类  
+ * 锟斤拷锟斤拷锟斤拷 Activity
  */
 public abstract class BaseAcivity extends Activity {
    
 	/**
-	 * 设置布局文件
+	 * 锟斤拷锟矫诧拷锟斤拷锟侥硷拷
 	 */
 	public abstract void setView();
 
 	/**
-	 * 初始化布局文件中的控件
+	 * 锟斤拷始锟斤拷锟斤拷锟斤拷锟侥硷拷锟叫的控硷拷
 	 */
 	public abstract void initView();
 
 	/**
-	 * 设置控件的监听
+	 * 锟斤拷锟矫控硷拷锟侥硷拷锟斤拷
 	 */
 	public abstract void setListener();
 	
