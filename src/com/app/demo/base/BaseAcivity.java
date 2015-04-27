@@ -13,7 +13,7 @@ import android.view.MenuItem;
 
 /**
  * @author LiuJie
- * 抽象父类  
+ * 抽象父类 Activity
  */
 public abstract class BaseAcivity extends Activity {
    

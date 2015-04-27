@@ -17,7 +17,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * @author xzjmyk
- *  
+ * RadioGroup+ViewPager+View[伪生命周期方法] 组合方式
+ * 主界面
  */
 public class MainActivity extends BaseAcivity {
 	
