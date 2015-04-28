@@ -14,7 +14,7 @@ import com.lidroid.xutils.ViewUtils;
 
 /**
  * @author LiuJie
- * ��ҳ
+ * 
  */
 public class HomePage extends BasePage {
 	private String TAG="HomePage";
@@ -43,6 +43,7 @@ public class HomePage extends BasePage {
 	@Override
 	public void initData() {
 		Log.i(TAG, "数据初始化成功！");
+		isInitDataSuccess=true;
 	}
 
 }

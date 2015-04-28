@@ -9,12 +9,14 @@ import android.view.View;
 
 /**
  * @author LiuJie
- * ³éÏó¸¸ÀàView
+ * 
  */
 public abstract class BasePage {
 	
+	protected String TAG;
 	protected Context ct;
 	protected View contentView;
+	public boolean isInitDataSuccess=false;
 	
 	public BasePage(Context context){
 		ct=context;
@@ -22,30 +24,24 @@ public abstract class BasePage {
 		contentView=initView(layoutInflater);
 		
 	}
-	
-	/**×¢ÊÍ£º³éÏó·½·¨ */
+	/**@annotationï¼šabstract method */
 	protected abstract View initView(LayoutInflater inflater);
-	
-	/**×¢ÊÍ£º³õÊ¼»¯Êı¾İ */
+	/**@annotationï¼šfrist load data*/
 	public abstract void initData();
+	
+	/**@annotationï¼š onResume */
+	public  void onResume(){
+		initData();
+	};
+	
+	/**@annotationï¼šonDestory */
+	public void onDestory(){
+		
+	}
 	
 	
 	public View getContentView() {
 		return contentView;
 	}
-	
-	//¶¨ÒåÆäËü×Ô¶¨ÒåµÄ¹«¹² ·½·¨   ÍøÂç£¬½ø¶ÈÌõ£¬¿Õ°×Ò³£¬¼ÓÔØÒ³£¬ÎªÉúÃüÖÜÆÚ·½·¨£»
-	/**×¢ÊÍ£ºonResume */
-	
-	/**×¢ÊÍ£ºonDestory */
-	
-	/**×¢ÊÍ£ºonPause */
-	
-	
-	
-	
-	
-	
-	
 	
 }

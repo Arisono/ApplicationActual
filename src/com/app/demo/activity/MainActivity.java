@@ -19,8 +19,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * @author xzjmyk
- * RadioGroup+ViewPager+View[α�������ڷ���] ��Ϸ�ʽ
- * ������
+ * RadioGroup+ViewPager+View[] 
+ * 
  */
 public class MainActivity extends BaseAcivity {
 	
@@ -49,7 +49,7 @@ public class MainActivity extends BaseAcivity {
 	 */
 	@Override
 	public void initView() {
-       /** 注释：init data */
+       /** 娉ㄩ噴锛歩nit data */
 		if (pages.isEmpty()) {
 			pages.add(new HomePage(this));
 			pages.add(new MusicPage(this));
@@ -60,11 +60,10 @@ public class MainActivity extends BaseAcivity {
 		if (adapter==null) {
 			adapter=new HomePagerAdapter(this, pages);
 			m_viewpager.setAdapter(adapter);
-		} else {
+		} else {  
            
-		}
+		} 
 		
-		/** 注释：*/
 	}
 
 	/* (non-Javadoc)
@@ -78,33 +77,33 @@ public class MainActivity extends BaseAcivity {
 			@Override
 			public void onPageSelected(int position) {
 				BasePage page=pages.get(position);
-				/** 注释：初始化页面数据*/
 				 switch (position) {
 				 case 0:
 					m_radiogroup.check(R.id.rb_function);
-					/** 注释：判断是否加载数据成功*/
 					
 					break;
 				 case 1:
 					 m_radiogroup.check(R.id.rb_news_center);
-					
 					break;
 				 case 2:
 					 m_radiogroup.check(R.id.rb_smart_service);
 					break;
 				 case 3:
 					 m_radiogroup.check(R.id.rb_gov_affairs);
-					 
 					break;
 				 case 4:
 					 m_radiogroup.check(R.id.rb_setting);
-					
 					break;
 
 				default:
 					break;
 				}
-				// page.initData();
+			
+				if (!page.isInitDataSuccess) {
+					 page.onResume();
+				}
+				
+				
 			}
 			
 			@Override
@@ -114,8 +113,8 @@ public class MainActivity extends BaseAcivity {
 			}
 			
 			@Override
-			public void onPageScrollStateChanged(int arg0) {
-				// TODO Auto-generated method stub
+			public void onPageScrollStateChanged(int arg0){
+				// TODO Auto-generated method stub 
 				
 			}
 		});
@@ -155,10 +154,10 @@ public class MainActivity extends BaseAcivity {
 	
 	
 	class HomePagerAdapter extends PagerAdapter {
-		private Context mContext;
+//		private Context mContext;
 		private ArrayList<BasePage> pages;
 		public HomePagerAdapter(Context ct, ArrayList<BasePage> pages) {
-			this.mContext = ct;
+//			this.mContext = ct;
 			this.pages = pages;
 		}
 

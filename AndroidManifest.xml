@@ -3,9 +3,11 @@
     package="com.app.demo"
     android:versionCode="1"
     android:versionName="1.0" >
-    <!--minSdkVersion  -->
+    <!--minSdkVersion 
+     Fragment 11 Version
+     -->
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="21" />
     <!--权限 -->
     <!--网络权限  -->

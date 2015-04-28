@@ -6,7 +6,6 @@ package com.app.demo.service.activity;
 import com.app.demo.R;
 import com.app.demo.service.MyService;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;

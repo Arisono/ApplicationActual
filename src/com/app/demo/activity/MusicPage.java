@@ -43,6 +43,7 @@ public class MusicPage extends BasePage {
 	@Override
 	public void initData() {
      Log.i(TAG, "数据初始化成功！");
+     isInitDataSuccess=true;
 	}
 
 }

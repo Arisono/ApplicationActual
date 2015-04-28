@@ -17,6 +17,7 @@ import com.lidroid.xutils.ViewUtils;
  *
  */
 public class NotePage extends BasePage {
+	
 	private String TAG="NotePage";
 	/**
 	 * @param context
@@ -43,6 +44,7 @@ public class NotePage extends BasePage {
 	@Override
 	public void initData() {
 		Log.i(TAG, "数据初始化成功！");
+		isInitDataSuccess=true;
 	}
 
 }

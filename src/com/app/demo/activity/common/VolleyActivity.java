@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.app.demo.net.activity;
+package com.app.demo.activity.common;
 
 import java.io.IOException;
 
