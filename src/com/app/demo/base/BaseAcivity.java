@@ -3,45 +3,32 @@
  */
 package com.app.demo.base;
 
-import javax.security.auth.PrivateCredentialPermission;
-
 import com.app.demo.R;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 /**
  * @author LiuJie
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Activity
+ * Activity
  */
 public abstract class BaseAcivity extends Activity {
     
 	protected String TAG;
-	
-
-	/**
-	 * ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
-	 */
 	public abstract void setView();
-
-	/**
-	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ĞµÄ¿Ø¼ï¿½
-	 */
 	public abstract void initView();
-
-	/**
-	 * ï¿½ï¿½ï¿½Ã¿Ø¼ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
-	 */
 	public abstract void setListener();
 	
-	@Override
+	
+	@Override 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i(TAG, "onCreateï¼");
+		Log.i(TAG, "onCreate£¡");
 		setView();
 		initView();
 		setListener();
@@ -78,25 +65,55 @@ public abstract class BaseAcivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Log.i(TAG, "onResumeï¼");
+		Log.i(TAG, "onResume£¡");
 	}
 	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Log.i(TAG, "onDestroyï¼");
+		Log.i(TAG, "onDestroy£¡");
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.i(TAG, "onPauseï¼");
+		Log.i(TAG, "onPause£¡");
 	}
 	
 	@Override
 	protected void onStop() {
 		super.onStop();
-		Log.i(TAG, "onStopï¼");
+		Log.i(TAG, "onStop£¡");
+	}
+	
+	
+	
+	/**@annotation£ºif return  true  is not function or lead to  action*/
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if(keyCode == KeyEvent.KEYCODE_BACK) { //¼à¿Ø/À¹½Ø/ÆÁ±Î·µ»Ø¼ü
+	       // processExit();
+	        return true;
+	    } else if(keyCode == KeyEvent.KEYCODE_MENU) {
+	        //¼à¿Ø/À¹½Ø²Ëµ¥¼ü
+	    	
+	    	return true;
+	    } else if(keyCode == KeyEvent.KEYCODE_HOME) {
+	        //ÓÉÓÚHome¼üÎªÏµÍ³¼ü£¬´Ë´¦²»ÄÜ²¶»ñ£¬ĞèÒªÖØĞ´onAttachedToWindow()
+	    	return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
 	}
 
+	
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onAttachedToWindow()
+	 */
+//	@Override
+//	public void onAttachedToWindow() {
+//		/**@annotation£º */
+//		 this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);     
+//	     super.onAttachedToWindow();    
+//	}
 }
