@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 
+    solid：实心，就是填充的意思
+    android:color指定填充的颜色
+     -->
+    <solid android:color="@color/color_calendar_normal_background" >
+    </solid>
+    <!--
+    stroke：描边
+	android:width="2dp" 描边的宽度，android:color 描边的颜色。
+	我们还可以把描边弄成虚线的形式，设置方式为：
+	android:dashWidth="5dp" 
+	android:dashGap="3dp"
+	其中android:dashWidth表示'-'这样一个横线的宽度，android:dashGap表示之间隔开的距离。  -->
+    <stroke
+        android:width="@dimen/dimen_calendar_border"
+        android:color="@color/color_calendar_border" >
+    </stroke>
+
+</shape>

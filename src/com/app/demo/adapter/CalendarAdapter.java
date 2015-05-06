@@ -6,19 +6,39 @@ package com.app.demo.adapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.app.demo.R;
+import com.app.demo.activity.common.CalendarActivity;
+import com.app.demo.util.CommonUtil;
 import com.app.demo.util.LunarCalendar;
 import com.app.demo.util.SpecialCalendar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * @author LiuJie
- * ÈÕÀú¿Ø¼şµÄÊÊÅäÆ÷
+ * æ—¥å†æ§ä»¶çš„é€‚é…å™¨
  */
 public class CalendarAdapter extends BaseAdapter {
 	
@@ -27,34 +47,35 @@ public class CalendarAdapter extends BaseAdapter {
 	private Context context;
 	private SpecialCalendar sc = null;
 	private LunarCalendar lc = null; 
+	private Drawable drawable = null;
 	
-	//ÊÇ·ñÎªÈòÄê
+	//æ˜¯å¦ä¸ºé—°å¹´
 	private boolean isLeapyear = false; 
-	//Ä³ÔÂµÄÌìÊı
+	//æŸæœˆçš„å¤©æ•°
 	private int daysOfMonth = 0;      
-	//¾ßÌåÄ³Ò»ÌìÊÇĞÇÆÚ¼¸
+	//å…·ä½“æŸä¸€å¤©æ˜¯æ˜ŸæœŸå‡ 
 	private int dayOfWeek = 0;        
-	//ÉÏÒ»¸öÔÂµÄ×ÜÌìÊı
+	//ä¸Šä¸€ä¸ªæœˆçš„æ€»å¤©æ•°
 	private int lastDaysOfMonth = 0; 
 	
-	//Ò»¸ögridviewÖĞµÄÈÕÆÚ´æÈë´ËÊı×éÖĞ
+	//ä¸€ä¸ªgridviewä¸­çš„æ—¥æœŸå­˜å…¥æ­¤æ•°ç»„ä¸­
 	public String[] dayNumber = new String[49];  
-	private static String week[] = {"ÖÜÈÕ","ÖÜÒ»","ÖÜ¶ş","ÖÜÈı","ÖÜËÄ","ÖÜÎå","ÖÜÁù"};
+	private static String week[] = {"å‘¨æ—¥","å‘¨ä¸€","å‘¨äºŒ","å‘¨ä¸‰","å‘¨å››","å‘¨äº”","å‘¨å…­"};
 	
-	//ÓÃÓÚÔÚÍ·²¿ÏÔÊ¾µÄÄê·İ
+	//ç”¨äºåœ¨å¤´éƒ¨æ˜¾ç¤ºçš„å¹´ä»½
 	private String showYear = "";  
-	//ÓÃÓÚÔÚÍ·²¿ÏÔÊ¾µÄÔÂ·İ
+	//ç”¨äºåœ¨å¤´éƒ¨æ˜¾ç¤ºçš„æœˆä»½
 	private String showMonth = "";
-	 //ÈòÄÄÒ»¸öÔÂ
+	 //é—°å“ªä¸€ä¸ªæœˆ
 	private String animalsYear = ""; 
 	private String leapMonth = "";  
-	//Ìì¸ÉµØÖ§
+	//å¤©å¹²åœ°æ”¯
 	private String cyclical = "";   
 	
-	//ÓÃÓÚ±ê¼Çµ±Ìì
+	//ç”¨äºæ ‡è®°å½“å¤©
 	private int currentFlag = -1; 
-	//´æ´¢µ±ÔÂËùÓĞµÄÈÕ³ÌÈÕÆÚ
-	private int[] schDateTagFlag = null;  
+	//å­˜å‚¨å½“æœˆæ‰€æœ‰çš„æ—¥ç¨‹æ—¥æœŸ
+	//private int[] schDateTagFlag = null;  
 	
 	private SimpleDateFormat sdf = 
 			new SimpleDateFormat("yyyy-M-d");
@@ -62,33 +83,39 @@ public class CalendarAdapter extends BaseAdapter {
 	private String currentYear = "";
 	private String currentMonth = "";
 	private String currentDay = "";
-	//ÈÕ³ÌÊ±¼ä(ĞèÒª±ê¼ÇµÄÈÕ³ÌÈÕÆÚ)
+	//æ—¥ç¨‹æ—¶é—´(éœ€è¦æ ‡è®°çš„æ—¥ç¨‹æ—¥æœŸ)
 	private String sch_year = "";
 	private String sch_month = "";
 	private String sch_day = "";
-	//ÏµÍ³µ±Ç°Ê±¼ä
+	//ç³»ç»Ÿå½“å‰æ—¶é—´
 	private String sysDate = "";
 	private String sys_year = "";
 	private String sys_month = "";
 	private String sys_day = "";
+	
+	private int clickTemp = -1;
+	//æ ‡è¯†é€‰æ‹©çš„Item
+	public void setSeclection(int position) {
+	   clickTemp = position;
+	}
 	/**
-	 * ÎŞ²ÎÊı¹¹Ôì·½·¨
+	 * æ— å‚æ•°æ„é€ æ–¹æ³•
 	 */
 	public CalendarAdapter() {
 		Date date = new Date();
-		sysDate = sdf.format(date);  //µ±ÆÚÈÕÆÚ
+		sysDate = sdf.format(date);  //å½“æœŸæ—¥æœŸ
 		sys_year = sysDate.split("-")[0];
 		sys_month = sysDate.split("-")[1];
 		sys_day = sysDate.split("-")[2];
 	}
 	
 	/**
-	 * @annotation:ÓĞ²ÎÊı¹¹Ôì·½·¨
+	 * @annotation:æœ‰å‚æ•°æ„é€ æ–¹æ³•
 	 * @param:jumMonth
 	 * @param:jumpYear 
-	 * @param:year_c  µ±Ç°Äê
-	 * @param:month_c µ±Ç°ÔÂ
-	 * @param:day_c   µ±Ç°ÈÕ
+	 * @param:year_c  å½“å‰å¹´
+	 * @param:month_c å½“å‰æœˆ
+	 * @param:day_c   å½“å‰æ—¥
 	 */
 	public CalendarAdapter(Context context,Resources rs,
 	int jumpMonth,int jumpYear,int year_c,int month_c,int day_c){
@@ -97,12 +124,12 @@ public class CalendarAdapter extends BaseAdapter {
 		this.res=rs;
 		sc=new SpecialCalendar();
 		lc=new LunarCalendar();
-		//¾Ö²¿±äÁ¿
+		//å±€éƒ¨å˜é‡
 		int stepYear = year_c+jumpYear;
 		int stepMonth = month_c+jumpMonth ;
 		
 		if(stepMonth > 0){
-			//ÍùÏÂÒ»¸öÔÂ»¬¶¯
+			//å¾€ä¸‹ä¸€ä¸ªæœˆæ»‘åŠ¨
 			if(stepMonth%12 == 0){
 				stepYear = year_c + stepMonth/12 -1;
 				stepMonth = 12;
@@ -111,18 +138,18 @@ public class CalendarAdapter extends BaseAdapter {
 				stepMonth = stepMonth%12;
 			}
 		}else{
-			//ÍùÉÏÒ»¸öÔÂ»¬¶¯
+			//å¾€ä¸Šä¸€ä¸ªæœˆæ»‘åŠ¨
 			stepYear = year_c - 1 + stepMonth/12;
 			stepMonth = stepMonth%12 + 12;
 			if(stepMonth%12 == 0){
 				
 			}
 		}
-		//µÃµ½µ±Ç°µÄÄê·İ
+		//å¾—åˆ°å½“å‰çš„å¹´ä»½
 		currentYear = String.valueOf(stepYear); 
-		//µÃµ½±¾ÔÂ £¨jumpMonthÎª»¬¶¯µÄ´ÎÊı£¬Ã¿»¬¶¯Ò»´Î¾ÍÔö¼ÓÒ»ÔÂ»ò¼õÒ»ÔÂ£©
+		//å¾—åˆ°æœ¬æœˆ ï¼ˆjumpMonthä¸ºæ»‘åŠ¨çš„æ¬¡æ•°ï¼Œæ¯æ»‘åŠ¨ä¸€æ¬¡å°±å¢åŠ ä¸€æœˆæˆ–å‡ä¸€æœˆï¼‰
 		currentMonth = String.valueOf(stepMonth);
-		//µÃµ½µ±Ç°ÈÕÆÚÊÇÄÄÌì
+		//å¾—åˆ°å½“å‰æ—¥æœŸæ˜¯å“ªå¤©
 		currentDay = String.valueOf(day_c);  
 		getCalendar(Integer.parseInt(currentYear),Integer.parseInt(currentMonth));
 		
@@ -130,56 +157,65 @@ public class CalendarAdapter extends BaseAdapter {
 	public CalendarAdapter(Context context,Resources rs,
 			int year, int month, int day){
 		this();
+		this.context= context;
+		sc = new SpecialCalendar();
+		lc = new LunarCalendar();
+		this.res = rs;
+		currentYear = String.valueOf(year);;  //å¾—åˆ°è·³è½¬åˆ°çš„å¹´ä»½
+		currentMonth = String.valueOf(month);  //å¾—åˆ°è·³è½¬åˆ°çš„æœˆä»½
+		currentDay = String.valueOf(day);  //å¾—åˆ°è·³è½¬åˆ°çš„å¤©
+		
+		getCalendar(Integer.parseInt(currentYear),Integer.parseInt(currentMonth));
 		
 		
 	}
 
-	//µÃµ½Ä³ÄêµÄÄ³ÔÂµÄÌìÊıÇÒÕâÔÂµÄµÚÒ»ÌìÊÇĞÇÆÚ¼¸
+	//å¾—åˆ°æŸå¹´çš„æŸæœˆçš„å¤©æ•°ä¸”è¿™æœˆçš„ç¬¬ä¸€å¤©æ˜¯æ˜ŸæœŸå‡ 
 	private void getCalendar(int year, int month){
-	   //ÊÇ·ñÎªÈòÄê
+	   //æ˜¯å¦ä¸ºé—°å¹´
 		isLeapyear=sc.isLeapYear(year);
-	   //Ä³ÔÂµÄ×ÜÌìÊı
+	   //æŸæœˆçš„æ€»å¤©æ•°
 		daysOfMonth=sc.getDaysOfMonth(isLeapyear, month);
-	   //Ä³ÔÂµÚÒ»ÌìÎªĞÇÆÚ¼¸
+	   //æŸæœˆç¬¬ä¸€å¤©ä¸ºæ˜ŸæœŸå‡ 
 		dayOfWeek=sc.getWeekdayOfMonth(year, month);
-	   //ÉÏÒ»¸öÔÂµÄ×ÜÌìÊı	
+	   //ä¸Šä¸€ä¸ªæœˆçš„æ€»å¤©æ•°	
 		lastDaysOfMonth=sc.getDaysOfMonth(isLeapyear, month-1);
 	    getweek(year, month);
 		
 	}
 	
-	//½«Ò»¸öÔÂÖĞµÄÃ¿Ò»ÌìµÄÖµÌí¼ÓÈëÊı×édayNuberÖĞ
+	//å°†ä¸€ä¸ªæœˆä¸­çš„æ¯ä¸€å¤©çš„å€¼æ·»åŠ å…¥æ•°ç»„dayNuberä¸­
 	private void getweek(int year, int month) {
 		int j = 1;
 		int flag = 0;
 		String lunarDay = "";
 		
 		for (int i = 0; i < dayNumber.length; i++) {
-			//ÖÜÈÕµ½ÖÜÁù
+			//å‘¨æ—¥åˆ°å‘¨å…­
 			if(i<7){
 				dayNumber[i]=week[i]+"."+" ";
 			}else if(i<dayOfWeek+7){
-				//ÉÏÒ»¸öÔÂ
-				//ÉÏÒ»¸öÔÂµÄ×ÜÌìÊı¡ªµÚÒ»ÌìĞÇÆÚ¼¸
+				//ä¸Šä¸€ä¸ªæœˆ
+				//ä¸Šä¸€ä¸ªæœˆçš„æ€»å¤©æ•°â€”ç¬¬ä¸€å¤©æ˜ŸæœŸå‡ 
 				int temp = lastDaysOfMonth - dayOfWeek+1-7;
-				// isday: Õâ¸ö²ÎÊıÎªfalse---ÈÕÆÚÎª½Ú¼ÙÈÕÊ±£¬ÒõÀúÈÕÆÚ¾Í·µ»Ø½Ú¼ÙÈÕ £¬
-				//true---²»¹ÜÈÕÆÚÊÇ·ñÎª½Ú¼ÙÈÕÒÀÈ»·µ»ØÕâÌì¶ÔÓ¦µÄÒõÀúÈÕÆÚ
+				// isday: è¿™ä¸ªå‚æ•°ä¸ºfalse---æ—¥æœŸä¸ºèŠ‚å‡æ—¥æ—¶ï¼Œé˜´å†æ—¥æœŸå°±è¿”å›èŠ‚å‡æ—¥ ï¼Œ
+				//true---ä¸ç®¡æ—¥æœŸæ˜¯å¦ä¸ºèŠ‚å‡æ—¥ä¾ç„¶è¿”å›è¿™å¤©å¯¹åº”çš„é˜´å†æ—¥æœŸ
 				lunarDay = lc.getLunarDate(year, month-1, temp+i,false);
 				dayNumber[i] = (temp + i)+"."+lunarDay;
 		    }else if (i<daysOfMonth + dayOfWeek+7) {
-				//±¾ÔÂ
-		    	String day = String.valueOf(i-dayOfWeek+1-7);   //µÃµ½µÄÈÕÆÚ
-		    	// isday: Õâ¸ö²ÎÊıÎªfalse---ÈÕÆÚÎª½Ú¼ÙÈÕÊ±£¬ÒõÀúÈÕÆÚ¾Í·µ»Ø½Ú¼ÙÈÕ £¬
-				//true---²»¹ÜÈÕÆÚÊÇ·ñÎª½Ú¼ÙÈÕÒÀÈ»·µ»ØÕâÌì¶ÔÓ¦µÄÒõÀúÈÕÆÚ
+				//æœ¬æœˆ
+		    	String day = String.valueOf(i-dayOfWeek+1-7);   //å¾—åˆ°çš„æ—¥æœŸ
+		    	// isday: è¿™ä¸ªå‚æ•°ä¸ºfalse---æ—¥æœŸä¸ºèŠ‚å‡æ—¥æ—¶ï¼Œé˜´å†æ—¥æœŸå°±è¿”å›èŠ‚å‡æ—¥ ï¼Œ
+				//true---ä¸ç®¡æ—¥æœŸæ˜¯å¦ä¸ºèŠ‚å‡æ—¥ä¾ç„¶è¿”å›è¿™å¤©å¯¹åº”çš„é˜´å†æ—¥æœŸ
 				lunarDay = lc.getLunarDate(year, month, i-dayOfWeek+1-7,false);
 				dayNumber[i] = i-dayOfWeek+1-7+"."+lunarDay;
-				//¶ÔÓÚµ±Ç°ÔÂ²ÅÈ¥±ê¼Çµ±Ç°ÈÕÆÚ
-				/*if(sys_year.equals(String.valueOf(year)) && sys_month.equals(String.valueOf(month)) && sys_day.equals(day)){
-					//±Ê¼Çµ±Ç°ÈÕÆÚ
+				//å¯¹äºå½“å‰æœˆæ‰å»æ ‡è®°å½“å‰æ—¥æœŸ
+				if(sys_year.equals(String.valueOf(year)) && sys_month.equals(String.valueOf(month)) && sys_day.equals(day)){
+					//ç¬”è®°å½“å‰æ—¥æœŸ
 					currentFlag = i;
-				}*/
+				}
 				
-				//±ê¼ÇÈÕ³ÌÈÕÆÚ
+				//æ ‡è®°æ—¥ç¨‹æ—¥æœŸ
 //				if(dateTagList != null && dateTagList.size() > 0){
 //					for(int m = 0; m < dateTagList.size(); m++){
 //						ScheduleDateTag dateTag = dateTagList.get(m);
@@ -199,7 +235,7 @@ public class CalendarAdapter extends BaseAdapter {
 				setLeapMonth(lc.leapMonth == 0?"":String.valueOf(lc.leapMonth));
 				setCyclical(lc.cyclical(year));
 		    }else{
-			     //ÏÂÒ»¸öÔÂ   	
+			     //ä¸‹ä¸€ä¸ªæœˆ   	
 				lunarDay = lc.getLunarDate(year, month+1, j,false);
 				dayNumber[i] = j+"."+lunarDay;
 				j++;
@@ -207,7 +243,7 @@ public class CalendarAdapter extends BaseAdapter {
 			
 		}//for
 		
-		//´òÓ¡
+		//æ‰“å°
 		 String abc = "";
 	        for(int i = 0; i < dayNumber.length; i++){
 	        	 abc = abc+dayNumber[i]+":";
@@ -220,7 +256,7 @@ public class CalendarAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * µã»÷Ã¿Ò»¸öitemÊ±·µ»ØitemÖĞµÄÈÕÆÚ
+	 * ç‚¹å‡»æ¯ä¸€ä¸ªitemæ—¶è¿”å›itemä¸­çš„æ—¥æœŸ
 	 * @param position
 	 * @return
 	 */
@@ -229,7 +265,7 @@ public class CalendarAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * ÔÚµã»÷gridViewÊ±£¬µÃµ½Õâ¸öÔÂÖĞµÚÒ»ÌìµÄÎ»ÖÃ
+	 * åœ¨ç‚¹å‡»gridViewæ—¶ï¼Œå¾—åˆ°è¿™ä¸ªæœˆä¸­ç¬¬ä¸€å¤©çš„ä½ç½®
 	 * @return
 	 */
 	public int getStartPositon(){
@@ -237,16 +273,16 @@ public class CalendarAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * ÔÚµã»÷gridViewÊ±£¬µÃµ½Õâ¸öÔÂÖĞ×îºóÒ»ÌìµÄÎ»ÖÃ
+	 * åœ¨ç‚¹å‡»gridViewæ—¶ï¼Œå¾—åˆ°è¿™ä¸ªæœˆä¸­æœ€åä¸€å¤©çš„ä½ç½®
 	 * @return
 	 */
 	public int getEndPosition(){
 		return  (dayOfWeek+daysOfMonth+7)-1;
 	}
-	/** ×¢ÊÍ£º**************************************************************/
+	/** æ³¨é‡Šï¼š**************************************************************/
     @Override
 	public int getCount() {
-		/**@annotation£º7*7 ±í¸ñÒ»¹²ÓĞËÄÊ®¾ÅºÍ¿Õ¸ñ */
+		/**@annotationï¼š7*7 è¡¨æ ¼ä¸€å…±æœ‰å››åä¹å’Œç©ºæ ¼ */
 		return dayNumber.length;
 	}
 
@@ -267,8 +303,69 @@ public class CalendarAdapter extends BaseAdapter {
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		return null;
+		if(convertView == null){
+			convertView = LayoutInflater.from(context).inflate(R.layout.act_calendar_grid_cell, null);
+		 }
+		/**@annotationï¼šitems TextView */
+		TextView textView = (TextView) convertView.findViewById(R.id.tvtext);
+		/**@æ³¨é‡Šï¼šç‚¹å‡»é€‰ä¸­æŸitem 2015å¹´5æœˆ8æ—¥ */
+		if (clickTemp == position) {
+			textView.setBackgroundColor(context.getResources().getColor(R.color.buleforcell));
+			} else {
+		    textView.setBackgroundColor(Color.TRANSPARENT);
+		  }
+		
+		
+		String d = dayNumber[position].split("\\.")[0];
+		String dv = dayNumber[position].split("\\.")[1];
+		//Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Helvetica.ttf");
+		//textView.setTypeface(typeface);
+		
+		SpannableString sp = new SpannableString(d+"\n"+dv);
+		sp.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		sp.setSpan(new RelativeSizeSpan(1.2f) , 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		if(dv != null || dv != ""){
+            sp.setSpan(new RelativeSizeSpan(0.75f), d.length()+1, dayNumber[position].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		}
+		
+		//sp.setSpan(new ForegroundColorSpan(Color.MAGENTA), 14, 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+		textView.setText(sp);
+		/**@annotationï¼šç°è‰²å­—ä½“ */
+		textView.setTextColor(Color.GRAY);
+		/**@annotationï¼šç¬¬ä¸€è¡Œçš„æ˜¾ç¤ºï¼Œå‘¨çš„æ˜¾ç¤º */
+		if(position<7){
+			//è®¾ç½®å‘¨
+			textView.setTextColor(Color.RED);
+			LayoutParams params= textView.getLayoutParams();
+			/**@annotationï¼šdpè½¬åƒç´  */
+			params.height=CommonUtil.dip2px(context, 26);
+			textView.setLayoutParams(params);
+//			textView.setGravity(Gravity.CENTER);
+			drawable = res.getDrawable(R.drawable.week_top);
+			textView.setBackgroundDrawable(drawable);
+		}
+		
+		/**@annotationï¼šæ˜¾ç¤ºå½“å‰æœˆä»½çš„æ ·å¼
+		 *  daysOfMonth æŸæœˆæ€»çš„å¤©æ•°
+		 *  dayOfWeekå…·ä½“æŸä¸€å¤©æ˜¯æ˜ŸæœŸå‡  */
+		
+		if (position < daysOfMonth + dayOfWeek+7 && position >= dayOfWeek+7) {
+			// å½“å‰æœˆä¿¡æ¯æ˜¾ç¤º
+			textView.setTextColor(Color.BLACK);// å½“æœˆå­—ä½“è®¾é»‘
+			drawable = res.getDrawable(R.drawable.item);
+			//textView.setBackgroundDrawable(drawable);
+			//textView.setBackgroundColor(Color.WHITE);
+		}
+		if(currentFlag == position){ 
+			//è®¾ç½®å½“å¤©çš„èƒŒæ™¯
+			//drawable = res.getDrawable(R.drawable.current_day_bgc);
+			textView.setBackgroundColor(context.getResources().getColor(R.color.buleforcell));
+			textView.setTextColor(Color.WHITE);
+		}
+		
+    
+        
+		return convertView;
 	}
 	
 	

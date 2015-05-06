@@ -8,5 +8,8 @@
     <dimen name="bottom_tab_font_size">14.0sp</dimen>
     <dimen name="bottom_tab_padding_drawable">2.0dip</dimen>
     <dimen name="bottom_tab_padding_up">2.0dip</dimen>
+    
+    <!--日历 cell  -->
+    <dimen name="dimen_calendar_border">1dp</dimen>
 
 </resources>
