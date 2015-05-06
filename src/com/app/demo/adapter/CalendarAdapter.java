@@ -6,19 +6,6 @@ package com.app.demo.adapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 import com.app.demo.util.LunarCalendar;
 import com.app.demo.util.SpecialCalendar;
 
