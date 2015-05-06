@@ -28,10 +28,10 @@ public abstract class BaseAcivity extends Activity {
 	@Override 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i(TAG, "onCreate！");
+		Log.i(TAG, "onCreate");
 		setView();
 		initView();
-		setListener();
+		
 	}
 	
 	/* (non-Javadoc)
@@ -65,41 +65,40 @@ public abstract class BaseAcivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Log.i(TAG, "onResume！");
+		setListener();
+		Log.i(TAG, "onResume");
 	}
 	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Log.i(TAG, "onDestroy！");
+		Log.i(TAG, "onDestroy");
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.i(TAG, "onPause！");
+		Log.i(TAG, "onPause");
 	}
 	
 	@Override
 	protected void onStop() {
 		super.onStop();
-		Log.i(TAG, "onStop！");
+		Log.i(TAG, "onStop");
 	}
 	
 	
 	
-	/**@annotation：if return  true  is not function or lead to  action*/
+	/**@annotation锟斤拷if return  true  is not function or lead to  action*/
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-	    if(keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
+	    if(keyCode == KeyEvent.KEYCODE_BACK) { 
 	       // processExit();
-	        return true;
+	    	 return super.onKeyDown(keyCode, event);
 	    } else if(keyCode == KeyEvent.KEYCODE_MENU) {
-	        //监控/拦截菜单键
 	    	
 	    	return true;
 	    } else if(keyCode == KeyEvent.KEYCODE_HOME) {
-	        //由于Home键为系统键，此处不能捕获，需要重写onAttachedToWindow()
 	    	return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
@@ -112,7 +111,7 @@ public abstract class BaseAcivity extends Activity {
 	 */
 //	@Override
 //	public void onAttachedToWindow() {
-//		/**@annotation： */
+//		/**@annotation锟斤拷 */
 //		 this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);     
 //	     super.onAttachedToWindow();    
 //	}

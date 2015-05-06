@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.app.demo.activity.common;
 
 import java.text.SimpleDateFormat;
@@ -8,9 +5,14 @@ import java.util.Date;
 
 import com.app.demo.R;
 import com.app.demo.adapter.CalendarAdapter;
+import com.app.demo.util.CommonUtil;
 import com.app.demo.view.BorderText;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -19,9 +21,18 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.GestureDetector.OnGestureListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,7 +51,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	private static int jumpYear = 0; 
 	
 	private ViewFlipper flipper = null;
-	private GestureDetector gestureDetector = null;
+	public GestureDetector gestureDetector = null;
 	private CalendarAdapter calAdapter = null;
 	private GridView gridView = null;
 	private BorderText topText = null;
@@ -50,8 +61,14 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	private int day_c = 0;
 	private String currentDate = "";
 	
+	private int select_cell;
+	
 	/**@annotation：构造方法 */
 	public CalendarActivity() {
+	   initDate();
+	}
+	
+	public void initDate(){
 		Date date = new Date();
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
     	currentDate = sdf.format(date);  //当期日期
@@ -60,22 +77,31 @@ public class CalendarActivity extends Activity implements OnGestureListener {
     	day_c = Integer.parseInt(currentDate.split("-")[2]);
 	}
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.act_calendar_grid_display);
 		
-		gestureDetector = new GestureDetector(this,this);
         flipper = (ViewFlipper) findViewById(R.id.flipper);
+        gestureDetector = new GestureDetector(this,this);
         flipper.removeAllViews();
+        /**@annotation：传参数构造对象 */
+        calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+        
+        /**@annotation：关键代码 */
+        addGridView();
+        gridView.setAdapter(calAdapter);
+        //flipper.addView(gridView);
+        flipper.addView(gridView,0);
+        
+		topText = (BorderText) findViewById(R.id.toptext);
+		addTextToTopTextView(topText);
 		
 	}
 	
 	
 	//添加 gridview
 	public void addGridView() {
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		//取得屏幕的宽度和高度
 		WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
@@ -83,11 +109,18 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		int Width = display.getWidth(); 
         @SuppressWarnings("deprecation")
 		int Height = display.getHeight();
-        
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+		
+        params.height=Height;
         gridView = new GridView(this);
 		/**@annotation：7列 */
 		gridView.setNumColumns(7);
 		gridView.setColumnWidth(46);
+		
+//		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)gridView.getLayoutParams(); // 取控件mGrid当前的布局参数
+//		linearParams.height = CommonUtil.dip2px(this, 83);// 当控件的高强制设成75象素
+//		gridView.setLayoutParams(linearParams); // 使设置好的布局参数应用到控件mGrid2
 		
 		if(Width == 480 && Height == 800){
 			gridView.setColumnWidth(69);
@@ -95,13 +128,34 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		
 		gridView.setGravity(Gravity.CENTER_VERTICAL);
 		// 去除gridView边框
-		gridView.setSelector(new ColorDrawable(Color.TRANSPARENT)); 
+		//gridView.setSelector(new ColorDrawable(Color.TRANSPARENT)); 
 		gridView.setVerticalSpacing(1);
 		gridView.setHorizontalSpacing(1);
-        gridView.setBackgroundResource(R.drawable.gridview_bk);
-        /**@annotation：监听事件 */
+        //gridView.setBackgroundResource(R.drawable.gridview_bk);
+		gridView.setBackgroundColor(getResources().getColor(R.color.grid_view_cell));
         
-        
+		/**@注释：触摸事件监听 2015年5月7日 */
+    	gridView.setOnTouchListener(new OnTouchListener() {
+            //将gridview中的触摸事件回传给gestureDetector
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				return CalendarActivity.this.gestureDetector
+						.onTouchEvent(event);
+			}
+		});
+        gridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+              System.out.println("gridview item 点击="+position);
+              select_cell=position;
+              calAdapter.setSeclection(position);
+              calAdapter.notifyDataSetChanged();
+              
+			}
+		});
+        gridView.setSelector(getResources().getDrawable(R.drawable.selector_calendar_normal));
         gridView.setLayoutParams(params);
 	}
 
@@ -115,7 +169,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		draw = getResources().getDrawable(R.drawable.top_day);
 		view.setBackgroundDrawable(draw);
 		//日期显示
-		/*textDate.append(calAdapter.getShowYear()).append("年").append(
+		textDate.append(calAdapter.getShowYear()).append("年").append(
 				calAdapter.getShowMonth()).append("月").append("\t");
 		
 		if (!calAdapter.getLeapMonth().equals("") && calAdapter.getLeapMonth() != null) {
@@ -124,7 +178,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		}
 		
 		textDate.append(calAdapter.getAnimalsYear()).append("年").append("(").append(
-				calAdapter.getCyclical()).append("年)");*/
+				calAdapter.getCyclical()).append("年)");
 
         view.setText(textDate);
 		view.setTextColor(Color.BLACK);
@@ -132,6 +186,16 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onTouchEvent(android.view.MotionEvent)
+	 */
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		/**@注释：把监听交给手势监听类  2015年5月7日 */
+		return this.gestureDetector.onTouchEvent(event);
+	}
+	
+	 
 
 	/* (non-Javadoc)
 	 * @see android.view.GestureDetector.OnGestureListener#onDown(android.view.MotionEvent)
@@ -190,7 +254,184 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY) {
-		// TODO Auto-generated method stub
+		System.out.println("e1="+e1+"  e2="+e2);
+		if (e1==null||e2==null) {
+			return true;
+		}
+		int gvFlag = 0;         //每次添加gridview到viewflipper中时给的标记
+		if (e1.getX() - e2.getX() > 120) {
+            //像左滑动
+			addGridView();   //添加一个gridView
+			jumpMonth++;     //下一个月
+			
+			calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+	        gridView.setAdapter(calAdapter);
+	        addTextToTopTextView(topText);
+//	        if (select_cell!=0) {
+//	        calAdapter.setSeclection(select_cell);
+//	        calAdapter.notifyDataSetChanged();
+//			}
+	       
+	        gvFlag++;
+	        flipper.addView(gridView, gvFlag);
+			this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_in));
+			this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_out));
+			this.flipper.showNext();
+			flipper.removeViewAt(0);
+			return true;
+		} else if (e1.getX() - e2.getX() < -120) {
+            //向右滑动
+			addGridView();   //添加一个gridView
+			jumpMonth--;     //上一个月
+			calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+	        gridView.setAdapter(calAdapter);
+//	        if (select_cell!=0) {
+//		        calAdapter.setSeclection(select_cell);
+//		        calAdapter.notifyDataSetChanged();
+//			}
+	        gvFlag++;
+	        addTextToTopTextView(topText);
+	        flipper.addView(gridView,gvFlag);
+	        
+			this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_in));
+			this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_out));
+			this.flipper.showPrevious();
+			flipper.removeViewAt(0);
+			return true;
+		}
 		return false;
+	}
+	
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.calendar_menu_actionbar, menu);
+		return true;
+	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.cd_mi_today:
+			//跳转到今天
+        	int xMonth = jumpMonth;
+        	int xYear = jumpYear;
+	        if(xMonth == 0 && xYear == 0){
+	        	System.out.println("跳转到今天！");
+	        	initDate();
+	         	calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+	        	gridView.setAdapter(calAdapter);
+	        	addTextToTopTextView(topText);
+	        }else if((xYear == 0 && xMonth >0) || xYear >0){
+	        	int gvFlag =0;
+	        	jumpMonth = 0;
+	        	jumpYear = 0;
+	        	addGridView();   //添加一个gridView
+	        	year_c = Integer.parseInt(currentDate.split("-")[0]);
+	        	month_c = Integer.parseInt(currentDate.split("-")[1]);
+	        	day_c = Integer.parseInt(currentDate.split("-")[2]);
+	        	calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+		        gridView.setAdapter(calAdapter);
+		        addTextToTopTextView(topText);
+		        gvFlag++;
+		        flipper.addView(gridView,gvFlag);
+		        this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_in));
+				this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_out));
+
+				this.flipper.showNext();
+				flipper.removeViewAt(0);
+	        }else{
+	        	int gvFlag =0;
+	        	jumpMonth = 0;
+	        	jumpYear = 0;
+	        	addGridView();   //添加一个gridView
+	        	year_c = Integer.parseInt(currentDate.split("-")[0]);
+	        	month_c = Integer.parseInt(currentDate.split("-")[1]);
+	        	day_c = Integer.parseInt(currentDate.split("-")[2]);
+	        	calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+		        gridView.setAdapter(calAdapter);
+		        addTextToTopTextView(topText);
+		        gvFlag++;
+		        flipper.addView(gridView,gvFlag);
+	        	this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_in));
+				this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_out));
+				this.flipper.showPrevious();
+				flipper.removeViewAt(0);
+	        }
+			
+			return true;
+		case R.id.cd_mi_change:
+				new DatePickerDialog(this, new OnDateSetListener() {
+				@Override
+				public void onDateSet(DatePicker view, int year, int monthOfYear,
+						int dayOfMonth) {
+					System.out.println("on event");
+					if(year < 1901 || year > 2100){
+						//不在查询范围内
+						new AlertDialog.Builder(CalendarActivity.this).setTitle("错误日期").setMessage("跳转日期范围(1901/1/1-2049/12/31)").setPositiveButton("确认", null).show();
+					}else{
+				        if(year == year_c && monthOfYear+1 == month_c){
+				        	System.out.println("跳转1");
+				        	calAdapter = new CalendarAdapter(CalendarActivity.this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
+				        	gridView.setAdapter(calAdapter);
+				        }else
+				        if((year == year_c && monthOfYear+1 > month_c) || year > year_c ){
+				        	int gvFlag = 0;
+							addGridView();   //添加一个gridView
+				        	calAdapter = new CalendarAdapter(CalendarActivity.this, CalendarActivity.this.getResources(),year,monthOfYear+1,dayOfMonth);
+					        gridView.setAdapter(calAdapter);
+					        addTextToTopTextView(topText);
+					        gvFlag++;
+					        flipper.addView(gridView,gvFlag);
+				        	System.out.println("跳转2");
+				        	flipper.setInAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_left_in));
+				        	flipper.setOutAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_left_out));
+				        	flipper.showNext();
+				        	flipper.clearAnimation();
+				        	flipper.removeViewAt(0);
+				        }else{
+				        	int gvFlag = 0;
+							addGridView();   //添加一个gridView
+				        	calAdapter = new CalendarAdapter(CalendarActivity.this, CalendarActivity.this.getResources(),year,monthOfYear+1,dayOfMonth);
+					        gridView.setAdapter(calAdapter);
+					        addTextToTopTextView(topText);
+					        gvFlag++;
+					        flipper.addView(gridView,gvFlag);
+				        	System.out.println("跳转3");
+				        	flipper.setInAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_right_in));
+				        	flipper.setOutAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_right_out));
+				        	
+				        	flipper.showPrevious();
+				        	flipper.clearAnimation();
+				        	flipper.removeViewAt(0);
+				        }
+				        //跳转之后将跳转之后的日期设置为当期日期
+				        year_c = year;
+						month_c = monthOfYear+1;
+						day_c = dayOfMonth;
+						jumpMonth = 0;
+						jumpYear = 0;
+					}
+				}
+			},year_c, month_c-1, day_c).show();
+		    return true;
+		case R.id.cd_mi_exit:
+		     /**@注释：启动第三方app 2015年5月8日 */
+			 Intent intent = getPackageManager().getLaunchIntentForPackage(  
+		                "com.felipecsl.asymmetricgridview.app");  
+		        if (intent != null) {  
+		            startActivity(intent);  
+		        }  
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }

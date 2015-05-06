@@ -49,7 +49,7 @@ public class MainActivity extends BaseAcivity {
 	 */
 	@Override
 	public void initView() {
-       /** 娉ㄩ噴锛歩nit data */
+       /** init data */
 		if (pages.isEmpty()) {
 			pages.add(new HomePage(this));
 			pages.add(new MusicPage(this));
@@ -73,14 +73,12 @@ public class MainActivity extends BaseAcivity {
 	public void setListener() {
 		
 		m_viewpager.setOnPageChangeListener(new OnPageChangeListener() {
-			
 			@Override
 			public void onPageSelected(int position) {
 				BasePage page=pages.get(position);
 				 switch (position) {
 				 case 0:
 					m_radiogroup.check(R.id.rb_function);
-					
 					break;
 				 case 1:
 					 m_radiogroup.check(R.id.rb_news_center);
@@ -102,20 +100,16 @@ public class MainActivity extends BaseAcivity {
 				if (!page.isInitDataSuccess) {
 					 page.onResume();
 				}
-				
-				
 			}
 			
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
 				// TODO Auto-generated method stub
-				
 			}
 			
 			@Override
 			public void onPageScrollStateChanged(int arg0){
 				// TODO Auto-generated method stub 
-				
 			}
 		});
 		

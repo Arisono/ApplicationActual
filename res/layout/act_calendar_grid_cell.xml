@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--  android:background="#ffffff"加了之后，有线条 -->
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:background="#FFFFFF"
-  android:layout_width="fill_parent"
-  android:layout_height="wrap_content">
+  android:background="#ffffff"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/lv_calendar_cell">
   <TextView 
 	  android:gravity="center"
 	  android:layout_gravity="center"
 	  android:layout_width="51dp"
-	  android:layout_height="78dp"
+	  android:layout_height="83dp"
 	  android:id="@+id/tvtext"/>
 </LinearLayout>
