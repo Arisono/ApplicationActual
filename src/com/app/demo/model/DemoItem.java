@@ -21,6 +21,8 @@ public class DemoItem implements AsymmetricItem {
   private int columnSpan;
   private int rowSpan;
   private int position;
+  
+  private String title;
 
   public DemoItem() {
     this(1, 1, 0);
@@ -31,6 +33,12 @@ public class DemoItem implements AsymmetricItem {
     this.rowSpan = rowSpan;
     this.position = position;
   }
+  
+  public DemoItem(int columnSpan, int rowSpan, String title) {
+	    this.columnSpan = columnSpan;
+	    this.rowSpan = rowSpan;
+	    this.title = title;
+   }
 
   public DemoItem(Parcel in) {
     readFromParcel(in);
@@ -47,6 +55,10 @@ public class DemoItem implements AsymmetricItem {
   public int getPosition() {
     return position;
   }
+  
+  public String getTitle(){
+	 return title;
+  }
 
   @Override public String toString() {
     return String.format("%s: %sx%s", position, rowSpan, columnSpan);
@@ -60,12 +72,14 @@ public class DemoItem implements AsymmetricItem {
     columnSpan = in.readInt();
     rowSpan = in.readInt();
     position = in.readInt();
+    title=in.readString();
   }
 
   @Override public void writeToParcel(@NonNull Parcel dest, int flags) {
     dest.writeInt(columnSpan);
     dest.writeInt(rowSpan);
     dest.writeInt(position);
+    dest.writeString(title);
   }
 
   /* Parcelable interface implementation */

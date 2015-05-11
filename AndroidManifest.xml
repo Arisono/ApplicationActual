@@ -7,7 +7,7 @@
      Fragment 11 Version
      -->
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="16"
         android:targetSdkVersion="21" />
     <!--权限 -->
     <!--网络权限  -->
@@ -24,6 +24,7 @@
         <activity
             android:name="com.app.demo.activity.MainActivity"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,10 +42,22 @@
             </intent-filter>  
         </service> 
         
-        <!--activity  -->
+        <!--  activity  -->
         <activity 
          android:name=".service.activity.StartService">
         </activity>
+        <!-- min version sdk is 16 
+             android:parentActivityName
+        -->
+        <activity 
+            android:name="com.app.demo.activity.common.CalendarActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.app.demo.activity.MainActivity"
+            android:label="日历">
+        </activity>
+        
+        
     </application>
 
 </manifest>

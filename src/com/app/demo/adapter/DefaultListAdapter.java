@@ -6,9 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 //import org.jetbrains.annotations.NotNull;
+
+
 
 
 
@@ -38,17 +42,22 @@ public class DefaultListAdapter extends ArrayAdapter<DemoItem> implements DemoAd
   @Override
   @SuppressWarnings("deprecation")
   public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-    TextView v;
-
+	  LinearLayout v;
+    TextView tv=null;
     DemoItem item = getItem(position);
 
     if (convertView == null) {
-      v = (TextView) layoutInflater.inflate(R.layout.act_adapter_item_grid_asymm, parent, false);
+      v = (LinearLayout) layoutInflater.inflate(R.layout.act_adapter_item_grid_asymm, parent, false);
+      tv=(TextView) v.findViewById(R.id.text);
     } else {
-      v = (TextView) convertView;
+      v = (LinearLayout) convertView;
+      tv=(TextView) v.findViewById(R.id.text);
     }
-
-    v.setText(String.valueOf(item.getPosition()));
+    if (item.getPosition()==0) {
+    	tv.setText(String.valueOf(item.getTitle()));
+	}else{
+    tv.setText(String.valueOf(item.getPosition()));
+	}
 
     return v;
   }
