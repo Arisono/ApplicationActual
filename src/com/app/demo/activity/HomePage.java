@@ -37,6 +37,7 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	private AsymmetricGridView listView;
 	@ViewInject(R.id.vp_image_display)
 	private TitlePageIndicator vpPageIndicator;
+	@ViewInject(R.id.vp_image_head)
 	private ViewPager viewpager;
 	private DemoAdapter adapter;
 	private ImagePageAdapter iPageAdapter;
@@ -58,6 +59,8 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	protected View initView(LayoutInflater inflater) {
 		View view=inflater.inflate(R.layout.view_radio_home_list, null);
 		listView=(AsymmetricGridView) view.findViewById(R.id.listView);
+		viewpager=(ViewPager) view.findViewById(R.id.vp_image_head);
+		vpPageIndicator=(TitlePageIndicator) view.findViewById(R.id.vp_image_display);
 		ViewUtils.inject(ct,view);
 		return view;
 	}
@@ -67,7 +70,13 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	 */ 
 	@Override
 	public void initData() {
-		
+		/**注释：初始化图片资源ID */
+		imageIds=new int[]{
+				R.drawable.icon_dispaly,
+				R.drawable.icon_function,
+				R.drawable.icon_newscenter,
+				R.drawable.icon_setting
+		};
 		iPageAdapter=new ImagePageAdapter(ct, imageIds);
 		viewpager.setAdapter(iPageAdapter);
 		((TitlePageIndicator) vpPageIndicator).setViewPager(viewpager);

@@ -31,6 +31,7 @@ public abstract class BaseAcivity extends Activity {
 		Log.i(TAG, "onCreate");
 		setView();
 		initView();
+		setListener();
 		
 	}
 	
@@ -65,7 +66,7 @@ public abstract class BaseAcivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		setListener();
+		
 		Log.i(TAG, "onResume");
 	}
 	
