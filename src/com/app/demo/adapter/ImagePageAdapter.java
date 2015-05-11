@@ -34,7 +34,7 @@ public class ImagePageAdapter extends PagerAdapter {
 	public int getCount() {
 		return resImageIds.length;
 	}
-
+ 
 	@Override
 	public Object instantiateItem(View container, int position) {
 		View view=View.inflate(context, R.layout.vp_item_image, null);
