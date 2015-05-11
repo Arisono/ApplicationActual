@@ -17,20 +17,27 @@
          android:layout_width="match_parent"
          android:layout_height="match_parent"
          android:orientation="vertical" >
-     <!-- 广告组件  -->
-     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_image_head"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:flipInterval="30"
-        android:persistentDrawingCache="animation" />
-     <com.viewpagerindicator.TitlePageIndicator
-       android:id="@+id/vp_image_display" 
-       android:layout_height="90dp"
-	   android:layout_width="match_parent"
-	   android:background="@color/pink">
-     </com.viewpagerindicator.TitlePageIndicator>
+         <RelativeLayout 
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+              <!-- 广告组件  -->
+		     <android.support.v4.view.ViewPager
+		        android:id="@+id/vp_image_head"
+		        android:layout_width="match_parent"
+		        android:layout_height="90dp"
+		        android:layout_gravity="center"
+		        android:flipInterval="30"
+		        android:persistentDrawingCache="animation" />
+		     <com.viewpagerindicator.CirclePageIndicator
+		       android:id="@+id/vp_image_display" 
+		       android:layout_height="10dp"
+			   android:layout_width="match_parent"
+			   android:gravity="top"
+			   android:layout_alignParentBottom="true"
+			   >
+		     </com.viewpagerindicator.CirclePageIndicator>
+         </RelativeLayout>
+    
      <!--不规则表格  -->
      <com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView
 	   xmlns:android="http://schemas.android.com/apk/res/android"

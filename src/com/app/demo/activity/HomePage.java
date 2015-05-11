@@ -5,10 +5,13 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 
 import com.app.demo.R;
@@ -23,7 +26,7 @@ import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView;
 import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridViewAdapter;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.viewpagerindicator.TitlePageIndicator;
+import com.viewpagerindicator.CirclePageIndicator;
 
 /**
  * @author LiuJie
@@ -36,14 +39,30 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	@ViewInject(R.id.listView)
 	private AsymmetricGridView listView;
 	@ViewInject(R.id.vp_image_display)
-	private TitlePageIndicator vpPageIndicator;
+	private CirclePageIndicator vpPageIndicator;
 	@ViewInject(R.id.vp_image_head)
 	private ViewPager viewpager;
 	private DemoAdapter adapter;
 	private ImagePageAdapter iPageAdapter;
 	private int[] imageIds;
+	private int currentItem=0;
 	private int currentOffset;
 	private static final boolean USE_CURSOR_ADAPTER = true;
+	
+	private  Handler handler=new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case 1:
+				vpPageIndicator.setCurrentItem(currentItem);
+				startScoll();
+				
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
 
 	/**
 	 * @param context
@@ -60,7 +79,7 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 		View view=inflater.inflate(R.layout.view_radio_home_list, null);
 		listView=(AsymmetricGridView) view.findViewById(R.id.listView);
 		viewpager=(ViewPager) view.findViewById(R.id.vp_image_head);
-		vpPageIndicator=(TitlePageIndicator) view.findViewById(R.id.vp_image_display);
+		vpPageIndicator=(CirclePageIndicator) view.findViewById(R.id.vp_image_display);
 		ViewUtils.inject(ct,view);
 		return view;
 	}
@@ -70,19 +89,48 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	 */ 
 	@Override
 	public void initData() {
+		Log.i(TAG, "HomePage init");
 		/**注释：初始化图片资源ID */
 		imageIds=new int[]{
 				R.drawable.icon_dispaly,
-				R.drawable.icon_function,
-				R.drawable.icon_newscenter,
-				R.drawable.icon_setting
+				R.drawable.bg_yellowdiamond_visitors_all,
+				R.drawable.subcenter_blog_default_bg,
+				R.drawable.yanzhengma_normal
 		};
 		iPageAdapter=new ImagePageAdapter(ct, imageIds);
 		viewpager.setAdapter(iPageAdapter);
-		((TitlePageIndicator) vpPageIndicator).setViewPager(viewpager);
+		((CirclePageIndicator) vpPageIndicator).setViewPager(viewpager);
+		vpPageIndicator.setCentered(true);
+		vpPageIndicator.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+//				if (position==imageIds.length) {
+//					position=(position+1)%(imageIds.length);
+//				}
+			    currentItem=position;
+				vpPageIndicator.setCurrentItem(currentItem);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int position) {
+				/**@注释：1 正在滑动  2015年5月12日 */
+				switch (position) {
+				case 1:
+					
+					break;
+				default:
+					break;
+				}
+			}
+		});
+		startScoll();
 		
-		
-		Log.i(TAG, "HomePage init");
 		isInitDataSuccess=true;
 		adapter = new DefaultListAdapter(ct, getMoreItems(51));
 	    listView.setRequestedColumnCount(3);
@@ -195,6 +243,19 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 			break;
 		}
 	
+	}
+	
+	public class ViewPagerTask implements Runnable {
+		@Override
+		public void run() {
+			currentItem = (currentItem + 1)% (imageIds.length);
+//			handler.obtainMessage().sendToTarget();
+			handler.sendEmptyMessage(1);
+		}
+	}
+	
+	public void startScoll(){
+		handler.postDelayed(new ViewPagerTask(),3000);
 	}
 
 }

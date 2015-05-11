@@ -1,11 +1,13 @@
 package com.app.demo.adapter;
 
 import com.app.demo.R;
+
 import android.content.Context;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 /**
  * @author :LiuJie 时间: 2015年4月20日 上午9:16:05
@@ -22,6 +24,7 @@ public class ImagePageAdapter extends PagerAdapter {
     }
 	@Override
 	public void destroyItem(View view, int position, Object arg2) {
+	//	System.out.println("销毁 arg2="+position);
 		((ViewPager) view).removeView((View) arg2);
 	}
 
@@ -34,17 +37,25 @@ public class ImagePageAdapter extends PagerAdapter {
 	public int getCount() {
 		return resImageIds.length;
 	}
-
+ 
 	@Override
-	public Object instantiateItem(View container, int position) {
+	public Object instantiateItem(View container, final int position) {
 		View view=View.inflate(context, R.layout.vp_item_image, null);
 		((ViewPager)container).addView(view);
-		ImageView imageView=(ImageView) view.findViewById(R.id.iv_home_icon);
+		ImageView imageView=(ImageView) view.findViewById(R.id.iv_vp_image);
 		if (isShowResImage) {
 			imageView.setImageResource(resImageIds[position]);
 		} else {
 			//bitmapUtils.display(imageView, uriList.get(position));
 		}
+		
+		imageView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+            System.out.println("v id="+resImageIds[position]);	
+			}
+		});
 		return view;
 	}
 

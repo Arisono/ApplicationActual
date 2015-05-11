@@ -57,6 +57,18 @@
             android:label="日历">
         </activity>
         
+       <!--新建日历  -->
+        <activity 
+	        android:name="com.app.demo.activity.common.NewSchedule"
+	        android:screenOrientation="portrait"
+	        android:parentActivityName="com.app.demo.activity.common.CalendarActivity"
+	        android:launchMode="singleTask"
+	        android:windowSoftInputMode="stateVisible|adjustResize"
+	        android:configChanges="keyboardHidden|orientation"
+	        android:logo="@null"
+	        android:label="返回">
+        </activity>
+        
         
     </application>
 

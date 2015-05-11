@@ -32,12 +32,8 @@ public abstract class BaseAcivity extends Activity {
 		setView();
 		initView();
 		setListener();
-		
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -45,9 +41,6 @@ public abstract class BaseAcivity extends Activity {
 		return true;
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
-	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -88,13 +81,10 @@ public abstract class BaseAcivity extends Activity {
 		Log.i(TAG, "onStop");
 	}
 	
-	
-	
-	/**@annotation��if return  true  is not function or lead to  action*/
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if(keyCode == KeyEvent.KEYCODE_BACK) { 
-	       // processExit();
+	         // processExit();
 	    	 return super.onKeyDown(keyCode, event);
 	    } else if(keyCode == KeyEvent.KEYCODE_MENU) {
 	    	
@@ -104,16 +94,4 @@ public abstract class BaseAcivity extends Activity {
 	    }
 	    return super.onKeyDown(keyCode, event);
 	}
-
-	
-	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onAttachedToWindow()
-	 */
-//	@Override
-//	public void onAttachedToWindow() {
-//		/**@annotation�� */
-//		 this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);     
-//	     super.onAttachedToWindow();    
-//	}
 }

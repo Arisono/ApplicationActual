@@ -21,7 +21,12 @@
         android:showAsAction="always|withText|"
         android:title="分享"/> -->
     
-<!-- 计算器菜单开始 -->    
+<!-- 计算器菜单开始 -->  
+     <item
+        android:id="@+id/cd_mi_newTask"
+        android:showAsAction="always|withText|"
+        android:title="新的日程"
+        android:icon="@drawable/tabbar_compose_background_icon_add"/>
     <item
         android:id="@+id/cd_mi_today"
         android:title="今天"/>

@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.app.demo.R;
 import com.app.demo.adapter.CalendarAdapter;
-import com.app.demo.util.CommonUtil;
 import com.app.demo.view.BorderText;
 
 import android.app.Activity;
@@ -15,7 +14,6 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Display;
@@ -62,6 +60,11 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	private String currentDate = "";
 	
 	private int select_cell;
+	//当前选中的日期
+	private String selectDay;
+	private String selectYear;
+	private String selectMonth;
+	private String week;
 	
 	/**@annotation：构造方法 */
 	public CalendarActivity() {
@@ -139,22 +142,63 @@ public class CalendarActivity extends Activity implements OnGestureListener {
             //将gridview中的触摸事件回传给gestureDetector
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				return CalendarActivity.this.gestureDetector
-						.onTouchEvent(event);
+				return CalendarActivity.this.gestureDetector.onTouchEvent(event);
 			}
 		});
+    	
+    	
         gridView.setOnItemClickListener(new OnItemClickListener() {
+
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
               System.out.println("gridview item 点击="+position);
-              select_cell=position;
-              calAdapter.setSeclection(position);
-              calAdapter.notifyDataSetChanged();
+              /**@注释：逻辑处理
+               *  2015年5月12日 
+               *  得到一个月的有效范围 点击有效，其它的点击无效
+               */
+              int startPosition=calAdapter.getStartPositon();
+              int endPosition=calAdapter.getEndPosition();
+              if (startPosition <= position  && position <= endPosition) {
+            	  select_cell=position;
+                  calAdapter.setSeclection(position);
+                  calAdapter.notifyDataSetChanged();
+                   week = "";
+                   selectDay = calAdapter.getDateByClickItem(position).split("\\.")[0];  //这一天的阳历
+				  //String scheduleLunarDay = calV.getDateByClickItem(position).split("\\.")[1];  //这一天的阴历
+                   selectYear = calAdapter.getShowYear();
+                   selectMonth = calAdapter.getShowMonth();
+                
+                  //得到这一天是星期几
+                  switch(position%7){
+                  case 0:
+                	  week = "星期日";
+                	  break;
+                  case 1:
+                	  week = "星期一";
+                	  break;
+                  case 2:
+                	  week = "星期二";
+                	  break;
+                  case 3:
+                	  week = "星期三";
+                	  break;
+                  case 4:
+                	  week = "星期四";
+                	  break;
+                  case 5:
+                	  week = "星期五";
+                	  break;
+                  case 6:
+                	  week = "星期六";
+                	  break;
+                  }
+              }
               
 			}
 		});
+        
         gridView.setSelector(getResources().getDrawable(R.drawable.selector_calendar_normal));
         gridView.setLayoutParams(params);
 	}
@@ -344,7 +388,6 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		        flipper.addView(gridView,gvFlag);
 		        this.flipper.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_in));
 				this.flipper.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_out));
-
 				this.flipper.showNext();
 				flipper.removeViewAt(0);
 	        }else{
@@ -365,7 +408,6 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 				this.flipper.showPrevious();
 				flipper.removeViewAt(0);
 	        }
-			
 			return true;
 		case R.id.cd_mi_change:
 				new DatePickerDialog(this, new OnDateSetListener() {
@@ -429,6 +471,12 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		        if (intent != null) {  
 		            startActivity(intent);  
 		        }  
+			return true;
+		case R.id.cd_mi_newTask:
+			/**@注释：跳转  新建日程 2015年5月12日 */
+			System.out.println("您点击了"+selectYear+"年"+selectMonth+"月"+selectDay+"日"+week);
+			Intent it_schedule=new Intent(this, NewSchedule.class);
+			startActivity(it_schedule);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
