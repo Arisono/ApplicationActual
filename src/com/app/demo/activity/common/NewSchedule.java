@@ -59,7 +59,7 @@ public class NewSchedule extends BaseAcivity {
 			
 			@Override
 			public void onClick(View v) {
-				showOrHideIMM();
+			//	showOrHideIMM();
 			}
 		});
 	}
