@@ -1,11 +1,12 @@
 package com.app.demo.util;
 
 import android.content.Context;
+import android.widget.Toast;
 /**
  * @author Administrator
  * @注释： 公共工具类
  */
-public class CommonUtil {
+public class ApplicationUtil {
 
 
 	/**
@@ -23,4 +24,21 @@ public class CommonUtil {
 	  final float scale = context.getResources().getDisplayMetrics().density;
 	  return (int) (pxValue / scale + 0.5f);
 	} 
+	
+	/**
+	 * 弹出Toast消息
+	 * 
+	 * @param msg
+	 */
+	public static void ToastMessage(Context cont, String msg) {
+		Toast.makeText(cont, msg, Toast.LENGTH_SHORT).show();
+	}
+
+	public static void ToastMessage(Context cont, int msg) {
+		Toast.makeText(cont, msg, Toast.LENGTH_SHORT).show();
+	}
+
+	public static void ToastMessage(Context cont, String msg, int time) {
+		Toast.makeText(cont, msg, time).show();
+	}
 }

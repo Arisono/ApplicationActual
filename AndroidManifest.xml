@@ -46,6 +46,7 @@
         <activity 
          android:name=".service.activity.StartService">
         </activity>
+        
         <!-- min version sdk is 16 
              android:parentActivityName
         -->
@@ -69,6 +70,13 @@
 	        android:label="返回">
         </activity>
         
+         <activity 
+            android:name="com.app.demo.activity.BtSelectActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.app.demo.activity.MainActivity"
+            android:label="类库">
+        </activity>
         
     </application>
 

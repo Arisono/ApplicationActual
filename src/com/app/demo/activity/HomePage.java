@@ -153,7 +153,7 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	      items.add(item);
 	    }*/
 	    DemoItem item = new DemoItem(2, 2, "日历");
-	    DemoItem item1 = new DemoItem(1, 1, "记账");
+	    DemoItem item1 = new DemoItem(1, 1, "案例");
 	    DemoItem item2 = new DemoItem(1, 1, "消费");
 	    DemoItem item3 = new DemoItem(2, 2, "音乐收藏");
 	    DemoItem item4 = new DemoItem(1, 1, "记事");
@@ -194,13 +194,14 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		
 		switch (position) {
 		case 0:
 			Intent it_calander =new Intent(ct,CalendarActivity.class);
 			ct.startActivity(it_calander);
 			break;
 		case 1:
+			Intent it_lib=new Intent(ct, BtSelectActivity.class);
+			ct.startActivity(it_lib);
 					
 			break;
 		case 2:

@@ -6,6 +6,7 @@ package com.app.demo.base;
 import com.app.demo.R;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 public abstract class BaseAcivity extends Activity {
     
 	protected String TAG;
+	public Context ct;
 	public abstract void setView();
 	public abstract void initView();
 	public abstract void setListener();

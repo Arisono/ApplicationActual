@@ -8,7 +8,7 @@ import java.util.Date;
 
 import com.app.demo.R;
 import com.app.demo.activity.common.CalendarActivity;
-import com.app.demo.util.CommonUtil;
+import com.app.demo.util.ApplicationUtil;
 import com.app.demo.util.LunarCalendar;
 import com.app.demo.util.SpecialCalendar;
 
@@ -338,7 +338,7 @@ public class CalendarAdapter extends BaseAdapter {
 			textView.setTextColor(Color.RED);
 			LayoutParams params= textView.getLayoutParams();
 			/**@annotation：dp转像素 */
-			params.height=CommonUtil.dip2px(context, 26);
+			params.height=ApplicationUtil.dip2px(context, 26);
 			textView.setLayoutParams(params);
 //			textView.setGravity(Gravity.CENTER);
 			drawable = res.getDrawable(R.drawable.week_top);
