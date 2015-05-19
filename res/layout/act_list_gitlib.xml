@@ -25,6 +25,11 @@
        android:id="@+id/prl_lib_listView"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       android:fastScrollEnabled="true"
+       android:focusable="true"
+       android:background="#CCCC66"
+       android:padding="1dp"
+       android:dividerHeight="2dp"        
        >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
