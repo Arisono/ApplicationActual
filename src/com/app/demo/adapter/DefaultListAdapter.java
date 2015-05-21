@@ -7,13 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-//import org.jetbrains.annotations.NotNull;
-
-
-
 
 
 import com.app.demo.R;
@@ -21,7 +15,7 @@ import com.app.demo.model.DemoItem;
 
 import java.util.List;
 
-/**
+/**AsymmetricGridViewAdapter
  * Sample adapter implementation extending from AsymmetricGridViewAdapter<DemoItem>
  * This is the easiest way to get started.
  */
@@ -40,7 +34,6 @@ public class DefaultListAdapter extends ArrayAdapter<DemoItem> implements DemoAd
   }
 
   @Override
-  @SuppressWarnings("deprecation")
   public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 	  LinearLayout v;
     TextView tv=null;

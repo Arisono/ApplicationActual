@@ -89,7 +89,7 @@ public class AppManager {
 			finishAllActivity();
 			ActivityManager activityMgr= (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
 			//restartPackage()：结束整个App，包括service等其它Activity组件。
-			activityMgr.restartPackage(context.getPackageName());
+			activityMgr.killBackgroundProcesses(context.getPackageName());
 			System.exit(0);
 		} catch (Exception e) {	}
 	}

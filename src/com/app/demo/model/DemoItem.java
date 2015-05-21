@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 
 
-/**@注释：
+/**@注释：主要表格布局实体类
  *  实现Parcelable步骤
 	1）implements Parcelable
 	2）重写writeToParcel方法，将你的对象序列化为一个Parcel对象，即：将类的数据写入外部提供的Parcel中，打包需要传递的数据到Parcel容器保存，以便从 Parcel容器获取数据

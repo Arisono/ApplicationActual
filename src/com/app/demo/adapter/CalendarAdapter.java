@@ -7,12 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.app.demo.R;
-import com.app.demo.activity.common.CalendarActivity;
 import com.app.demo.util.ApplicationUtil;
 import com.app.demo.util.LunarCalendar;
 import com.app.demo.util.SpecialCalendar;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -22,18 +20,11 @@ import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -82,11 +73,12 @@ public class CalendarAdapter extends BaseAdapter {
 	
 	private String currentYear = "";
 	private String currentMonth = "";
+	@SuppressWarnings("unused")
 	private String currentDay = "";
 	//日程时间(需要标记的日程日期)
-	private String sch_year = "";
-	private String sch_month = "";
-	private String sch_day = "";
+//	private String sch_year = "";
+//	private String sch_month = "";
+//	private String sch_day = "";
 	//系统当前时间
 	private String sysDate = "";
 	private String sys_year = "";
@@ -187,7 +179,6 @@ public class CalendarAdapter extends BaseAdapter {
 	//将一个月中的每一天的值添加入数组dayNuber中
 	private void getweek(int year, int month) {
 		int j = 1;
-		int flag = 0;
 		String lunarDay = "";
 		
 		for (int i = 0; i < dayNumber.length; i++) {
@@ -288,19 +279,15 @@ public class CalendarAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
-	/* (non-Javadoc)
-	 * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
-	 */
+	@SuppressWarnings({ "deprecation" })
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if(convertView == null){
