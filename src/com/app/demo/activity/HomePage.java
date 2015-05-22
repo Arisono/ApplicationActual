@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 
 import com.app.demo.R;
@@ -46,7 +45,9 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	private ImagePageAdapter iPageAdapter;
 	private int[] imageIds;
 	private int currentItem=0;
+	@SuppressWarnings("unused")
 	private int currentOffset;
+	@SuppressWarnings("unused")
 	private static final boolean USE_CURSOR_ADAPTER = true;
 	
 	private  Handler handler=new Handler(){
