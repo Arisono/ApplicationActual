@@ -66,19 +66,10 @@ public class BtSelectActivity extends BaseAcivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 			   TextView tView=(TextView) view.findViewById(R.id.tv_address_intent);
-				
+			   Intent it_scroll=null;
 			   switch (position) {
 				case 1:
-				ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-				Intent it_scroll=null;
-				try {
-					it_scroll = new Intent(BtSelectActivity.this, Class.forName(tView.getText().toString()));
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-				if (it_scroll!=null) {
-					startActivity(it_scroll);
-				}
+				    ApplicationUtil.ToastMessage(ct, tView.getText().toString());
 					break;
 				case 2:
 					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
@@ -95,8 +86,19 @@ public class BtSelectActivity extends BaseAcivity {
 				case 6:
 					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
 					break;	
+				case 15:
+					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
+					break;	
 				default:
 					break;
+				}
+				try {
+					it_scroll = new Intent(BtSelectActivity.this, Class.forName(tView.getText().toString()));
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				if (it_scroll!=null) {
+					startActivity(it_scroll);
 				}
 				
 			}
@@ -182,6 +184,14 @@ public class BtSelectActivity extends BaseAcivity {
 		item.put("no",14);
 		item.put("url", "未填写");
 		data.add(item);
+		item=new HashMap<String,Object>();
+		item.put("libname", "ExpandableListView双层嵌套实现三级树形菜单");
+		item.put("no",15);
+		item.put("intent", "com.app.demo.activity.TreeListActivity");
+		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
+		data.add(item);
+		
+		
 	}
 	
 	public void getCreativeData(){
