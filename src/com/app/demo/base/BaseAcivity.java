@@ -26,6 +26,9 @@ public abstract class BaseAcivity extends Activity {
 	public abstract void initView();
 	public abstract void setListener();
 	
+	public BaseAcivity() {
+		ct=this;
+	}
 	
 	@Override 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,6 @@ public abstract class BaseAcivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
 		Log.i(TAG, "onResume");
 	}
 	

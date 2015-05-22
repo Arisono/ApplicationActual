@@ -84,7 +84,6 @@
             android:text="intent"
             android:textColor="@color/redasymm"
             android:textSize="15sp" />
-
     </LinearLayout>
     
 </LinearLayout>

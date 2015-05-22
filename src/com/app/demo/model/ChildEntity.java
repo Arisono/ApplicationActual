@@ -15,8 +15,9 @@ public class ChildEntity {
 	private int groupColor;
 
 	private String groupName;
+	private boolean isGroupExpand;
 
-	private ArrayList<String> childNames;
+	private ArrayList<String> childNames=new ArrayList<String>();
 
 
 	/* ==========================================================
@@ -51,4 +52,13 @@ public class ChildEntity {
 		this.childNames = childNames;
 	}
 
+	public boolean isGroupExpand() {
+		return isGroupExpand;
+	}
+
+	public void setGroupExpand(boolean isGroupExpand) {
+		this.isGroupExpand = isGroupExpand;
+	}
+
+	
 }

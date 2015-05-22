@@ -10,6 +10,8 @@
             android:id="@+id/childChildTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+           
+            android:textColor="@drawable/tv_select_color_tree"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/child_expandable_list_child_padding_left" />
     </RelativeLayout>

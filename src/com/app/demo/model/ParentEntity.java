@@ -2,6 +2,8 @@ package com.app.demo.model;
 
 import java.util.ArrayList;
 
+import android.widget.TextView;
+
 /**
  * 
  * @author Apathy¡¢ºã
@@ -15,6 +17,10 @@ public class ParentEntity {
 	private int groupColor;
 
 	private String groupName;
+	
+	private String seletedTV;
+	//·Ö×éÒþ²Ø
+	private boolean isHide;
 
 	private ArrayList<ChildEntity> childs;
 
@@ -51,4 +57,23 @@ public class ParentEntity {
 		this.childs = childs;
 	}
 
+	public String getSeletedTV() {
+		return seletedTV;
+	}
+
+	public void setSeletedTV(String seletedTV) {
+		this.seletedTV = seletedTV;
+	}
+
+
+	public boolean isHide() {
+		return isHide;
+	}
+
+	public void setHide(boolean isHide) {
+		this.isHide = isHide;
+	}
+
+	
+	
 }
