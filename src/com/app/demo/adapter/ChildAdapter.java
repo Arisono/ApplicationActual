@@ -141,7 +141,7 @@ public class ChildAdapter extends BaseExpandableListAdapter {
 
 		public void update(String str) {
 			childChildTV.setText(str);
-			//childChildTV.setTextColor(Color.parseColor("#003333"));
+
 		}
 	}
 

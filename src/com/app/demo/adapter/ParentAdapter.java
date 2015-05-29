@@ -45,7 +45,6 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-	
 		return mParents.get(groupPosition).getChilds() != null ? mParents
 				.get(groupPosition).getChilds().size() : 0;
 	}
@@ -236,4 +235,5 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 
 	
 	
+
 }

@@ -5,16 +5,12 @@ import java.util.ArrayList;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupCollapseListener;
-import android.widget.Toast;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 
 import com.app.demo.R;
 import com.app.demo.adapter.ParentAdapter;
 import com.app.demo.adapter.ParentAdapter.OnChildTreeViewClickListener;
-import com.app.demo.adapter.ParentAdapter.OnGruopPositionViewClickListener;
 import com.app.demo.base.BaseAcivity;
 import com.app.demo.model.ChildEntity;
 import com.app.demo.model.ParentEntity;

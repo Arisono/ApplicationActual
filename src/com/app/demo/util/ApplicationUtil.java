@@ -1,6 +1,7 @@
 package com.app.demo.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 /**
  * @author Administrator
@@ -41,4 +42,34 @@ public class ApplicationUtil {
 	public static void ToastMessage(Context cont, String msg, int time) {
 		Toast.makeText(cont, msg, time).show();
 	}
+	
+	
+	public static boolean setSharedPreferences(Context ct,String key,String value,String name){
+		if (key!=null) {
+			SharedPreferences sPreferences=ct.getSharedPreferences(name,Context.MODE_PRIVATE);
+			boolean falg= sPreferences.edit().putString(key, value).commit();
+			return falg;
+		}else{
+			return false;
+		}
+	 
+	}
+	public static boolean clearSharedPreferences(Context ct,String key,String name){
+		if (key!=null) {
+			SharedPreferences sPreferences=ct.getSharedPreferences(name,Context.MODE_PRIVATE);
+			boolean falg= sPreferences.edit().remove(key).commit();
+			return falg;
+		}else{
+			return false;
+		}
+	}
+	
+	public static String getSharedPreferences(Context ct,String key,String name){
+		  if (key==null) {
+			return null;
+		   }
+		  SharedPreferences sPreferences=ct.getSharedPreferences(name,Context.MODE_PRIVATE);
+		  String value=sPreferences.getString(key, null);
+		  return value;
+   }
 }
