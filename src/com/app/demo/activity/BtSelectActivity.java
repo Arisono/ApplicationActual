@@ -6,10 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -33,6 +37,8 @@ public class BtSelectActivity extends BaseAcivity {
 	private Button bt_collect;
 	@ViewInject(R.id.bt_jinlian)
 	private Button bt_jinlian;
+	@ViewInject(R.id.ly_topView)
+	private LinearLayout ly_topView;
 	
 	private SimpleAdapter adapter; 
 	private ArrayList<Map<String,Object>> data ;
@@ -236,6 +242,53 @@ public class BtSelectActivity extends BaseAcivity {
 			 list.setAdapter(adapter);
 		}
 		adapter.notifyDataSetChanged();
+	}
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_lib_bar, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.mt_collect:
+			data.clear();
+			getData();
+			if (adapter==null) {
+				 adapter=new SimpleAdapter(this, data, 
+			    		 R.layout.item_simple_gitlib,
+			    		 new String[]{"libname"}, 
+			    		 new int[]{R.id.tv_item_libtitle});
+				 list.setAdapter(adapter);
+			}
+			adapter.notifyDataSetChanged();
+			return true;
+		case R.id.mt_better:
+			data.clear();
+			getCreativeData();
+			if (adapter==null) {
+				 adapter=new SimpleAdapter(this, data, 
+			    		 R.layout.item_simple_gitlib,
+			    		 new String[]{"libname"}, 
+			    		 new int[]{R.id.tv_item_libtitle});
+				 list.setAdapter(adapter);
+			}
+			adapter.notifyDataSetChanged();
+		    return true;
+		case R.id.mt_visible:
+			ly_topView.setVisibility(View.VISIBLE);
+			return true;
+		case R.id.mt_gone:
+			ly_topView.setVisibility(View.GONE);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	

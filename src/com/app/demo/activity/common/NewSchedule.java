@@ -85,10 +85,10 @@ public class NewSchedule extends BaseAcivity {
 		switch (item.getItemId()) {
 		case R.id.mu_it_save_schedule:
 			return true;
-		case R.id.menu_feedback:
-		    return true;
-		case R.id.menu_share:
-			return true;
+//		case R.id.menu_feedback:
+//		    return true;
+//		case R.id.menu_share:
+//			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
