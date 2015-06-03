@@ -2,7 +2,6 @@ package com.app.demo.model;
 
 import java.util.ArrayList;
 
-import android.widget.TextView;
 
 /**
  * 
