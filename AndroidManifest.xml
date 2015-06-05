@@ -3,100 +3,99 @@
     package="com.app.demo"
     android:versionCode="1"
     android:versionName="1.0" >
-    <!--minSdkVersion 
+    <!--
+     minSdkVersion 
      Fragment 11 Version
-     -->
+    -->
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="21" />
-    <!--权限 -->
-    <!--网络权限  -->
+        android:minSdkVersion="11"
+        android:targetSdkVersion="22" />
+    <!-- 权限 -->
+    <!-- 网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon_logo_me"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light" >
+        android:theme="@style/AppTheme" >
         <!--
     	 android:screenOrientation="portrait" 限制屏幕为纵向
     	 android:launchMode="singleTask"
-      	-->
+        -->
         <activity
             android:name="com.app.demo.activity.MainActivity"
-            android:screenOrientation="portrait"
+            android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:label="@string/app_name" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <!--service  -->
-        <!--android:exported="false" 禁止外部访问service  -->
-        <service android:name=".service.MyService"
-                 android:exported="false">  
-            <intent-filter>  
-                 <action android:name="android.intent.action.MyService" />  
-                 <category android:name="android.intent.category.DEFAULT" />  
-            </intent-filter>  
-        </service> 
-        
-        <!--  activity  -->
-        <activity 
-         android:name=".service.activity.StartService">
+        <!-- service -->
+        <!-- android:exported="false" 禁止外部访问service -->
+        <service
+            android:name=".service.MyService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.MyService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <!-- activity -->
+        <activity android:name=".service.activity.StartService" >
         </activity>
-        
-        <!-- min version sdk is 16 
+        <!--
+             min version sdk is 16 
              android:parentActivityName
         -->
-        <activity 
+        <activity
             android:name="com.app.demo.activity.common.CalendarActivity"
-            android:screenOrientation="portrait"
+            android:label="日历"
             android:launchMode="singleTask"
             android:parentActivityName="com.app.demo.activity.MainActivity"
-            android:label="日历">
+            android:screenOrientation="portrait" >
         </activity>
-        
-       <!--新建日历  -->
-        <activity 
-	        android:name="com.app.demo.activity.common.NewSchedule"
-	        android:screenOrientation="portrait"
-	        android:parentActivityName="com.app.demo.activity.common.CalendarActivity"
-	        android:launchMode="singleTask"
-	        android:windowSoftInputMode="stateVisible|adjustResize"
-	        android:configChanges="keyboardHidden|orientation"
-	        android:logo="@null"
-	        android:label="返回">
+        <!-- 新建日历 -->
+        <activity
+            android:name="com.app.demo.activity.common.NewSchedule"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="返回"
+            android:launchMode="singleTask"
+            android:logo="@null"
+            android:parentActivityName="com.app.demo.activity.common.CalendarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
-        <!--案例库 -->
-        <!--***********************************************  -->
-         <activity 
+        <!-- 案例库 -->
+        <!-- *********************************************** -->
+        <activity
             android:name="com.app.demo.activity.BtSelectActivity"
-            android:screenOrientation="portrait"
+            android:label="类库"
             android:launchMode="singleTask"
             android:parentActivityName="com.app.demo.activity.MainActivity"
-            android:label="类库">
+            android:screenOrientation="portrait" >
         </activity>
-         
-         <activity 
+        <activity
             android:name="com.app.demo.activity.ScrollStretchActivity"
-            android:screenOrientation="portrait"
+            android:label="类库"
             android:launchMode="singleTask"
             android:parentActivityName="com.app.demo.activity.BtSelectActivity"
-            android:label="类库">
+            android:screenOrientation="portrait" >
         </activity>
-        
-        <activity 
+        <activity
             android:name="com.app.demo.activity.TreeListActivity"
-            android:screenOrientation="portrait"
+            android:label="Tree"
             android:launchMode="singleTask"
             android:parentActivityName="com.app.demo.activity.BtSelectActivity"
-            android:label="Tree">
+            android:screenOrientation="portrait" >
         </activity>
-        
-         
+        <activity
+            android:name="com.app.demo.activity.NotesActivity"
+            android:label="Tree"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.app.demo.activity.BtSelectActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
-
 </manifest>

@@ -1,36 +1,20 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="AppTheme" parent="AppTheme.Parent" />
+    <style name="AppTheme.Parent" parent="Theme.AppCompat">
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/dark_primary</item>
+        <item name="colorAccent">@color/secondary</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:actionModeBackground">@color/dark_primary</item>
+        <item name="actionModeBackground">@color/dark_primary</item>
+        <item name="android:windowBackground">@color/dark_grey</item>
     </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    	<!-- <item name="android:actionBarStyle">@style/CustomActionBar</item> -->
-    </style>
-     
-   
-  <!--   <style name="CustomActionBar" parent="@android:style/Widget.DeviceDefault.ActionBar">
-   		 <item name="android:titleTextStyle">@style/ActionBarTitle</item>
-	</style>
-
-	<style name="ActionBarTitle" parent="@android:style/TextAppearance.Holo.Large">
-	    <item name="android:textColor">@android:color/holo_blue_bright</item>
-	    <item name="android:textSize">20sp</item>
-	</style> -->
-    
-    
-    
-    <!-- activity  view  theme  -->
+    <!-- activity  view  theme -->
     <style name="main_tab_bottom">
         <item name="android:textSize">@dimen/bottom_tab_font_size</item>
         <item name="android:textColor">@color/bottom_text_color</item>
@@ -45,9 +29,7 @@
         <item name="android:drawablePadding">@dimen/bottom_tab_padding_drawable</item>
         <item name="android:layout_weight">1.0</item>
     </style>
-    
-    
-    <!--日历 cell -->
+    <!-- 日历 cell -->
     <style name="style_calendar_cell">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -57,5 +39,11 @@
         <item name="android:orientation">vertical</item>
         <item name="android:background">@drawable/selector_calendar_normal</item>
     </style>
-
+    <style name="LightTextToolbarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:actionModeBackground">@color/dark_primary</item>
+        <item name="actionModeBackground">@color/dark_primary</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
 </resources>

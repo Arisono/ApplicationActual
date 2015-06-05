@@ -189,11 +189,19 @@ public class BtSelectActivity extends BaseAcivity {
 		item.put("libname", "ImageLoader");
 		item.put("no",14);
 		item.put("url", "未填写");
+		
 		data.add(item);
 		item=new HashMap<String,Object>();
 		item.put("libname", "ExpandableListView双层嵌套实现三级树形菜单");
 		item.put("no",15);
 		item.put("intent", "com.app.demo.activity.TreeListActivity");
+		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
+		data.add(item);
+		
+		item=new HashMap<String,Object>();
+		item.put("libname", "笔记");
+		item.put("no",16);
+		item.put("intent", "com.app.demo.activity.NotesActivity");
 		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
 		data.add(item);
 		
