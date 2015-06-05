@@ -69,6 +69,7 @@ public class MainActivity extends BaseAcivity {
 	/* (non-Javadoc)
 	 * @see com.app.demo.base.BaseAcivity#setListener()
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setListener() {
 		
