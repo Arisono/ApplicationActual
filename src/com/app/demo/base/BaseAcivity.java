@@ -16,12 +16,12 @@ import android.view.MenuItem;
 
 /**
  * @author LiuJie
- * Activity
+ * Base  Activity  
  */
 public abstract class BaseAcivity extends Activity {
-    
-	protected String TAG;
+	
 	public Context ct;
+	protected String TAG;
 	public abstract void setView();
 	public abstract void initView();
 	public abstract void setListener();
@@ -88,7 +88,6 @@ public abstract class BaseAcivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if(keyCode == KeyEvent.KEYCODE_BACK) { 
-	         // processExit();
 	    	 return super.onKeyDown(keyCode, event);
 	    } else if(keyCode == KeyEvent.KEYCODE_MENU) {
 	    	

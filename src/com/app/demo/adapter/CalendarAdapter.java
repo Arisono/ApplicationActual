@@ -90,6 +90,8 @@ public class CalendarAdapter extends BaseAdapter {
 	public void setSeclection(int position) {
 	   clickTemp = position;
 	}
+	
+	
 	/**
 	 * 无参数构造方法
 	 */

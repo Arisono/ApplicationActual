@@ -3,9 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/android_layout_bg" >
+    <include
+        android:id="@+id/iv_top_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        layout="@layout/topbar_home_title" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_top_view" >
         <ImageView
             android:id="@+id/personal_background_image"
             android:layout_width="match_parent"

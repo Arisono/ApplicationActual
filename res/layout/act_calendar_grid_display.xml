@@ -3,18 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <!--ViewFlipper  控件的使用!  -->
-    <!--实现带下边框的textView   -->
-	<com.app.demo.view.BorderText
-	    android:id="@+id/toptext"
-	    android:layout_width="fill_parent" 
-	    android:layout_height="38dp"
+    <include layout="@layout/topbar_home_title" />
+    <!-- ViewFlipper  控件的使用! -->
+    <!-- 实现带下边框的textView -->
+    <com.app.demo.view.BorderText
+        android:id="@+id/toptext"
+        android:layout_width="fill_parent"
+        android:layout_height="38dp"
         android:gravity="center"
-        android:textSize="15sp"
         android:paddingLeft="35dp"
-        android:paddingRight="35dp"/>
-	<ViewFlipper 
-	    android:id="@+id/flipper"
-		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent"/>
+        android:paddingRight="35dp"
+        android:textSize="15sp" />
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 </LinearLayout>

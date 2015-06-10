@@ -30,9 +30,8 @@ public class MusicPage extends BasePage {
 	 * @see com.app.demo.base.BasePage#initView(android.view.LayoutInflater)
 	 */
 	@Override
-	protected View initView(LayoutInflater inflater) {
+	public View initView(LayoutInflater inflater) {
 		View view=inflater.inflate(R.layout.view_radio_music_list, null);
-		
 		ViewUtils.inject(this, view);
 		return view;
 	}
@@ -42,7 +41,7 @@ public class MusicPage extends BasePage {
 	 */
 	@Override
 	public void initData() {
-     Log.i(TAG, "数据初始化成功！");
+     Log.i(TAG, "initData");
      isInitDataSuccess=true;
 	}
 

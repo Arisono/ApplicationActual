@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/whitesmoke"
     android:orientation="vertical" >
+    <include layout="@layout/topbar_home_title" />
     <LinearLayout
         android:id="@+id/ly_topView"
         android:layout_width="match_parent"

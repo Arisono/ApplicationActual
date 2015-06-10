@@ -15,6 +15,7 @@ import java.io.File;
 
 
 
+
 import com.app.demo.R;
 import com.app.demo.dialog.CreateFolderDialog;
 import com.app.demo.util.Constants;
@@ -38,6 +39,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 
+@SuppressWarnings("deprecation")
 public class NotesActivity extends ActionBarActivity {
 	
 	private Toolbar toolbar;
