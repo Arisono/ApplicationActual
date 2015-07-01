@@ -31,7 +31,7 @@ public class UserPage extends BasePage {
 	 * @see com.app.demo.base.BasePage#initView(android.view.LayoutInflater)
 	 */
 	@Override
-	protected View initView(LayoutInflater inflater) {
+	public View initView(LayoutInflater inflater) {
 		View view=inflater.inflate(R.layout.view_radio_user_list, null);
 		
 		ViewUtils.inject(this, view);

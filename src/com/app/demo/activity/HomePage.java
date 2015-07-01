@@ -70,13 +70,15 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	 */
 	public HomePage(Context context) {
 		super(context);
+		TAG="HomePage";
 	}
 
 	/* (non-Javadoc)
 	 * @see com.app.demo.base.BasePage#initView(android.view.LayoutInflater)
 	 */
 	@Override
-	protected View initView(LayoutInflater inflater) {
+	public View initView(LayoutInflater inflater) {
+		System.out.println(""+TAG+" initView");
 		View view=inflater.inflate(R.layout.view_radio_home_list, null);
 		listView=(AsymmetricGridView) view.findViewById(R.id.listView);
 		viewpager=(ViewPager) view.findViewById(R.id.vp_image_head);
@@ -90,6 +92,7 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	 */ 
 	@Override
 	public void initData() {
+		System.out.println(""+TAG+" initData");
 		Log.i(TAG, "HomePage init");
 		/**注释：初始化图片资源ID */
 		imageIds=new int[]{

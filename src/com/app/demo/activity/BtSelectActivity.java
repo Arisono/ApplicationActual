@@ -205,6 +205,12 @@ public class BtSelectActivity extends BaseAcivity {
 		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
 		data.add(item);
 		
+		item=new HashMap<String,Object>();
+		item.put("libname", "IOS风格的对话框");
+		item.put("no",16);
+		item.put("intent", "com.app.demo.activity.common.DialogStyleIOS");
+		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
+		data.add(item);
 		
 	}
 	

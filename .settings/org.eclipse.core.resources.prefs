@@ -2,5 +2,6 @@ eclipse.preferences.version=1
 encoding//src/com/app/demo/activity/HomePage.java=UTF-8
 encoding//src/com/app/demo/activity/MainActivity.java=UTF-8
 encoding//src/com/app/demo/adapter/CalendarAdapter.java=UTF-8
+encoding//src/com/app/demo/base/BasePage.java=UTF-8
 encoding//src/com/app/demo/model/Weather.java=UTF-8
 encoding//src/com/app/demo/util/XMLRequest.java=UTF-8

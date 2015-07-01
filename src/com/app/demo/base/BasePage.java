@@ -3,6 +3,8 @@
  */
 package com.app.demo.base;
 
+import com.lidroid.xutils.ViewUtils;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +15,9 @@ import android.view.View;
  */
 public abstract class BasePage {
 	
-	protected String TAG;
-	protected Context ct;
-	protected View contentView;
+	public String TAG;
+	public Context ct;
+	public View contentView;
 	public boolean isInitDataSuccess=false;
 	
 	public BasePage(Context context){
@@ -24,21 +26,16 @@ public abstract class BasePage {
 		contentView=initView(layoutInflater);
 		
 	}
-	/**@annotation：abstract method */
-	protected abstract View initView(LayoutInflater inflater);
-	/**@annotation：frist load data*/
+	public abstract View initView(LayoutInflater inflater);
 	public abstract void initData();
 	
-	/**@annotation： onResume */
 	public  void onResume(){
 		initData();
 	};
 	
-	/**@annotation：onDestory */
 	public void onDestory(){
 		
 	}
-	
 	
 	public View getContentView() {
 		return contentView;
