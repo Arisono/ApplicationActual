@@ -13,10 +13,10 @@ import com.app.demo.dialog.ActionSheetDialog.SheetItemColor;
 import com.app.demo.dialog.AlertDialog;
 import com.lidroid.xutils.view.annotation.ViewInject;
 /**
- * @author :LiuJie 2015Äê6ÔÂ23ÈÕ ÉÏÎç9:58:52
- * @×¢ÊÍ:ios style dialog
+ * @author :LiuJie 
+ * @:ios style dialog
  */
-public class DialogStyleIOS extends BaseSimpleActivity {
+public class DialogStyleIOS extends BaseSimpleActivity implements OnClickListener{
     
 	@ViewInject(R.id.btn1)
 	private Button btn1;
@@ -31,216 +31,209 @@ public class DialogStyleIOS extends BaseSimpleActivity {
 	
 	@Override
 	public void onClick(View v) {
-       switch (v.getId()) {
-	   case R.id.btn1:
-		/**@×¢ÊÍ£ºÈ¡Ïû¶Ô»°¿ò  */
-		   new ActionSheetDialog(ct)
-			.builder()
-			.setTitle("Çå¿ÕÏûÏ¢ÁĞ±íºó£¬ÁÄÌì¼ÇÂ¼ÒÀÈ»±£Áô£¬È·¶¨ÒªÇå¿ÕÏûÏ¢ÁĞ±í£¿")
-			.setCancelable(false)
-			.setCanceledOnTouchOutside(false)
-			.addSheetItem("Çå¿ÕÏûÏ¢ÁĞ±í", SheetItemColor.Red,
-					new OnSheetItemClickListener() {
+		switch (v.getId()) {
+		case R.id.btn1:
+			new ActionSheetDialog(this)
+					.builder()
+					.setTitle("æ¸…ç©ºæ¶ˆæ¯åˆ—è¡¨åï¼ŒèŠå¤©è®°å½•ä¾ç„¶ä¿ç•™ï¼Œç¡®å®šè¦æ¸…ç©ºæ¶ˆæ¯åˆ—è¡¨ï¼Ÿ")
+					.setCancelable(false)
+					.setCanceledOnTouchOutside(false)
+					.addSheetItem("æ¸…ç©ºæ¶ˆæ¯åˆ—è¡¨", SheetItemColor.Red,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							}).show();
+			break;
+		case R.id.btn2:
+			new ActionSheetDialog(this)
+					.builder()
+					.setCancelable(false)
+					.setCanceledOnTouchOutside(false)
+					.addSheetItem("å‘é€ç»™å¥½å‹", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							})
+					.addSheetItem("è½¬è½½åˆ°ç©ºé—´ç›¸å†Œ", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							})
+					.addSheetItem("ä¸Šä¼ åˆ°ç¾¤ç›¸å†Œ", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							})
+					.addSheetItem("ä¿å­˜åˆ°æ‰‹æœº", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							})
+					.addSheetItem("æ”¶è—", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							})
+					.addSheetItem("æŸ¥çœ‹èŠå¤©å›¾ç‰‡", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+
+								}
+							}).show();
+			break;
+		case R.id.btn3:
+			new ActionSheetDialog(this)
+					.builder()
+					.setTitle("è¯·é€‰æ‹©æ“ä½œ")
+					.setCancelable(false)
+					.setCanceledOnTouchOutside(false)
+					.addSheetItem("æ¡ç›®ä¸€", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®äºŒ", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®ä¸‰", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®å››", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®äº”", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®å…­", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®ä¸ƒ", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®å…«", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®ä¹", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							})
+					.addSheetItem("æ¡ç›®å", SheetItemColor.Blue,
+							new OnSheetItemClickListener() {
+								@Override
+								public void onClick(int which) {
+									Toast.makeText(ct,
+											"item" + which, Toast.LENGTH_SHORT)
+											.show();
+								}
+							}).show();
+			break;
+		case R.id.btn4:
+			new AlertDialog(this).builder().setTitle("é€€å‡ºå½“å‰è´¦å·")
+					.setMsg("å†è¿ç»­ç™»é™†15å¤©ï¼Œå°±å¯å˜èº«ä¸ºQQè¾¾äººã€‚é€€å‡ºQQå¯èƒ½ä¼šä½¿ä½ ç°æœ‰è®°å½•å½’é›¶ï¼Œç¡®å®šé€€å‡ºï¼Ÿ")
+					.setPositiveButton("ç¡®è®¤é€€å‡º", new OnClickListener() {
 						@Override
-						public void onClick(int which) {
+						public void onClick(View v) {
+
+						}
+					}).setNegativeButton("å–æ¶ˆ", new OnClickListener() {
+						@Override
+						public void onClick(View v) {
 
 						}
 					}).show();
-		break;
-	   case R.id.btn2:
-		   new ActionSheetDialog(ct)
-			.builder()
-			.setCancelable(false)
-			.setCanceledOnTouchOutside(false)
-			.addSheetItem("·¢ËÍ¸øºÃÓÑ", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
+			break;
+		case R.id.btn5:
+			new AlertDialog(this).builder()
+					.setMsg("ä½ ç°åœ¨æ— æ³•æ¥æ”¶åˆ°æ–°æ¶ˆæ¯æé†’ã€‚è¯·åˆ°ç³»ç»Ÿ-è®¾ç½®-é€šçŸ¥ä¸­å¼€å¯æ¶ˆæ¯æé†’")
+					.setNegativeButton("ç¡®å®š", new OnClickListener() {
 						@Override
-						public void onClick(int which) {
-
-						}
-					})
-			.addSheetItem("×ªÔØµ½¿Õ¼äÏà²á", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-
-						}
-					})
-			.addSheetItem("ÉÏ´«µ½ÈºÏà²á", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-
-						}
-					})
-			.addSheetItem("±£´æµ½ÊÖ»ú", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-
-						}
-					})
-			.addSheetItem("ÊÕ²Ø", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-
-						}
-					})
-			.addSheetItem("²é¿´ÁÄÌìÍ¼Æ¬", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
+						public void onClick(View v) {
 
 						}
 					}).show();
-		   break;
-	   case R.id.btn3:
-		   new ActionSheetDialog(ct)
-			.builder()
-			.setTitle("ÇëÑ¡Ôñ²Ù×÷")
-			.setCancelable(false)
-			.setCanceledOnTouchOutside(false)
-			.addSheetItem("ÌõÄ¿Ò»", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿¶ş", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿Èı", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿ËÄ", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿Îå", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿Áù", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿Æß", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿°Ë", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿¾Å", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					})
-			.addSheetItem("ÌõÄ¿Ê®", SheetItemColor.Blue,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							Toast.makeText(ct,
-									"item" + which, Toast.LENGTH_SHORT)
-									.show();
-						}
-					}).show();
 			break;
-	   case R.id.btn4:
-		   new AlertDialog(ct).builder().setTitle("ÍË³öµ±Ç°ÕËºÅ")
-			.setMsg("ÔÙÁ¬ĞøµÇÂ½15Ìì£¬¾Í¿É±äÉíÎªQQ´ïÈË¡£ÍË³öQQ¿ÉÄÜ»áÊ¹ÄãÏÖÓĞ¼ÇÂ¼¹éÁã£¬È·¶¨ÍË³ö£¿")
-			.setPositiveButton("È·ÈÏÍË³ö", new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-				}
-			}).setNegativeButton("È¡Ïû", new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-				}
-			}).show();
+		default:
 			break;
-	   case R.id.btn5:
-		   new AlertDialog(ct).builder()
-			.setMsg("ÄãÏÖÔÚÎŞ·¨½ÓÊÕµ½ĞÂÏûÏ¢ÌáĞÑ¡£Çëµ½ÏµÍ³-ÉèÖÃ-Í¨ÖªÖĞ¿ªÆôÏûÏ¢ÌáĞÑ")
-			.setNegativeButton("È·¶¨", new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-
-				}
-			}).show();
-			
-			break;
-	default:
-		break;
 	}		
 	}
 
-	@Override
-	public void setView() {
-     setContentView(R.layout.act_dialog_style_ios);		
-	}
 
 	@Override
 	public void initView() {
-		btn1.setOnClickListener(this);
-		btn2.setOnClickListener(this);
-		btn3.setOnClickListener(this);
-		btn4.setOnClickListener(this);
-		btn5.setOnClickListener(this);
+		setContentView(R.layout.act_dialog_style_ios);	
 	}
 
 	@Override
 	public void initData() {
-		// TODO Auto-generated method stub
-		
+		btn1.setOnClickListener(this);
+		btn2.setOnClickListener(this);
+		btn3.setOnClickListener(this);
+		btn4.setOnClickListener(this);
+		btn5.setOnClickListener(this);		
 	}
 
 }

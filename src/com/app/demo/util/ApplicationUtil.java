@@ -2,35 +2,25 @@ package com.app.demo.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.widget.Toast;
 /**
  * @author Administrator
- * @注释： 公共工具类
+ * @注锟酵ｏ拷 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
  */
 public class ApplicationUtil {
 
-
-	/**
-	* 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-	*/
 	public static int dip2px(Context context, float dpValue) {
 	  final float scale = context.getResources().getDisplayMetrics().density;
 	  return (int) (dpValue * scale + 0.5f);
 	}
-
-	/**
-	* 根据手机的分辨率从 px(像素) 的单位 转成为 dp
-	*/
+	
 	public static int px2dip(Context context, float pxValue) {
 	  final float scale = context.getResources().getDisplayMetrics().density;
 	  return (int) (pxValue / scale + 0.5f);
 	} 
 	
-	/**
-	 * 弹出Toast消息
-	 * 
-	 * @param msg
-	 */
 	public static void ToastMessage(Context cont, String msg) {
 		Toast.makeText(cont, msg, Toast.LENGTH_SHORT).show();
 	}
@@ -42,7 +32,6 @@ public class ApplicationUtil {
 	public static void ToastMessage(Context cont, String msg, int time) {
 		Toast.makeText(cont, msg, time).show();
 	}
-	
 	
 	public static boolean setSharedPreferences(Context ct,String key,String value,String name){
 		if (key!=null) {
@@ -72,4 +61,13 @@ public class ApplicationUtil {
 		  String value=sPreferences.getString(key, null);
 		  return value;
    }
+	/**
+	 * @author LiuJie
+	 * @鍔熻兘:isNetworkConnected
+	 */
+	public static boolean isNetworkConnected(Context ct) {
+		ConnectivityManager cm = (ConnectivityManager)ct.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo ni = cm.getActiveNetworkInfo();
+		return ni != null && ni.isConnectedOrConnecting();
+	}
 }

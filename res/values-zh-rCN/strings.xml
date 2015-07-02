@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="action_settings">设置</string>
+    <!-- home -->
+    <string name="app_name">资料中心</string>
+    <string name="tab_function">首页</string>
+    <string name="tab_news_center">音乐</string>
+    <string name="tab_smart_service">新闻</string>
+    <string name="tab_gov_affairs">记事</string>
+    <string name="tab_setting">我</string>
+    <string name="top_title">首页</string>
+    <!-- ios dialog -->
+    <string name="dialog_message">消息</string>
+    <string name="dialog_image">图片</string>
+    <string name="dialog_list">列表</string>
+    <string name="dialog_alert_title">选择对话框</string>
+    <string name="dialog_alert">确定对话框</string>
     <string name="open_drawer">打开抽屉</string>
     <string name="close_drawer">关闭抽屉</string>
+    <!-- note -->
     <string name="notes">笔记</string>
     <string name="archive">归档</string>
     <string name="new_note">新建笔记</string>
@@ -26,12 +39,10 @@
     <string name="folder_name_hint">输入文件夹名</string>
     <string name="create_folder">创建文件夹</string>
     <string name="move">移动</string>
-
     <string name="import_from_device">从设备导入</string>
     <string name="select_folder_move">选择文件夹</string>
     <string name="select_root_folder">选择文件夹</string>
     <string name="select_this_folder">Select this folder</string>
-
     <string name="empty_notes_list_hint">当您创建新笔记时，\n它会显示在这里</string>
     <string name="empty_archives_hint">当您存档笔记时，\n它会显示在这里</string>
     <string name="empty_starred_hint">当您星标笔记时，\n它会显示在这里</string>
@@ -51,9 +62,7 @@
     <string name="folders">Folders</string>
     <string name="rename_success">Successfully renamed</string>
     <string name="rename_error_target_already_exists">Target file/folder already exists!</string>
-
     <string name="email_header">Feedback about Writeily</string>
-
     <!-- Preferences -->
     <string name="pref_remember_directory">启动时打开上次的文件夹</string>
     <string name="pref_font_choice">编辑器字体</string>
@@ -83,12 +92,10 @@
     <string name="pref_smart_shortcuts">Smart brackets shortcuts</string>
     <string name="pref_smart_shortcuts_summary">If text is selected, {}, [] and () will surround the selection</string>
     <string name="passphrase_title">Enter your passphrase</string>
-
     <!-- Font Size -->
     <string name="font_size_normal">中等</string>
     <string name="font_size_large">大</string>
     <string name="font_size_small">小</string>
-
     <!-- Hard coded string fix -->
     <string name="last_modified">最后修改：%s</string>
     <string name="number_of_files">文件数：%d</string>
@@ -100,7 +107,6 @@
     <string name="select_elements">选择项目</string>
     <string name="one_item_selected">1 项已选择</string>
     <string name="more_items_selected">%d 项已选择</string>
-
     <!-- About screen -->
     <string name="about_version_title">版本</string>
     <string name="about_source_title">源代码托管在 GitHub 上</string>
@@ -121,5 +127,4 @@
     <string name="tap_github">访问 GitHub 主页</string>
     <string name="pref_root_directory_title">Select storage folder</string>
     <string name="about_original_section">Original creator</string>
-
 </resources>

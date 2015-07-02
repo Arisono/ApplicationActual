@@ -1,6 +1,7 @@
 package com.app.demo.base;
 
 import com.app.demo.R;
+
 import com.lidroid.xutils.ViewUtils;
 
 import android.app.Activity;
@@ -11,22 +12,19 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View.OnClickListener;
+
 /**
- * @author :LiuJie 2015Äê6ÔÂ23ÈÕ ÉÏÎç9:48:17
- * @×¢ÊÍ:»ù´¡ºËĞÄÀà
- *      Xutils ×¢½â
+ * @author :LiuJie 2015å¹´7æœˆ2æ—¥ ä¸Šåˆ10:14:46
+ * @æ³¨é‡Š:Base class
  */
-public abstract class BaseSimpleActivity extends Activity implements OnClickListener{
+public abstract class BaseSimpleActivity extends Activity{
 	
 	public Context ct;
 	protected String TAG;
-	
-	
-	public abstract void setView();
 	public abstract void initView();
-	public abstract void initData();
-	
+	public void initData(){
+		Log.i(TAG, "initData");
+	};
 	
 	public BaseSimpleActivity() {
 		ct=this;
@@ -36,9 +34,8 @@ public abstract class BaseSimpleActivity extends Activity implements OnClickList
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
-		setView();
-		ViewUtils.inject(this);
 		initView();
+		ViewUtils.inject(this);
 		initData();
 	}
 	
@@ -86,7 +83,6 @@ public abstract class BaseSimpleActivity extends Activity implements OnClickList
 	    if(keyCode == KeyEvent.KEYCODE_BACK) { 
 	    	 return super.onKeyDown(keyCode, event);
 	    } else if(keyCode == KeyEvent.KEYCODE_MENU) {
-	    	
 	    	return true;
 	    } else if(keyCode == KeyEvent.KEYCODE_HOME) {
 	    	return true;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Intent;
+import android.provider.ContactsContract.Contacts.Data;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -73,31 +74,7 @@ public class BtSelectActivity extends BaseAcivity {
 					int position, long id) {
 			   TextView tView=(TextView) view.findViewById(R.id.tv_address_intent);
 			   Intent it_scroll=null;
-			   switch (position) {
-				case 1:
-				    ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;
-				case 2:
-					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;
-				case 3:
-					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;
-				case 4:
-					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;
-				case 5:
-					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;
-				case 6:
-					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;	
-				case 15:
-					ApplicationUtil.ToastMessage(ct, tView.getText().toString());
-					break;	
-				default:
-					break;
-				}
+			
 				try {
 					it_scroll = new Intent(BtSelectActivity.this, Class.forName(tView.getText().toString()));
 				} catch (ClassNotFoundException e) {
@@ -123,7 +100,7 @@ public class BtSelectActivity extends BaseAcivity {
 		item.put("libname", "上拉下拉的ScrollView");
 		item.put("no", 1);
 		item.put("url", "未填写");
-		item.put("intent", "com.app.demo.activity.ScrollStretchActivity");
+		item.put("intent", "com.app.demo.activity.ScrollViewRefreshActivity");
 		data.add(item);
 		item=new HashMap<String,Object>();
 		item.put("libname", "进度条");
@@ -207,7 +184,7 @@ public class BtSelectActivity extends BaseAcivity {
 		
 		item=new HashMap<String,Object>();
 		item.put("libname", "IOS风格的对话框");
-		item.put("no",16);
+		item.put("no",17);
 		item.put("intent", "com.app.demo.activity.common.DialogStyleIOS");
 		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
 		data.add(item);
