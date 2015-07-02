@@ -5,6 +5,15 @@ import java.util.regex.Pattern;
 import android.os.Environment;
 
 public class Constants {
+	
+	/** @注释：加载成功 */
+	public static final int LOAD_SUCESS = 1;
+	/** @注释：网络未连接 */
+	public static final int LOAD_NOTNETWORK = 0;
+	/** @注释： 服务器异常 */
+	public static final int LOAD_EXCEPTION = 2;
+	
+	
 	public static final String[] KEYBOARD_SHORTCUTS = {"*", "-", "_", "#", "!", ":", ">"};
     public static final String[] KEYBOARD_SHORTCUTS_BRACKETS = { "(", ")", "[", "]"};
     public static final String[] KEYBOARD_SMART_SHORTCUTS = {"()", "[]"};

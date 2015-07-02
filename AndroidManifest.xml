@@ -79,7 +79,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.app.demo.activity.ScrollStretchActivity"
+            android:name="com.app.demo.activity.ScrollViewRefreshActivity"
             android:label="类库"
             android:launchMode="singleTask"
             android:parentActivityName="com.app.demo.activity.BtSelectActivity"
