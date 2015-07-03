@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Intent;
-import android.provider.ContactsContract.Contacts.Data;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,17 +18,15 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.app.demo.R;
-import com.app.demo.base.BaseAcivity;
-import com.app.demo.util.ApplicationUtil;
+import com.app.demo.base.BaseComplexActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 /**
  * @author :LiuJie 时间: 2015年5月19日 下午7:48:35
  * @注释:案例类
  */
-public class BtSelectActivity extends BaseAcivity {
+public class BtSelectActivity extends BaseComplexActivity {
 	
 	@ViewInject(R.id.prl_lib_listView)
 	private PullToRefreshListView list;
@@ -44,29 +41,31 @@ public class BtSelectActivity extends BaseAcivity {
 	private SimpleAdapter adapter; 
 	private ArrayList<Map<String,Object>> data ;
    
-	@Override
-	public void setView() {
-       setContentView(R.layout.act_list_gitlib);
-       ct=this;
-       ViewUtils.inject(this);
-	}
 
 	@Override
 	public void initView() {
-	 getData();
-     adapter=new SimpleAdapter(this, data, 
-    		 R.layout.item_simple_gitlib,
-    		 new String[]{"libname","no","url","intent"}, 
-    		 new int[]{R.id.tv_item_libtitle,
-    		           R.id.tv_item_no,
-    		           R.id.tv_address_url,
-    		           R.id.tv_address_intent});
-     list.setAdapter(adapter);
+		  setContentView(R.layout.act_list_gitlib);
+	      ct=this;
 	}
-
+	
 	@Override
+	public void initData() {
+		super.initData();
+		 setListener();
+		 getData();
+	     adapter=new SimpleAdapter(this, data, 
+	    		 R.layout.item_simple_gitlib,
+	    		 new String[]{"libname","no","url","intent"}, 
+	    		 new int[]{R.id.tv_item_libtitle,
+	    		           R.id.tv_item_no,
+	    		           R.id.tv_address_url,
+	    		           R.id.tv_address_intent});
+	     list.setAdapter(adapter);
+	}
+	
+	
+
 	public void setListener() {
-		
 		list.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -86,9 +85,6 @@ public class BtSelectActivity extends BaseAcivity {
 				
 			}
 		});
-		
-		
-
 	}
 	
 	public void getData(){
