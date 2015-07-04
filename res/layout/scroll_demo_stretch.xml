@@ -27,7 +27,7 @@
             android:layout_marginBottom="-10dp"
             android:gravity="center"
             android:text="努力就会有收获!"
-            android:textColor="@color/ripple_material_dark" />
+            android:textColor="@color/red" />
         <com.app.demo.view.StretchScrollView
             android:id="@+id/personal_scrollView"
             android:layout_width="match_parent"
