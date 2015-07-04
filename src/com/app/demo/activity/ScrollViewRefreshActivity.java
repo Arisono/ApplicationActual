@@ -40,7 +40,7 @@ public class ScrollViewRefreshActivity extends BaseComplexActivity  implements O
 	public void onHeaderRefresh(StretchScrollView view) {
 		refresh.setVisibility(View.VISIBLE);
 		progressDialog.show();
-		startTestThread(mhandler, 1, 5000);
+		startTestThread(mhandler, 1, 700);
 	}
 	
 	
