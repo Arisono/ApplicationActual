@@ -39,13 +39,13 @@ import android.widget.AbsListView.LayoutParams;
 
 /**
  * @author LiuJie
- * ÈÕÀú¿Ø¼ş
+ * æ—¥å†æ§ä»¶
  */
 public class CalendarActivity extends Activity implements OnGestureListener {
 	
-	//Ã¿´Î»¬¶¯£¬Ôö¼Ó»ò¼õÈ¥Ò»¸öÔÂ,Ä¬ÈÏÎª0£¨¼´ÏÔÊ¾µ±Ç°ÔÂ£©
+	//æ¯æ¬¡æ»‘åŠ¨ï¼Œå¢åŠ æˆ–å‡å»ä¸€ä¸ªæœˆ,é»˜è®¤ä¸º0ï¼ˆå³æ˜¾ç¤ºå½“å‰æœˆï¼‰
 	private static int jumpMonth = 0;   
-	//»¬¶¯¿çÔ½Ò»Äê£¬ÔòÔö¼Ó»òÕß¼õÈ¥Ò»Äê,Ä¬ÈÏÎª0(¼´µ±Ç°Äê)
+	//æ»‘åŠ¨è·¨è¶Šä¸€å¹´ï¼Œåˆ™å¢åŠ æˆ–è€…å‡å»ä¸€å¹´,é»˜è®¤ä¸º0(å³å½“å‰å¹´)
 	private static int jumpYear = 0; 
 	
 	private ViewFlipper flipper = null;
@@ -60,13 +60,13 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	private String currentDate = "";
 	
 	private int select_cell;
-	//µ±Ç°Ñ¡ÖĞµÄÈÕÆÚ
+	//å½“å‰é€‰ä¸­çš„æ—¥æœŸ
 	private String selectDay;
 	private String selectYear;
 	private String selectMonth;
 	private String week;
 	
-	/**@annotation£º¹¹Ôì·½·¨ */
+	/**@annotationï¼šæ„é€ æ–¹æ³• */
 	public CalendarActivity() {
 	   initDate();
 	}
@@ -74,7 +74,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	public void initDate(){
 		Date date = new Date();
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
-    	currentDate = sdf.format(date);  //µ±ÆÚÈÕÆÚ
+    	currentDate = sdf.format(date);  //å½“æœŸæ—¥æœŸ
     	year_c = Integer.parseInt(currentDate.split("-")[0]);
     	month_c = Integer.parseInt(currentDate.split("-")[1]);
     	day_c = Integer.parseInt(currentDate.split("-")[2]);
@@ -88,10 +88,10 @@ public class CalendarActivity extends Activity implements OnGestureListener {
         flipper = (ViewFlipper) findViewById(R.id.flipper);
         gestureDetector = new GestureDetector(this,this);
         flipper.removeAllViews();
-        /**@annotation£º´«²ÎÊı¹¹Ôì¶ÔÏó */
+        /**@annotationï¼šä¼ å‚æ•°æ„é€ å¯¹è±¡ */
         calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
         
-        /**@annotation£º¹Ø¼ü´úÂë */
+        /**@annotationï¼šå…³é”®ä»£ç  */
         addGridView();
         gridView.setAdapter(calAdapter);
         //flipper.addView(gridView);
@@ -103,9 +103,9 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	}
 	
 	
-	//Ìí¼Ó gridview
+	//æ·»åŠ  gridview
 	public void addGridView() {
-		//È¡µÃÆÁÄ»µÄ¿í¶ÈºÍ¸ß¶È
+		//å–å¾—å±å¹•çš„å®½åº¦å’Œé«˜åº¦
 		WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
         @SuppressWarnings("deprecation")
@@ -117,29 +117,29 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		
         params.height=Height;
         gridView = new GridView(this);
-		/**@annotation£º7ÁĞ */
+		/**@annotationï¼š7åˆ— */
 		gridView.setNumColumns(7);
 		gridView.setColumnWidth(46);
 		
-//		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)gridView.getLayoutParams(); // È¡¿Ø¼şmGridµ±Ç°µÄ²¼¾Ö²ÎÊı
-//		linearParams.height = CommonUtil.dip2px(this, 83);// µ±¿Ø¼şµÄ¸ßÇ¿ÖÆÉè³É75ÏóËØ
-//		gridView.setLayoutParams(linearParams); // Ê¹ÉèÖÃºÃµÄ²¼¾Ö²ÎÊıÓ¦ÓÃµ½¿Ø¼şmGrid2
+//		LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams)gridView.getLayoutParams(); // å–æ§ä»¶mGridå½“å‰çš„å¸ƒå±€å‚æ•°
+//		linearParams.height = CommonUtil.dip2px(this, 83);// å½“æ§ä»¶çš„é«˜å¼ºåˆ¶è®¾æˆ75è±¡ç´ 
+//		gridView.setLayoutParams(linearParams); // ä½¿è®¾ç½®å¥½çš„å¸ƒå±€å‚æ•°åº”ç”¨åˆ°æ§ä»¶mGrid2
 		
 		if(Width == 480 && Height == 800){
 			gridView.setColumnWidth(69);
 		}
 		
 		gridView.setGravity(Gravity.CENTER_VERTICAL);
-		// È¥³ıgridView±ß¿ò
+		// å»é™¤gridViewè¾¹æ¡†
 		//gridView.setSelector(new ColorDrawable(Color.TRANSPARENT)); 
 		gridView.setVerticalSpacing(1);
 		gridView.setHorizontalSpacing(1);
         //gridView.setBackgroundResource(R.drawable.gridview_bk);
 		gridView.setBackgroundColor(getResources().getColor(R.color.grid_view_cell));
         
-		/**@×¢ÊÍ£º´¥ÃşÊÂ¼ş¼àÌı 2015Äê5ÔÂ7ÈÕ */
+		/**@æ³¨é‡Šï¼šè§¦æ‘¸äº‹ä»¶ç›‘å¬ 2015å¹´5æœˆ7æ—¥ */
     	gridView.setOnTouchListener(new OnTouchListener() {
-            //½«gridviewÖĞµÄ´¥ÃşÊÂ¼ş»Ø´«¸øgestureDetector
+            //å°†gridviewä¸­çš„è§¦æ‘¸äº‹ä»¶å›ä¼ ç»™gestureDetector
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				return CalendarActivity.this.gestureDetector.onTouchEvent(event);
@@ -153,10 +153,10 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-              System.out.println("gridview item µã»÷="+position);
-              /**@×¢ÊÍ£ºÂß¼­´¦Àí
-               *  2015Äê5ÔÂ12ÈÕ 
-               *  µÃµ½Ò»¸öÔÂµÄÓĞĞ§·¶Î§ µã»÷ÓĞĞ§£¬ÆäËüµÄµã»÷ÎŞĞ§
+              System.out.println("gridview item ç‚¹å‡»="+position);
+              /**@æ³¨é‡Šï¼šé€»è¾‘å¤„ç†
+               *  2015å¹´5æœˆ12æ—¥ 
+               *  å¾—åˆ°ä¸€ä¸ªæœˆçš„æœ‰æ•ˆèŒƒå›´ ç‚¹å‡»æœ‰æ•ˆï¼Œå…¶å®ƒçš„ç‚¹å‡»æ— æ•ˆ
                */
               int startPosition=calAdapter.getStartPositon();
               int endPosition=calAdapter.getEndPosition();
@@ -165,33 +165,33 @@ public class CalendarActivity extends Activity implements OnGestureListener {
                   calAdapter.setSeclection(position);
                   calAdapter.notifyDataSetChanged();
                    week = "";
-                   selectDay = calAdapter.getDateByClickItem(position).split("\\.")[0];  //ÕâÒ»ÌìµÄÑôÀú
-				  //String scheduleLunarDay = calV.getDateByClickItem(position).split("\\.")[1];  //ÕâÒ»ÌìµÄÒõÀú
+                   selectDay = calAdapter.getDateByClickItem(position).split("\\.")[0];  //è¿™ä¸€å¤©çš„é˜³å†
+				  //String scheduleLunarDay = calV.getDateByClickItem(position).split("\\.")[1];  //è¿™ä¸€å¤©çš„é˜´å†
                    selectYear = calAdapter.getShowYear();
                    selectMonth = calAdapter.getShowMonth();
                 
-                  //µÃµ½ÕâÒ»ÌìÊÇĞÇÆÚ¼¸
+                  //å¾—åˆ°è¿™ä¸€å¤©æ˜¯æ˜ŸæœŸå‡ 
                   switch(position%7){
                   case 0:
-                	  week = "ĞÇÆÚÈÕ";
+                	  week = "æ˜ŸæœŸæ—¥";
                 	  break;
                   case 1:
-                	  week = "ĞÇÆÚÒ»";
+                	  week = "æ˜ŸæœŸä¸€";
                 	  break;
                   case 2:
-                	  week = "ĞÇÆÚ¶ş";
+                	  week = "æ˜ŸæœŸäºŒ";
                 	  break;
                   case 3:
-                	  week = "ĞÇÆÚÈı";
+                	  week = "æ˜ŸæœŸä¸‰";
                 	  break;
                   case 4:
-                	  week = "ĞÇÆÚËÄ";
+                	  week = "æ˜ŸæœŸå››";
                 	  break;
                   case 5:
-                	  week = "ĞÇÆÚÎå";
+                	  week = "æ˜ŸæœŸäº”";
                 	  break;
                   case 6:
-                	  week = "ĞÇÆÚÁù";
+                	  week = "æ˜ŸæœŸå…­";
                 	  break;
                   }
               }
@@ -205,24 +205,24 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 
 	
 	
-	//Ìí¼ÓÍ·²¿µÄÄê·İ ÈòÄÄÔÂµÈĞÅÏ¢
+	//æ·»åŠ å¤´éƒ¨çš„å¹´ä»½ é—°å“ªæœˆç­‰ä¿¡æ¯
 	@SuppressWarnings("deprecation")
 	public void addTextToTopTextView(TextView view){
 		StringBuffer textDate = new StringBuffer();
-		//±³¾°ÑÕÉ«
+		//èƒŒæ™¯é¢œè‰²
 		draw = getResources().getDrawable(R.drawable.top_day);
 		view.setBackgroundDrawable(draw);
-		//ÈÕÆÚÏÔÊ¾
-		textDate.append(calAdapter.getShowYear()).append("Äê").append(
-				calAdapter.getShowMonth()).append("ÔÂ").append("\t");
+		//æ—¥æœŸæ˜¾ç¤º
+		textDate.append(calAdapter.getShowYear()).append("å¹´").append(
+				calAdapter.getShowMonth()).append("æœˆ").append("\t");
 		
 		if (!calAdapter.getLeapMonth().equals("") && calAdapter.getLeapMonth() != null) {
-			textDate.append("Èò").append(calAdapter.getLeapMonth()).append("ÔÂ")
+			textDate.append("é—°").append(calAdapter.getLeapMonth()).append("æœˆ")
 					.append("\t");
 		}
 		
-		textDate.append(calAdapter.getAnimalsYear()).append("Äê").append("(").append(
-				calAdapter.getCyclical()).append("Äê)");
+		textDate.append(calAdapter.getAnimalsYear()).append("å¹´").append("(").append(
+				calAdapter.getCyclical()).append("å¹´)");
 
         view.setText(textDate);
 		view.setTextColor(Color.BLACK);
@@ -235,7 +235,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		/**@×¢ÊÍ£º°Ñ¼àÌı½»¸øÊÖÊÆ¼àÌıÀà  2015Äê5ÔÂ7ÈÕ */
+		/**@æ³¨é‡Šï¼šæŠŠç›‘å¬äº¤ç»™æ‰‹åŠ¿ç›‘å¬ç±»  2015å¹´5æœˆ7æ—¥ */
 		return this.gestureDetector.onTouchEvent(event);
 	}
 	
@@ -302,11 +302,11 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		if (e1==null||e2==null) {
 			return true;
 		}
-		int gvFlag = 0;         //Ã¿´ÎÌí¼Ógridviewµ½viewflipperÖĞÊ±¸øµÄ±ê¼Ç
+		int gvFlag = 0;         //æ¯æ¬¡æ·»åŠ gridviewåˆ°viewflipperä¸­æ—¶ç»™çš„æ ‡è®°
 		if (e1.getX() - e2.getX() > 120) {
-            //Ïñ×ó»¬¶¯
-			addGridView();   //Ìí¼ÓÒ»¸ögridView
-			jumpMonth++;     //ÏÂÒ»¸öÔÂ
+            //åƒå·¦æ»‘åŠ¨
+			addGridView();   //æ·»åŠ ä¸€ä¸ªgridView
+			jumpMonth++;     //ä¸‹ä¸€ä¸ªæœˆ
 			
 			calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
 	        gridView.setAdapter(calAdapter);
@@ -324,9 +324,9 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 			flipper.removeViewAt(0);
 			return true;
 		} else if (e1.getX() - e2.getX() < -120) {
-            //ÏòÓÒ»¬¶¯
-			addGridView();   //Ìí¼ÓÒ»¸ögridView
-			jumpMonth--;     //ÉÏÒ»¸öÔÂ
+            //å‘å³æ»‘åŠ¨
+			addGridView();   //æ·»åŠ ä¸€ä¸ªgridView
+			jumpMonth--;     //ä¸Šä¸€ä¸ªæœˆ
 			calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
 	        gridView.setAdapter(calAdapter);
 //	        if (select_cell!=0) {
@@ -364,11 +364,11 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.cd_mi_today:
-			//Ìø×ªµ½½ñÌì
+			//è·³è½¬åˆ°ä»Šå¤©
         	int xMonth = jumpMonth;
         	int xYear = jumpYear;
 	        if(xMonth == 0 && xYear == 0){
-	        	System.out.println("Ìø×ªµ½½ñÌì£¡");
+	        	System.out.println("è·³è½¬åˆ°ä»Šå¤©ï¼");
 	        	initDate();
 	         	calAdapter = new CalendarAdapter(this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
 	        	gridView.setAdapter(calAdapter);
@@ -377,7 +377,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	        	int gvFlag =0;
 	        	jumpMonth = 0;
 	        	jumpYear = 0;
-	        	addGridView();   //Ìí¼ÓÒ»¸ögridView
+	        	addGridView();   //æ·»åŠ ä¸€ä¸ªgridView
 	        	year_c = Integer.parseInt(currentDate.split("-")[0]);
 	        	month_c = Integer.parseInt(currentDate.split("-")[1]);
 	        	day_c = Integer.parseInt(currentDate.split("-")[2]);
@@ -394,7 +394,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	        	int gvFlag =0;
 	        	jumpMonth = 0;
 	        	jumpYear = 0;
-	        	addGridView();   //Ìí¼ÓÒ»¸ögridView
+	        	addGridView();   //æ·»åŠ ä¸€ä¸ªgridView
 	        	year_c = Integer.parseInt(currentDate.split("-")[0]);
 	        	month_c = Integer.parseInt(currentDate.split("-")[1]);
 	        	day_c = Integer.parseInt(currentDate.split("-")[2]);
@@ -416,23 +416,23 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 						int dayOfMonth) {
 					System.out.println("on event");
 					if(year < 1901 || year > 2100){
-						//²»ÔÚ²éÑ¯·¶Î§ÄÚ
-						new AlertDialog.Builder(CalendarActivity.this).setTitle("´íÎóÈÕÆÚ").setMessage("Ìø×ªÈÕÆÚ·¶Î§(1901/1/1-2049/12/31)").setPositiveButton("È·ÈÏ", null).show();
+						//ä¸åœ¨æŸ¥è¯¢èŒƒå›´å†…
+						new AlertDialog.Builder(CalendarActivity.this).setTitle("é”™è¯¯æ—¥æœŸ").setMessage("è·³è½¬æ—¥æœŸèŒƒå›´(1901/1/1-2049/12/31)").setPositiveButton("ç¡®è®¤", null).show();
 					}else{
 				        if(year == year_c && monthOfYear+1 == month_c){
-				        	System.out.println("Ìø×ª1");
+				        	System.out.println("è·³è½¬1");
 				        	calAdapter = new CalendarAdapter(CalendarActivity.this, getResources(),jumpMonth,jumpYear,year_c,month_c,day_c);
 				        	gridView.setAdapter(calAdapter);
 				        }else
 				        if((year == year_c && monthOfYear+1 > month_c) || year > year_c ){
 				        	int gvFlag = 0;
-							addGridView();   //Ìí¼ÓÒ»¸ögridView
+							addGridView();   //æ·»åŠ ä¸€ä¸ªgridView
 				        	calAdapter = new CalendarAdapter(CalendarActivity.this, CalendarActivity.this.getResources(),year,monthOfYear+1,dayOfMonth);
 					        gridView.setAdapter(calAdapter);
 					        addTextToTopTextView(topText);
 					        gvFlag++;
 					        flipper.addView(gridView,gvFlag);
-				        	System.out.println("Ìø×ª2");
+				        	System.out.println("è·³è½¬2");
 				        	flipper.setInAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_left_in));
 				        	flipper.setOutAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_left_out));
 				        	flipper.showNext();
@@ -440,13 +440,13 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 				        	flipper.removeViewAt(0);
 				        }else{
 				        	int gvFlag = 0;
-							addGridView();   //Ìí¼ÓÒ»¸ögridView
+							addGridView();   //æ·»åŠ ä¸€ä¸ªgridView
 				        	calAdapter = new CalendarAdapter(CalendarActivity.this, CalendarActivity.this.getResources(),year,monthOfYear+1,dayOfMonth);
 					        gridView.setAdapter(calAdapter);
 					        addTextToTopTextView(topText);
 					        gvFlag++;
 					        flipper.addView(gridView,gvFlag);
-				        	System.out.println("Ìø×ª3");
+				        	System.out.println("è·³è½¬3");
 				        	flipper.setInAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_right_in));
 				        	flipper.setOutAnimation(AnimationUtils.loadAnimation(CalendarActivity.this,R.anim.push_right_out));
 				        	
@@ -454,7 +454,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 				        	flipper.clearAnimation();
 				        	flipper.removeViewAt(0);
 				        }
-				        //Ìø×ªÖ®ºó½«Ìø×ªÖ®ºóµÄÈÕÆÚÉèÖÃÎªµ±ÆÚÈÕÆÚ
+				        //è·³è½¬ä¹‹åå°†è·³è½¬ä¹‹åçš„æ—¥æœŸè®¾ç½®ä¸ºå½“æœŸæ—¥æœŸ
 				        year_c = year;
 						month_c = monthOfYear+1;
 						day_c = dayOfMonth;
@@ -465,7 +465,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 			},year_c, month_c-1, day_c).show();
 		    return true;
 		case R.id.cd_mi_exit:
-		     /**@×¢ÊÍ£ºÆô¶¯µÚÈı·½app 2015Äê5ÔÂ8ÈÕ */
+		     /**@æ³¨é‡Šï¼šå¯åŠ¨ç¬¬ä¸‰æ–¹app 2015å¹´5æœˆ8æ—¥ */
 			 Intent intent = getPackageManager().getLaunchIntentForPackage(  
 		                "com.felipecsl.asymmetricgridview.app");  
 		        if (intent != null) {  
@@ -473,8 +473,8 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 		        }  
 			return true;
 		case R.id.cd_mi_newTask:
-			/**@×¢ÊÍ£ºÌø×ª  ĞÂ½¨ÈÕ³Ì 2015Äê5ÔÂ12ÈÕ */
-			System.out.println("Äúµã»÷ÁË"+selectYear+"Äê"+selectMonth+"ÔÂ"+selectDay+"ÈÕ"+week);
+			/**@æ³¨é‡Šï¼šè·³è½¬  æ–°å»ºæ—¥ç¨‹ 2015å¹´5æœˆ12æ—¥ */
+			System.out.println("æ‚¨ç‚¹å‡»äº†"+selectYear+"å¹´"+selectMonth+"æœˆ"+selectDay+"æ—¥"+week);
 			Intent it_schedule=new Intent(this, NewSchedule.class);
 			startActivity(it_schedule);
 			return true;

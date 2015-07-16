@@ -8,7 +8,7 @@
      Fragment 11 Version
     -->
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="16"
         android:targetSdkVersion="22" />
     <!-- 权限 -->
     <!-- 网络权限 -->
