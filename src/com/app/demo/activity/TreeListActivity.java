@@ -15,7 +15,7 @@ import com.app.demo.base.BaseAcivity;
 import com.app.demo.model.ChildEntity;
 import com.app.demo.model.ParentEntity;
  
- /**@×¢ÊÍ£º¶à¼¶Ê÷ÑİÊ¾°¸Àı  */
+ /**@æ³¨é‡Šï¼šå¤šçº§æ ‘æ¼”ç¤ºæ¡ˆä¾‹  */
 public class TreeListActivity extends BaseAcivity implements OnGroupExpandListener,
 OnChildTreeViewClickListener, OnGroupClickListener
 {
@@ -56,7 +56,7 @@ OnChildTreeViewClickListener, OnGroupClickListener
 
 			ParentEntity parent = new ParentEntity();
 
-			parent.setGroupName("¸¸Àà¸¸·Ö×éµÚ" + i + "Ïî");
+			parent.setGroupName("çˆ¶ç±»çˆ¶åˆ†ç»„ç¬¬" + i + "é¡¹");
 
 			parent.setGroupColor(getResources().getColor(
 					android.R.color.black));
@@ -67,7 +67,7 @@ OnChildTreeViewClickListener, OnGroupClickListener
 
 				ChildEntity child = new ChildEntity();
 
-				child.setGroupName("×ÓÀà¸¸·Ö×éµÚ" + j + "Ïî");
+				child.setGroupName("å­ç±»çˆ¶åˆ†ç»„ç¬¬" + j + "é¡¹");
 
 				child.setGroupColor(getResources().getColor(
 						android.R.color.black));
@@ -79,7 +79,7 @@ OnChildTreeViewClickListener, OnGroupClickListener
 
 					for (int k = 0; k < 3; k++) {
 
-						childNames.add("×ÓÀàµÚ" + k + "Ïî");
+						childNames.add("å­ç±»ç¬¬" + k + "é¡¹");
 
 						childColors.add(Color.parseColor("#003333"));
 
@@ -109,9 +109,9 @@ OnChildTreeViewClickListener, OnGroupClickListener
 				.toString();
 //		Toast.makeText(
 //				ct,
-//				"µã»÷µÄÏÂ±êÎª£º parentPosition=" + parentPosition
+//				"ç‚¹å‡»çš„ä¸‹æ ‡ä¸ºï¼š parentPosition=" + parentPosition
 //						+ "   groupPosition=" + groupPosition
-//						+ "   childPosition=" + childPosition + "\nµã»÷µÄÊÇ£º"
+//						+ "   childPosition=" + childPosition + "\nç‚¹å‡»çš„æ˜¯ï¼š"
 //						+ childName, Toast.LENGTH_SHORT).show();
 		parents.get(parentPosition).setSeletedTV(childName);
 	    this.adapter.notifyDataSetChanged();
