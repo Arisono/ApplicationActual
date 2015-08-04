@@ -92,8 +92,16 @@
             android:parentActivityName="com.app.demo.activity.BtSelectActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- note function -->
         <activity
             android:name="com.app.demo.activity.NotesActivity"
+            android:label="Tree"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.app.demo.activity.BtSelectActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.app.demo.activity.NotesDetailActivity"
             android:label="Tree"
             android:launchMode="singleTask"
             android:parentActivityName="com.app.demo.activity.BtSelectActivity"

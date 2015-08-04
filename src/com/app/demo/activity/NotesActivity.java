@@ -16,6 +16,8 @@ import java.io.File;
 
 
 
+
+
 import com.app.demo.R;
 import com.app.demo.dialog.CreateFolderDialog;
 import com.app.demo.util.Constants;
@@ -46,12 +48,12 @@ public class NotesActivity extends ActionBarActivity {
 	private FloatingActionsMenu fabMenu;
     private FloatingActionButton fabCreateNote;
     private FloatingActionButton fabCreateFolder;
-    /**@×¢ÊÍ£º¹ã²¥  */
+    /**@×¢ï¿½Í£ï¿½ï¿½ã²¥  */
     private BroadcastReceiver createFolderBroadcastReceiver = new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			/**@×¢ÊÍ£º½ÓÊÕ¹ã²¥  */
+			/**@×¢ï¿½Í£ï¿½ï¿½ï¿½ï¿½Õ¹ã²¥  */
 			 if (intent.getAction().equals(Constants.CREATE_FOLDER_DIALOG_TAG)) {
 				 createFolder(new File(intent.getStringExtra(Constants.FOLDER_NAME)));
 	              notesFragment.listFilesInDirectory(notesFragment.getCurrentDir());
@@ -75,10 +77,17 @@ public class NotesActivity extends ActionBarActivity {
         }
         
         frameLayout = findViewById(R.id.frame);
-        /**@×¢ÊÍ£ºÐü¸¡°´Å¥  */
         fabMenu = (FloatingActionsMenu) findViewById(R.id.fab);
         fabCreateNote = (FloatingActionButton) findViewById(R.id.create_note);
         fabCreateFolder = (FloatingActionButton) findViewById(R.id.create_folder);
+        
+        fabCreateNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNote();
+            }
+        });
+        
         fabCreateFolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,10 +144,20 @@ public class NotesActivity extends ActionBarActivity {
         showFolderNameDialog();
         fabMenu.collapse();
     }
-     /**
-	 * @author LiuJie
-	 * @¹¦ÄÜ:¶Ô»°¿ò
-	 */
+   
+    
+
+    private void createNote() {
+        Intent intent = new Intent(NotesActivity.this, NotesDetailActivity.class);
+        intent.putExtra(Constants.TARGET_DIR, notesFragment.getCurrentDir().getAbsolutePath());
+        startActivity(intent);
+        /**@æ³¨é‡Šï¼šè®¾ç½®åŠ¨ç”»  */
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+        fabMenu.collapse();
+    }
+
+    
+    
     private void showFolderNameDialog() {
         FragmentManager fragManager = getFragmentManager();
 
@@ -147,7 +166,7 @@ public class NotesActivity extends ActionBarActivity {
 
         CreateFolderDialog createFolderDialog = new CreateFolderDialog();
         createFolderDialog.setArguments(args);
-        /**@×¢ÊÍ£ººóÃæ²ÎÊýÊÇtag  */
+        /**@×¢ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tag  */
         createFolderDialog.show(fragManager, Constants.CREATE_FOLDER_DIALOG_TAG);
     }
 	
