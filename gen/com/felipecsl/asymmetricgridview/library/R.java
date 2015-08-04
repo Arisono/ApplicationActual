@@ -15,7 +15,7 @@ public final class R {
 		public static final int ic_launcher = 0x7f020067;
 		public static final int item_divider_horizontal = 0x7f020079;
 		public static final int item_divider_vertical = 0x7f02007a;
-		public static final int text_view_background_selector = 0x7f02009a;
+		public static final int text_view_background_selector = 0x7f02009b;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f070019;

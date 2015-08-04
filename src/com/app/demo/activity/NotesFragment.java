@@ -44,8 +44,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 /**
- * @author :LiuJie 2015Äê6ÔÂ8ÈÕ ÉÏÎç9:46:03
- * @×¢ÊÍ:notes
+ * @author :LiuJie 2015å¹´6æœˆ8æ—¥ ä¸Šåˆ9:46:03
+ * @æ³¨é‡Š:notes
  */
 public class NotesFragment extends Fragment {
 	
@@ -54,14 +54,14 @@ public class NotesFragment extends Fragment {
 	 
 	 private File rootDir;
 	 private File currentDir;
-	 /**@×¢ÊÍ£ºµ¥ÀıÎÄ¼ş²Ù×÷Àà  */
+	 /**@æ³¨é‡Šï¼šå•ä¾‹æ–‡ä»¶æ“ä½œç±»  */
 	 private WriteilySingleton writeilySingleton;
 	 private ListView filesListView;
 	 private TextView hintTextView;
 	 private NotesAdapter filesAdapter;
 	 
 	 private ArrayList<File> filesCurrentlyShown = new ArrayList<File>();
-	 /**@×¢ÊÍ£º µÚÈı·½Àà¿â */
+	 /**@æ³¨é‡Šï¼š ç¬¬ä¸‰æ–¹ç±»åº“ */
 	 private SimpleSectionAdapter<File> simpleSectionAdapter;
 	 private Sectionizer<File> sectionizer = new Sectionizer<File>() {
 	        @Override
@@ -87,14 +87,14 @@ public class NotesFragment extends Fragment {
           new SimpleSectionAdapter<File> (context, filesAdapter, R.layout.notes_fragment_section_header, R.id.notes_fragment_section_text, sectionizer);
          
          filesListView.setAdapter(simpleSectionAdapter);
-         /**@×¢ÊÍ£º»ñÈ¡¸ùÄ¿Â¼  */
+         /**@æ³¨é‡Šï¼šè·å–æ ¹ç›®å½•  */
          rootDir = getRootFolderFromPrefsOrDefault();
          return layoutView;
 	}
 	 
 	 @Override
 	public void onResume() {
-		/**@×¢ÊÍ£ºÊµÀı»¯µ¥ÀıÀà  */
+		/**@æ³¨é‡Šï¼šå®ä¾‹åŒ–å•ä¾‹ç±»  */
 	    writeilySingleton = WriteilySingleton.getInstance();
 	    File possiblyNewRootDir = getRootFolderFromPrefsOrDefault();
 	    if (possiblyNewRootDir != rootDir) {
@@ -145,7 +145,7 @@ public class NotesFragment extends Fragment {
 	 
 	 /**
 	 * @author LiuJie
-	 * @¹¦ÄÜ:±éÀú
+	 * @åŠŸèƒ½:éå†
 	 */
 	 public void listFilesInDirectory(File directory) {
 		    reloadFiles(directory);
@@ -164,7 +164,7 @@ public class NotesFragment extends Fragment {
 	    }
 	 /**
 	 * @author LiuJie
-	 * @¹¦ÄÜ:¹ã²¥
+	 * @åŠŸèƒ½:å¹¿æ’­
 	 */
 	 private void broadcastDirectoryChange(File directory, File rootDir) {
 	        Intent broadcast = new Intent();
@@ -213,7 +213,7 @@ public class NotesFragment extends Fragment {
 	 
 	 /**
 	 * @author LiuJie
-	 * @¹¦ÄÜ:Ñ¡ÔñÊÂ¼ş
+	 * @åŠŸèƒ½:é€‰æ‹©äº‹ä»¶
 	 */
 	 private class ActionModeCallback implements ListView.MultiChoiceModeListener {
 
@@ -259,7 +259,7 @@ public class NotesFragment extends Fragment {
 	        return rootDir.getAbsoluteFile();
 	    }
 	 
-	 /**@×¢ÊÍ£º²éÑ¯  */
+	 /**@æ³¨é‡Šï¼šæŸ¥è¯¢  */
 	 /** Search **/
 	 public void search(CharSequence query) {
 	        if (query.length() > 0) {
