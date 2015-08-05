@@ -22,7 +22,7 @@ public class CreateFolderDialog extends DialogFragment {
 
     public CreateFolderDialog() {
     }
-    /**@×¢ÊÍ£º·¢ËÍ¹ã²¥  */
+    
     public void sendBroadcast(String name) {
         Intent broadcast = new Intent();
         broadcast.setAction(Constants.CREATE_FOLDER_DIALOG_TAG);
@@ -37,7 +37,7 @@ public class CreateFolderDialog extends DialogFragment {
 
         View dialogView;
         AlertDialog.Builder dialogBuilder;
-        /**@×¢ÊÍ£º»ñÈ¡Ö÷ÌâÉ«²Ê  */
+        /**@×¢ï¿½Í£ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½  */
         String theme = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_theme_key), "");
 
         if (theme.equals(getString(R.string.theme_dark))) {

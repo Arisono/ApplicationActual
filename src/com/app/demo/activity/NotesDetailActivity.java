@@ -13,6 +13,17 @@ import java.util.UUID;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 import com.app.demo.R;
 import com.app.demo.model.WriteilySingleton;
 import com.app.demo.util.Constants;
@@ -22,20 +33,27 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class NotesDetailActivity extends ActionBarActivity {
 	
+	public static final String EMPTY_STRING = "";
 	private File note;
+	private File newNote;
     private Context context;
     private EditText noteTitle;
     private HighlightingEditor content;
@@ -43,6 +61,7 @@ public class NotesDetailActivity extends ActionBarActivity {
     private ViewGroup keyboardBarView;
     
     private String targetDirectory;//目标路径
+    private boolean isPreviewIncoming = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,14 +103,18 @@ public class NotesDetailActivity extends ActionBarActivity {
 	
 	@Override
 	protected void onResume() {
-//	   setupKeyboardBar();
-//	   setupAppearancePreferences();
+	   setupKeyboardBar();
+	   setupAppearancePreferences();
 	        
 		super.onResume();
 	}
 	
 	@Override
 	protected void onPause() {
+		saveNote();
+	    if (isPreviewIncoming) {
+	            finish();
+	    }
 		super.onPause();
 	}
 	
@@ -100,14 +123,14 @@ public class NotesDetailActivity extends ActionBarActivity {
         return WriteilySingleton.getInstance().readFileUri(Uri.parse(oldUri.toString()), this);
     }
 	
-	private void save(){
+	private void saveNote(){
 		   try {
 	            String content = this.content.getText().toString();
 	            String filename = normalizeFilename(content, noteTitle.getText().toString());
 	            if (filename == null) return;
 
 	            String parent = targetDirectory != null ? targetDirectory : note.getParent();
-	            File newNote = new File(parent, filename + Constants.MD_EXT);
+	            newNote = new File(parent, filename + Constants.MD_EXT);
 	            FileOutputStream fos = new FileOutputStream(newNote);
 	            OutputStreamWriter writer = new OutputStreamWriter(fos);
 
@@ -118,13 +141,26 @@ public class NotesDetailActivity extends ActionBarActivity {
 	            fos.close();
 	            // If we have created a new note due to renaming, delete the old copy
 	            if (note != null && !newNote.getName().equals(note.getName()) && newNote.exists()) {
-	                note.delete();
+	                //重命名文件，会覆盖原笔记，特别危险
+	            	note.delete();
 	            }
 	            updateWidgets();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
 	}
+	
+	 private void shareNote() {
+	        saveNote();
+
+	        String shareContent = content.getText().toString();
+
+	        Intent shareIntent = new Intent();
+	        shareIntent.setAction(Intent.ACTION_SEND);
+	        shareIntent.putExtra(Intent.EXTRA_TEXT, shareContent);
+	        shareIntent.setType("text/plain");
+	        startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.share_string)));
+	    }
 	
 	  private void updateWidgets() {
 //	        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -185,14 +221,136 @@ public class NotesDetailActivity extends ActionBarActivity {
 	                overridePendingTransition(R.anim.anim_slide_out_right, R.anim.anim_slide_in_right);
 	                return true;
 	            case R.id.action_share:
-	                //shareNote();
+	                shareNote();
 	                return true;
 	            case R.id.action_preview:
-	               // previewNote();
+	                previewNote();
 	                return true;
 	            default:
 	                return super.onOptionsItemSelected(item);
 
 	        }
 	    }
+	    
+	    private void previewNote() {
+	        saveNote();
+	        Intent intent = new Intent(this, PreviewActivity.class);
+
+	        // .replace is a workaround for Markdown lists requiring two \n characters
+	        if (note != null) {
+	            Uri uriBase = WriteilySingleton.getInstance().getUriFromFile(note.getParentFile());
+	            intent.putExtra(Constants.MD_PREVIEW_BASE, uriBase.toString());
+	        }
+
+	        intent.putExtra(Constants.NOTE_KEY,newNote);
+	        intent.putExtra(Constants.MD_PREVIEW_KEY, content.getText().toString().replace("\n-", "\n\n-"));
+
+	        isPreviewIncoming = true;
+	        startActivity(intent);
+	    }
+	    
+	    private void setupAppearancePreferences() {
+	        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_theme_key), EMPTY_STRING);
+	        String fontType = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_font_choice_key), EMPTY_STRING);
+	        String fontSize = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_font_size_key), EMPTY_STRING);
+
+	        if (!fontSize.equals(EMPTY_STRING)) {
+	            content.setTextSize(TypedValue.COMPLEX_UNIT_SP, Float.parseFloat(fontSize));
+	        }
+
+	        if (!fontType.equals(EMPTY_STRING)) {
+	            content.setTypeface(Typeface.create(fontType, Typeface.NORMAL));
+	        }
+
+	        if (theme.equals(getString(R.string.theme_dark))) {
+	            content.setBackgroundColor(getResources().getColor(R.color.dark_grey));
+	            content.setTextColor(getResources().getColor(android.R.color.white));
+	            keyboardBarView.setBackgroundColor(getResources().getColor(R.color.grey));
+	        } else {
+	            content.setBackgroundColor(getResources().getColor(android.R.color.white));
+	            content.setTextColor(getResources().getColor(R.color.dark_grey));
+	            keyboardBarView.setBackgroundColor(getResources().getColor(R.color.lighter_grey));
+	        }
+	    }
+	    
+	    
+	    
+	    private void setupKeyboardBar() {
+	        boolean showShortcuts = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.pref_show_markdown_shortcuts_key), true);
+
+	        if (showShortcuts && keyboardBarView.getChildCount() == 0) {
+	            appendRegularShortcuts();
+	            if(isSmartShortcutsActivated()) {
+	                appendSmartBracketShortcuts();
+	            } else {
+	                appendRegularBracketShortcuts();
+	            }
+	        } else if (!showShortcuts) {
+	            findViewById(R.id.keyboard_bar_scroll).setVisibility(View.GONE);
+	        }
+	    }
+	    
+	    private boolean isSmartShortcutsActivated() {
+	        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(getString(R.string.pref_smart_shortcuts_key),false);
+	    }
+	    
+	    private void appendRegularShortcuts() {
+	        for (String shortcut : Constants.KEYBOARD_SHORTCUTS) {
+	            appendButton(shortcut, new KeyboardBarListener());
+	        }
+	    }
+
+	    private void appendRegularBracketShortcuts() {
+	        for (String shortcut : Constants.KEYBOARD_SHORTCUTS_BRACKETS) {
+	            appendButton(shortcut, new KeyboardBarListener());
+	        }
+
+	    }
+
+	    private void appendSmartBracketShortcuts() {
+	        for (String shortcut : Constants.KEYBOARD_SMART_SHORTCUTS) {
+	            appendButton(shortcut, new KeyboardBarSmartShortCutListener());
+	        }
+	    }
+	    //添加底部快捷字符
+	    private void appendButton(String shortcut, View.OnClickListener l) {
+	        TextView shortcutButton = (TextView) getLayoutInflater().inflate(R.layout.keyboard_shortcut, null);
+	        shortcutButton.setText(shortcut);
+	        shortcutButton.setOnClickListener(l);
+
+	        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_theme_key), EMPTY_STRING);
+
+	        if (theme.equals(getString(R.string.theme_dark))) {
+	            shortcutButton.setTextColor(getResources().getColor(android.R.color.white));
+	        } else {
+	            shortcutButton.setTextColor(getResources().getColor(R.color.grey));
+	        }
+
+	        keyboardBarView.addView(shortcutButton);
+	    }
+	    
+	    private class KeyboardBarListener implements View.OnClickListener {
+	        @Override
+	        public void onClick(View v) {
+	            CharSequence shortcut = ((TextView) v).getText();
+	            content.getText().insert(content.getSelectionStart(), shortcut);
+	        }
+	    }
+	    
+	    private class KeyboardBarSmartShortCutListener implements View.OnClickListener {
+	        @Override
+	        public void onClick(View v) {
+	            CharSequence shortcut = ((TextView) v).getText();
+	            if(content.hasSelection()) {
+	                CharSequence selected = content.getText().subSequence(content.getSelectionStart(),
+	                        content.getSelectionEnd());
+	                content.getText().replace(content.getSelectionStart(), content.getSelectionEnd(),
+	                        Character.toString(shortcut.charAt(0)) + selected + shortcut.charAt(1));
+	            } else {
+	                content.getText().insert(content.getSelectionStart(), shortcut);
+	                content.setSelection(content.getSelectionStart() - 1);
+	            }
+	        }
+	    }
+
 }

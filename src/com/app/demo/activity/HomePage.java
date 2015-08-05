@@ -140,6 +140,7 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	    listView.setRequestedColumnCount(3);
 	    listView.setRequestedHorizontalSpacing(Utils.dpToPx(ct, 1));
 	    listView.setAdapter(getNewAdapter());
+	    
 	    /**   */
 	   // listView.setDebugging(true);
 	    listView.setOnItemClickListener(this);

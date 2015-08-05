@@ -174,7 +174,7 @@ public class BtSelectActivity extends BaseComplexActivity {
 		item=new HashMap<String,Object>();
 		item.put("libname", "±Ê¼Ç");
 		item.put("no",16);
-		item.put("intent", "com.app.demo.activity.NotesActivity");
+		item.put("intent", "com.app.demo.activity.EntryNoteActivity");
 		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
 		data.add(item);
 		

@@ -29,8 +29,7 @@ public class WriteilySingleton {
     private static WriteilySingleton writeilySingletonInstance = null;
     private static File notesLastDirectory = null;
 
-    @SuppressWarnings("unused")
-	private static void WriteilySingleton() {
+	private  WriteilySingleton() {
 
     }
 

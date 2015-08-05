@@ -46,7 +46,7 @@ public class SettingsActivity extends ActionBarActivity implements SettingsFragm
 	        }
 		super.onCreate(savedInstanceState);
 		
-	    setContentView(R.layout.activity_preferences_note);
+	    setContentView(R.layout.activity_note_preferences);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {

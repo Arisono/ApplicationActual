@@ -6,6 +6,7 @@ import com.app.demo.util.Constants;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -51,9 +52,10 @@ public class SettingsFragment extends PreferenceFragment implements
 //	                    pinIntent.setAction(Constants.SET_PIN_ACTION);
 //	                    startActivityForResult(pinIntent, Constants.SET_PIN_REQUEST_CODE);
 				 } else if (getString(R.string.pref_alpha_pin_lock_value).equals(lockType)) {
-//					 Intent pinIntent = new Intent(context, AlphanumericPinActivity.class);
-//	                    pinIntent.setAction(Constants.SET_PIN_ACTION);
-//	                    startActivityForResult(pinIntent, Constants.SET_PIN_REQUEST_CODE);
+					 Intent pinIntent = new Intent(context, AlphanumericPinActivity.class);
+	                 pinIntent.setAction(Constants.SET_PIN_ACTION);
+	                 //intent  resquest code
+	                 startActivityForResult(pinIntent, Constants.SET_PIN_REQUEST_CODE);
 				 }
 				
 				return false;
@@ -135,6 +137,17 @@ public class SettingsFragment extends PreferenceFragment implements
 	private void updateLockSummary() {
         Integer currentLockType = Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(getString(R.string.pref_lock_type_key), "0"));
         pinPreference.setSummary(getResources().getStringArray(R.array.possibleLocksStrings)[currentLockType]);
+    }
+	
+	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constants.SET_PIN_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                updateLockSummary();
+            }
+        }
     }
 	
 	 // Needed for callback to container activity
