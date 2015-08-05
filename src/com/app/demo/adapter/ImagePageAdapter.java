@@ -1,6 +1,7 @@
 package com.app.demo.adapter;
 
 import com.app.demo.R;
+import com.app.demo.util.SystemUtils;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -10,8 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 /**
- * @author :LiuJie Ê±¼ä: 2015Äê4ÔÂ20ÈÕ ÉÏÎç9:16:05
- * @×¢ÊÍ:Í¼Æ¬ÂÖÑ¯ÊÊÅäÆ÷
+ * @author :LiuJie Ê±ï¿½ï¿½: 2015ï¿½ï¿½4ï¿½ï¿½20ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:16:05
+ * @×¢ï¿½ï¿½:Í¼Æ¬ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class ImagePageAdapter extends PagerAdapter {
 	private int[] resImageIds;
@@ -24,7 +25,6 @@ public class ImagePageAdapter extends PagerAdapter {
     }
 	@Override
 	public void destroyItem(View view, int position, Object arg2) {
-	//	System.out.println("Ïú»Ù arg2="+position);
 		((ViewPager) view).removeView((View) arg2);
 	}
 
@@ -44,7 +44,11 @@ public class ImagePageAdapter extends PagerAdapter {
 		((ViewPager)container).addView(view);
 		ImageView imageView=(ImageView) view.findViewById(R.id.iv_vp_image);
 		if (isShowResImage) {
-			imageView.setImageResource(resImageIds[position]);
+			if (SystemUtils.getSystemVersion() >= SystemUtils.V4_0) {
+				imageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+			    }
+			//imageView.setImageResource(resImageIds[position]);
+			imageView.setBackgroundResource(resImageIds[position]);
 		} else {
 			//bitmapUtils.display(imageView, uriList.get(position));
 		}

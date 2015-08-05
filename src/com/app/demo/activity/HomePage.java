@@ -96,16 +96,16 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 		Log.i(TAG, "HomePage init");
 		/**注释：初始化图片资源ID */
 		imageIds=new int[]{
-				R.drawable.icon_dispaly,
-				R.drawable.bg_yellowdiamond_visitors_all,
-				R.drawable.subcenter_blog_default_bg,
-				R.drawable.yanzhengma_normal
+				R.drawable.bananer01,
+				R.drawable.bananer02,
+				R.drawable.bananer03
 		};
 		iPageAdapter=new ImagePageAdapter(ct, imageIds);
 		viewpager.setAdapter(iPageAdapter);
 		((CirclePageIndicator) vpPageIndicator).setViewPager(viewpager);
 		vpPageIndicator.setCentered(true);
-		vpPageIndicator.setOnPageChangeListener(new OnPageChangeListener() {
+		vpPageIndicator.setOnPageChangeListener(new
+				OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int position) {
