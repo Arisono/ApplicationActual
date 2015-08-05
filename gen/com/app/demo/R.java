@@ -3594,45 +3594,46 @@ containing a value of this type.
         public static final int act_note_main_list=0x7f03001f;
         public static final int activity_mian_tab_radio=0x7f030020;
         public static final int activity_note_detail=0x7f030021;
-        public static final int dialog_progress_view=0x7f030022;
-        public static final int expand_tree_view=0x7f030023;
-        public static final int fab_note=0x7f030024;
-        public static final int folder_dialog=0x7f030025;
-        public static final int folder_dialog_dark=0x7f030026;
-        public static final int item_child_child=0x7f030027;
-        public static final int item_child_group=0x7f030028;
-        public static final int item_file=0x7f030029;
-        public static final int item_parent_group=0x7f03002a;
-        public static final int item_simple_gitlib=0x7f03002b;
-        public static final int notes_fragment=0x7f03002c;
-        public static final int notes_fragment_section_header=0x7f03002d;
-        public static final int notification_media_action=0x7f03002e;
-        public static final int notification_media_cancel_action=0x7f03002f;
-        public static final int notification_template_big_media=0x7f030030;
-        public static final int notification_template_big_media_narrow=0x7f030031;
-        public static final int notification_template_lines=0x7f030032;
-        public static final int notification_template_media=0x7f030033;
-        public static final int notification_template_part_chronometer=0x7f030034;
-        public static final int notification_template_part_time=0x7f030035;
-        public static final int pull_to_refresh_header_horizontal=0x7f030036;
-        public static final int pull_to_refresh_header_vertical=0x7f030037;
-        public static final int scroll_demo_stretch=0x7f030038;
-        public static final int select_dialog_item_material=0x7f030039;
-        public static final int select_dialog_multichoice_material=0x7f03003a;
-        public static final int select_dialog_singlechoice_material=0x7f03003b;
-        public static final int service_demo_binder_main=0x7f03003c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03003d;
-        public static final int toolbar=0x7f03003e;
-        public static final int toolbar_note=0x7f03003f;
-        public static final int topbar_home_title=0x7f030040;
-        public static final int view_actionsheet=0x7f030041;
-        public static final int view_alertdialog=0x7f030042;
-        public static final int view_radio_home_list=0x7f030043;
-        public static final int view_radio_music_list=0x7f030044;
-        public static final int view_radio_new_list=0x7f030045;
-        public static final int view_radio_note_list=0x7f030046;
-        public static final int view_radio_user_list=0x7f030047;
-        public static final int vp_item_image=0x7f030048;
+        public static final int activity_preferences_note=0x7f030022;
+        public static final int dialog_progress_view=0x7f030023;
+        public static final int expand_tree_view=0x7f030024;
+        public static final int fab_note=0x7f030025;
+        public static final int folder_dialog=0x7f030026;
+        public static final int folder_dialog_dark=0x7f030027;
+        public static final int item_child_child=0x7f030028;
+        public static final int item_child_group=0x7f030029;
+        public static final int item_file=0x7f03002a;
+        public static final int item_parent_group=0x7f03002b;
+        public static final int item_simple_gitlib=0x7f03002c;
+        public static final int notes_fragment=0x7f03002d;
+        public static final int notes_fragment_section_header=0x7f03002e;
+        public static final int notification_media_action=0x7f03002f;
+        public static final int notification_media_cancel_action=0x7f030030;
+        public static final int notification_template_big_media=0x7f030031;
+        public static final int notification_template_big_media_narrow=0x7f030032;
+        public static final int notification_template_lines=0x7f030033;
+        public static final int notification_template_media=0x7f030034;
+        public static final int notification_template_part_chronometer=0x7f030035;
+        public static final int notification_template_part_time=0x7f030036;
+        public static final int pull_to_refresh_header_horizontal=0x7f030037;
+        public static final int pull_to_refresh_header_vertical=0x7f030038;
+        public static final int scroll_demo_stretch=0x7f030039;
+        public static final int select_dialog_item_material=0x7f03003a;
+        public static final int select_dialog_multichoice_material=0x7f03003b;
+        public static final int select_dialog_singlechoice_material=0x7f03003c;
+        public static final int service_demo_binder_main=0x7f03003d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03003e;
+        public static final int toolbar=0x7f03003f;
+        public static final int toolbar_note=0x7f030040;
+        public static final int topbar_home_title=0x7f030041;
+        public static final int view_actionsheet=0x7f030042;
+        public static final int view_alertdialog=0x7f030043;
+        public static final int view_radio_home_list=0x7f030044;
+        public static final int view_radio_music_list=0x7f030045;
+        public static final int view_radio_new_list=0x7f030046;
+        public static final int view_radio_note_list=0x7f030047;
+        public static final int view_radio_user_list=0x7f030048;
+        public static final int vp_item_image=0x7f030049;
     }
     public static final class menu {
         public static final int calendar_menu_actionbar=0x7f0e0000;
@@ -3922,19 +3923,38 @@ containing a value of this type.
     public static final class style {
         /**  ActionSheet进出动画 
          */
-        public static final int ActionSheetDialogAnimation=0x7f0c0130;
+        public static final int ActionSheetDialogAnimation=0x7f0c0131;
         /**  自定义仿IOS的ActionSheet底部Dialog的样式 ，有模糊效果 
          */
-        public static final int ActionSheetDialogStyle=0x7f0c012f;
+        public static final int ActionSheetDialogStyle=0x7f0c0130;
         public static final int AlertDialog_AppCompat=0x7f0c0040;
         public static final int AlertDialog_AppCompat_Light=0x7f0c0041;
         /**  Dialog 
  自定义仿IOS的AlertDialog的样式 
          */
-        public static final int AlertDialogStyle=0x7f0c012e;
+        public static final int AlertDialogStyle=0x7f0c012f;
         public static final int Animation_AppCompat_Dialog=0x7f0c0046;
         public static final int Animation_AppCompat_DropDownUp=0x7f0c0047;
+        /** 
+         <style name="AppTheme" parent="AppTheme.Parent" />
+    <style name="AppTheme.Parent" parent="Theme.AppCompat">
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/dark_primary</item>
+        <item name="colorAccent">@color/secondary</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:actionModeBackground">@color/dark_primary</item>
+        <item name="actionModeBackground">@color/dark_primary</item>
+        <item name="android:windowBackground">@color/lightgray</item>
+    </style>
+    
+         */
         public static final int AppTheme=0x7f0c0129;
+        public static final int AppTheme_Light=0x7f0c012b;
         public static final int AppTheme_Parent=0x7f0c012a;
         public static final int Base_AlertDialog_AppCompat=0x7f0c00c4;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f0c00c5;
@@ -4113,11 +4133,11 @@ containing a value of this type.
     
          */
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0c00a9;
-        public static final int CustomDialog=0x7f0c0132;
+        public static final int CustomDialog=0x7f0c0133;
         /**  ProgressDialog 
          */
-        public static final int CustomProgressDialog=0x7f0c0131;
-        public static final int LightTextToolbarOverlay=0x7f0c012d;
+        public static final int CustomProgressDialog=0x7f0c0132;
+        public static final int LightTextToolbarOverlay=0x7f0c012e;
         public static final int Platform_AppCompat=0x7f0c00ff;
         public static final int Platform_AppCompat_Light=0x7f0c0100;
         public static final int Platform_ThemeOverlay_AppCompat_Dark=0x7f0c0114;
@@ -4336,10 +4356,10 @@ containing a value of this type.
         public static final int Widget_TabPageIndicator=0x7f0c0126;
         /**  activity  view  theme 
          */
-        public static final int main_tab_bottom=0x7f0c012b;
+        public static final int main_tab_bottom=0x7f0c012c;
         /**  日历 cell 
          */
-        public static final int style_calendar_cell=0x7f0c012c;
+        public static final int style_calendar_cell=0x7f0c012d;
     }
     public static final class xml {
         public static final int preferences=0x7f050000;

@@ -18,6 +18,9 @@ import java.io.File;
 
 
 
+
+
+
 import com.app.demo.R;
 import com.app.demo.dialog.CreateFolderDialog;
 import com.app.demo.util.Constants;
@@ -31,6 +34,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
@@ -48,12 +52,10 @@ public class NotesActivity extends ActionBarActivity {
 	private FloatingActionsMenu fabMenu;
     private FloatingActionButton fabCreateNote;
     private FloatingActionButton fabCreateFolder;
-    /**@ע�ͣ��㲥  */
     private BroadcastReceiver createFolderBroadcastReceiver = new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			/**@ע�ͣ����չ㲥  */
 			 if (intent.getAction().equals(Constants.CREATE_FOLDER_DIALOG_TAG)) {
 				 createFolder(new File(intent.getStringExtra(Constants.FOLDER_NAME)));
 	              notesFragment.listFilesInDirectory(notesFragment.getCurrentDir());
@@ -108,6 +110,9 @@ public class NotesActivity extends ActionBarActivity {
     
 	@Override
 	protected void onResume() {
+		//update theme
+		setupAppearancePreferences();
+		
 		
 		IntentFilter ifilterCreateFolderDialog = new IntentFilter();
         ifilterCreateFolderDialog.addAction(Constants.CREATE_FOLDER_DIALOG_TAG);
@@ -166,7 +171,6 @@ public class NotesActivity extends ActionBarActivity {
 
         CreateFolderDialog createFolderDialog = new CreateFolderDialog();
         createFolderDialog.setArguments(args);
-        /**@ע�ͣ����������tag  */
         createFolderDialog.show(fragManager, Constants.CREATE_FOLDER_DIALOG_TAG);
     }
 	
@@ -230,7 +234,7 @@ public class NotesActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.action_settings) {
-
+        	showSettings();
             return true;
         } else if (item.getItemId() == R.id.action_import) {
             return true;
@@ -238,5 +242,25 @@ public class NotesActivity extends ActionBarActivity {
         return false;
 
 	 }
+	 
+	 private void setupAppearancePreferences() {
+	        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_theme_key), "");
+
+	        if (theme.equals(getString(R.string.theme_dark))) {
+	            frameLayout.setBackgroundColor(getResources().getColor(R.color.dark_grey));
+	        } else {
+	            frameLayout.setBackgroundColor(getResources().getColor(android.R.color.white));
+	        }
+	    }
+
+	    /**
+	     * Show the SettingsFragment
+	     */
+	    private void showSettings() {
+	        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+	        startActivity(settingsIntent);
+	    }
+
+
 
 }
