@@ -192,6 +192,7 @@ public class NotesDetailActivity extends ActionBarActivity {
 	                return true;
 	            default:
 	                return super.onOptionsItemSelected(item);
+
 	        }
 	    }
 }
