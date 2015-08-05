@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
     android:layout_height="wrap_content"
     android:orientation="vertical" >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/zone_title_bg"
+        android:background="@color/primary"
         android:paddingBottom="10.0dip"
         android:paddingTop="10.0dip" >
         <ImageView
@@ -19,7 +18,8 @@
             android:onClick="onClickLiftMenu"
             android:paddingLeft="11.0dip"
             android:paddingRight="11.0dip"
-            android:src="@drawable/icon_profile" />
+            android:src="@drawable/icon_profile"
+            android:visibility="gone" />
         <ImageView
             android:id="@+id/iv_add"
             android:layout_width="45.5dip"
@@ -28,7 +28,8 @@
             android:layout_centerVertical="true"
             android:paddingLeft="11.0dip"
             android:paddingRight="11.0dip"
-            android:src="@drawable/add" />
+            android:src="@drawable/add"
+            android:visibility="gone" />
         <ProgressBar
             android:id="@+id/pb_refresh_top"
             android:layout_width="30dp"
@@ -47,4 +48,3 @@
             android:textSize="20sp" />
     </RelativeLayout>
 </LinearLayout>
-
