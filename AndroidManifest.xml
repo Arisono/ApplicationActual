@@ -24,6 +24,7 @@
         <!--
     	 android:screenOrientation="portrait" 限制屏幕为纵向
     	 android:launchMode="singleTask"
+    	 com.app.demo.activity.MainActivity
         -->
         <activity
             android:name="com.app.demo.activity.MainActivity"
@@ -94,6 +95,20 @@
         </activity>
         <!-- Note function -->
         <activity
+            android:name="com.app.demo.activity.EntryNoteActivity"
+            android:label="Tree"
+            android:parentActivityName="com.app.demo.activity.BtSelectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light" >
+        </activity>
+        <activity
+            android:name="com.app.demo.activity.PreviewActivity"
+            android:label="Tree"
+            android:parentActivityName="com.app.demo.activity.BtSelectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light" >
+        </activity>
+        <activity
             android:name="com.app.demo.activity.SettingsActivity"
             android:label="Tree"
             android:launchMode="singleTask"
@@ -111,7 +126,12 @@
         <activity
             android:name="com.app.demo.activity.NotesDetailActivity"
             android:label="Tree"
-            android:launchMode="singleTask"
+            android:parentActivityName="com.app.demo.activity.BtSelectActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.app.demo.activity.AlphanumericPinActivity"
+            android:label=""
             android:parentActivityName="com.app.demo.activity.BtSelectActivity"
             android:screenOrientation="portrait" >
         </activity>

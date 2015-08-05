@@ -1,7 +1,5 @@
 package com.app.demo.activity;
 
-
-
 import java.io.File;
 
 
@@ -21,8 +19,18 @@ import java.io.File;
 
 
 
+
+
+
+
+
+
+
 import com.app.demo.R;
+import com.app.demo.broadcast.CurrentFolderChangedReceiver;
+import com.app.demo.broadcast.RenameBroadcastReceiver;
 import com.app.demo.dialog.CreateFolderDialog;
+import com.app.demo.model.WriteilySingleton;
 import com.app.demo.util.Constants;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -34,24 +42,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-@SuppressWarnings("deprecation")
-public class NotesActivity extends ActionBarActivity {
+public class NotesActivity extends AppCompatActivity {
 	
 	private Toolbar toolbar;
 	private View frameLayout;
+	//falg  back
+	private boolean doubleBackToExitPressedOnce;
+	
 	private NotesFragment notesFragment;
 	private FloatingActionsMenu fabMenu;
     private FloatingActionButton fabCreateNote;
     private FloatingActionButton fabCreateFolder;
+    
+    private BroadcastReceiver browseToFolderBroadcastReceiver;
+    private RenameBroadcastReceiver renameBroadcastReceiver;
     private BroadcastReceiver createFolderBroadcastReceiver = new BroadcastReceiver() {
 
 		@Override
@@ -61,6 +77,21 @@ public class NotesActivity extends ActionBarActivity {
 	              notesFragment.listFilesInDirectory(notesFragment.getCurrentDir());
 			 }
 		}
+    };
+    
+    private BroadcastReceiver confirmBroadcastReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Constants.CONFIRM_DELETE_DIALOG_TAG)) {
+                WriteilySingleton.getInstance().deleteSelectedItems(notesFragment.getSelectedItems());
+                notesFragment.listFilesInDirectory(notesFragment.getCurrentDir());
+                notesFragment.finishActionMode();
+            }
+            if (intent.getAction().equals(Constants.CONFIRM_OVERWRITE_DIALOG_TAG)) {
+               // importFileToStorageDir(context, (File) intent.getSerializableExtra(Constants.SOURCE_FILE));
+            }
+        }
     };
 	
 	@Override
@@ -75,7 +106,7 @@ public class NotesActivity extends ActionBarActivity {
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+           // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         
         frameLayout = findViewById(R.id.frame);
@@ -100,7 +131,10 @@ public class NotesActivity extends ActionBarActivity {
         
         // Set up the fragments
         notesFragment = new NotesFragment();
-     // Load initial fragment
+        //注册文件夹改变广播
+        browseToFolderBroadcastReceiver = new CurrentFolderChangedReceiver(this);
+        renameBroadcastReceiver = new RenameBroadcastReceiver(notesFragment);
+        // Load initial fragment
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction()
                 .replace(R.id.frame, notesFragment)
@@ -112,12 +146,27 @@ public class NotesActivity extends ActionBarActivity {
 	protected void onResume() {
 		//update theme
 		setupAppearancePreferences();
-		
-		
+		//注册广播
+		//创建文件夹对话框后     广播刷新页面
 		IntentFilter ifilterCreateFolderDialog = new IntentFilter();
         ifilterCreateFolderDialog.addAction(Constants.CREATE_FOLDER_DIALOG_TAG);
         registerReceiver(createFolderBroadcastReceiver, ifilterCreateFolderDialog);
         
+        //创建文件夹路径改变    广播刷新界面
+        IntentFilter ifilterSwitchedFolderFilder = new IntentFilter();
+        ifilterSwitchedFolderFilder.addAction(Constants.CURRENT_FOLDER_CHANGED);
+        registerReceiver(browseToFolderBroadcastReceiver, ifilterSwitchedFolderFilder);
+        
+        //删除
+        IntentFilter ifilterConfirmDialog = new IntentFilter();
+        ifilterConfirmDialog.addAction(Constants.CONFIRM_DELETE_DIALOG_TAG);
+        ifilterConfirmDialog.addAction(Constants.CONFIRM_OVERWRITE_DIALOG_TAG);
+        registerReceiver(confirmBroadcastReceiver, ifilterConfirmDialog);
+        
+        //，重命名广播
+        IntentFilter ifilterRenameDialog = new IntentFilter();
+        ifilterRenameDialog.addAction(Constants.RENAME_DIALOG_TAG);
+        registerReceiver(renameBroadcastReceiver, ifilterRenameDialog);
 		super.onResume();
 	}
 	
@@ -243,6 +292,7 @@ public class NotesActivity extends ActionBarActivity {
 
 	 }
 	 
+	 //编辑器字体风格偏好设置
 	 private void setupAppearancePreferences() {
 	        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_theme_key), "");
 
@@ -262,5 +312,28 @@ public class NotesActivity extends ActionBarActivity {
 	    }
 
 
+	    
+	    @Override
+	    public void onBackPressed() {
+	        if (doubleBackToExitPressedOnce) {
+	            super.onBackPressed();
+	            return;
+	        }
+
+	        if (!notesFragment.onRooDir()) {
+	            notesFragment.goToPreviousDir();
+	        } else {
+	            this.doubleBackToExitPressedOnce = true;
+	            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+	            new Handler().postDelayed(new Runnable() {
+
+	                @Override
+	                public void run() {
+	                    doubleBackToExitPressedOnce = false;
+	                }
+	            }, 2000);
+	        }
+	    }
 
 }

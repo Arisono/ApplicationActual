@@ -13,7 +13,6 @@ import com.app.demo.R;
 import com.app.demo.model.ChildEntity;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +21,8 @@ import android.widget.TextView;
 
 public class ChildAdapter extends BaseExpandableListAdapter {
     
-	private Context mContext;// ÉÏÏÂÎÄ
-	private ArrayList<ChildEntity> mChilds;// Êý¾ÝÔ´
+	private Context mContext;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private ArrayList<ChildEntity> mChilds;// ï¿½ï¿½ï¿½Ô´
 
 	public ChildAdapter(Context context, ArrayList<ChildEntity> childs) {
 		this.mContext = context;
@@ -49,7 +48,7 @@ public class ChildAdapter extends BaseExpandableListAdapter {
 		return null;
 	}
     
-	/**@×¢ÊÍ£ºObject to String  */
+	/**@×¢ï¿½Í£ï¿½Object to String  */
 	@Override
 	public String getChild(int groupPosition, int childPosition) {
 		if (mChilds.get(groupPosition).getChildNames() != null
@@ -110,7 +109,7 @@ public class ChildAdapter extends BaseExpandableListAdapter {
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		/**
 		 * ==============================================
-		 * ´Ë´¦±ØÐë·µ»Øtrue£¬·ñÔòÎÞ·¨ÏìÓ¦×ÓÏîµÄµã»÷ÊÂ¼þ===============
+		 * ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ë·µï¿½ï¿½trueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½Â¼ï¿½===============
 		 * ==============================================
 		 **/
 		return true;

@@ -16,20 +16,17 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-/**
- * @author :LiuJie Ê±¼ä: 2015Äê5ÔÂ22ÈÕ ÏÂÎç3:32:21
- * @×¢ÊÍ:Tree
- */
+
+
 public class ParentAdapter extends BaseExpandableListAdapter {
     
-	private Context mContext;// ÉÏÏÂÎÄ
-	private ArrayList<ParentEntity> mParents;// Êý¾ÝÔ´
+	private Context mContext;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private ArrayList<ParentEntity> mParents;// ï¿½ï¿½ï¿½Ô´
 	
 	private OnChildTreeViewClickListener mTreeViewClickListener;
 	
@@ -54,7 +51,7 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 		return mParents.get(groupPosition);
 	}
 	
-    /**@×¢ÊÍ£ºObject  to  ChildEntity  */
+    /**@×¢ï¿½Í£ï¿½Object  to  ChildEntity  */
 	@Override
 	public ChildEntity getChild(int groupPosition, int childPosition) {
 		return mParents.get(groupPosition).getChilds().get(childPosition);
@@ -74,7 +71,7 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 	public boolean hasStableIds() {
 		return false;
 	}
-    /**@×¢ÊÍ£ººËÐÄ·½·¨  */
+    /**@×¢ï¿½Í£ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½  */
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
@@ -95,7 +92,7 @@ public class ParentAdapter extends BaseExpandableListAdapter {
     
 	/**
 	 * @author LiuJie
-	 * @¹¦ÄÜ:±éÀúChildView ´´½¨¶þ¼¶ÁÐ±í
+	 * @ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ChildView ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 */
 	@Override
 	public View getChildView(final int groupPosition, final int childPosition,
@@ -171,7 +168,7 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 	}
 	
 	
-	/**@×¢ÊÍ£º½Ó¿ÚÉùÃ÷  */
+	/**@×¢ï¿½Í£ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½  */
 	public interface OnChildTreeViewClickListener {
 
 		void onClickPosition(ExpandableListView view,int parentPosition, int groupPosition,
@@ -207,7 +204,7 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 	
 	/**
 	 * @author 
-	 *         ¶¯Ì¬´´½¨×ÓExpandableListView
+	 *         ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ExpandableListView
 	 * */
 	public ExpandableListView getExpandableListView() {
 		ExpandableListView mExpandableListView = new ExpandableListView(
@@ -217,16 +214,16 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 						.getResources().getDimension(
 								R.dimen.parent_expandable_list_height));
 		mExpandableListView.setLayoutParams(lp);
-		mExpandableListView.setDividerHeight(0);// È¡ÏûgroupÏîµÄ·Ö¸îÏß
-		mExpandableListView.setChildDivider(null);// È¡ÏûchildÏîµÄ·Ö¸îÏß
-		mExpandableListView.setGroupIndicator(null);// È¡ÏûÕ¹¿ªÕÛµþµÄÖ¸Ê¾Í¼±ê
+		mExpandableListView.setDividerHeight(0);// È¡ï¿½ï¿½groupï¿½ï¿½Ä·Ö¸ï¿½ï¿½ï¿½
+		mExpandableListView.setChildDivider(null);// È¡ï¿½ï¿½childï¿½ï¿½Ä·Ö¸ï¿½ï¿½ï¿½
+		mExpandableListView.setGroupIndicator(null);// È¡ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½Ö¸Ê¾Í¼ï¿½ï¿½
 		return mExpandableListView;
 	}
 	
 	/**
 	 * @author 
 	 * 
-	 *         ÉèÖÃµã»÷×ÓExpandableListView×ÓÏîµÄ¼àÌý
+	 *         ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ExpandableListViewï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 	 * */
 	public void setOnChildTreeViewClickListener(
 			OnChildTreeViewClickListener treeViewClickListener) {

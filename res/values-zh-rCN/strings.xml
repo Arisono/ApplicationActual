@@ -91,7 +91,7 @@
     <string name="pref_no_lock">No Lock</string>
     <string name="pref_smart_shortcuts">Smart brackets shortcuts</string>
     <string name="pref_smart_shortcuts_summary">If text is selected, {}, [] and () will surround the selection</string>
-    <string name="passphrase_title">Enter your passphrase</string>
+    <string name="passphrase_title">请输入您的密码</string>
     <!-- Font Size -->
     <string name="font_size_normal">中等</string>
     <string name="font_size_large">大</string>

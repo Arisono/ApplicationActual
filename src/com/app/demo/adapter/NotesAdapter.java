@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import com.app.demo.R;
 import com.app.demo.util.Constants;
 
@@ -53,7 +54,8 @@ public class NotesAdapter extends ArrayAdapter<File> implements Filterable {
         return i;
     }
     
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public View getView(int i, View convertView, ViewGroup parent) {
     	LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	String theme = PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.pref_theme_key), "");

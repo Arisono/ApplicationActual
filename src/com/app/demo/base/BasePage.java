@@ -3,7 +3,6 @@
  */
 package com.app.demo.base;
 
-import com.lidroid.xutils.ViewUtils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
