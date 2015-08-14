@@ -15,6 +15,9 @@
     <string name="dialog_list">列表</string>
     <string name="dialog_alert_title">选择对话框</string>
     <string name="dialog_alert">确定对话框</string>
+    <!-- 小工具 -->
+    <string name="tools_interest_title">利息(元)</string>
+    <string name="tools_total_title">本息合计(元)</string>
     <!-- note -->
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>

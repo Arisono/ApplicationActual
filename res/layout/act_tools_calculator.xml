@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include layout="@layout/topbar_home_title" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dip"
+        android:background="@color/light_primary" >
+        <RadioGroup
+            android:id="@+id/rg_deposit_radio"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="5dip"
+            android:background="@drawable/shape_layout_radio_button"
+            android:orientation="horizontal" >
+            <RadioButton
+                android:id="@+id/rb_current"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="活期"
+                android:checked="true"
+                android:button="@null"
+                android:background="@drawable/shape_radio_button"
+                android:textColor="@color/white" />
+            <RadioButton
+                android:id="@+id/rb_regular"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:text="定期"
+                android:button="@null"
+                 android:background="@drawable/shape_radio_button"
+                android:textColor="@color/white" />
+        </RadioGroup>
+        <!--  -->
+        <RelativeLayout
+            android:id="@+id/rl_display_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rg_deposit_radio" >
+            <TextView
+                android:id="@+id/tv_interest_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:text="@string/tools_interest_title"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_interest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_interest_title"
+                android:layout_marginLeft="15dip"
+                android:layout_marginTop="15dip"
+                android:text="10000"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+            <View
+                android:id="@+id/v_line"
+                android:layout_width="0.1dip"
+                android:layout_height="50dip"
+                android:layout_centerInParent="true"
+                android:background="@color/light_grey" />
+            <TextView
+                android:id="@+id/tv_total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:layout_toRightOf="@+id/v_line"
+                android:text="@string/tools_total_title"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_total_title"
+                android:layout_marginLeft="15dip"
+                android:layout_marginTop="15dip"
+                android:layout_toRightOf="@+id/v_line"
+                android:text="100000"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--  -->
+    <LinearLayout
+        android:id="@+id/ll_layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:background="@drawable/shape_layout_lightgray"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/rl_money"
+            android:layout_width="match_parent"
+            android:layout_height="50dip" >
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dip"
+            android:background="@color/light_grey" />
+        <RelativeLayout
+            android:id="@+id/rl_day"
+            android:layout_width="match_parent"
+            android:layout_height="50dip" >
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dip"
+            android:background="@color/light_grey" />
+        <RelativeLayout
+            android:id="@+id/rl_rate"
+            android:layout_width="match_parent"
+            android:layout_height="50dip" >
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

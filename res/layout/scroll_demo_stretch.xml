@@ -26,7 +26,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="-10dp"
             android:gravity="center"
-            android:text="努力就会有收获!"
+            android:text="@string/app_name"
             android:textColor="@color/red" />
         <com.app.demo.view.StretchScrollView
             android:id="@+id/personal_scrollView"

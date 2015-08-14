@@ -26,7 +26,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  * @author :LiuJie 时间: 2015年5月19日 下午7:48:35
  * @注释:案例类
  */
-public class BtSelectActivity extends BaseComplexActivity {
+public class ExampleActivity extends BaseComplexActivity {
 	
 	@ViewInject(R.id.prl_lib_listView)
 	private PullToRefreshListView list;
@@ -75,7 +75,7 @@ public class BtSelectActivity extends BaseComplexActivity {
 			   Intent it_scroll=null;
 			
 				try {
-					it_scroll = new Intent(BtSelectActivity.this, Class.forName(tView.getText().toString()));
+					it_scroll = new Intent(ExampleActivity.this, Class.forName(tView.getText().toString()));
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -182,6 +182,13 @@ public class BtSelectActivity extends BaseComplexActivity {
 		item.put("libname", "IOS风格的对话框");
 		item.put("no",17);
 		item.put("intent", "com.app.demo.activity.common.DialogStyleIOS");
+		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
+		data.add(item);
+		
+		item=new HashMap<String,Object>();
+		item.put("libname", "理财工具");
+		item.put("no",18);
+		item.put("intent", "com.app.demo.activity.tool.InterestActivity");
 		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
 		data.add(item);
 		
