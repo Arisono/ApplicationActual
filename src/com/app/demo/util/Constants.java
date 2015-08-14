@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 import android.os.Environment;
 
-public class Constants {
+public interface Constants {
 	
 	/** @注释：加载成功 */
 	public static final int LOAD_SUCESS = 1;
@@ -13,7 +13,7 @@ public class Constants {
 	/** @注释： 服务器异常 */
 	public static final int LOAD_EXCEPTION = 2;
 	
-	
+	//1,notes
 	public static final String[] KEYBOARD_SHORTCUTS = {"*", "-", "_", "#", "!", ":", ">"};
     public static final String[] KEYBOARD_SHORTCUTS_BRACKETS = { "(", ")", "[", "]"};
     public static final String[] KEYBOARD_SMART_SHORTCUTS = {"()", "[]"};
@@ -73,6 +73,8 @@ public class Constants {
 
     public static Pattern MD_EXTENSION = Pattern.compile("((?i)\\.md$)");
 
-    // --- WIDGET
     public static final String WIDGET_PATH = "WIDGET_PATH";
+    
+    
+    //2,music
 }

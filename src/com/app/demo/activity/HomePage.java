@@ -205,7 +205,7 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 			ct.startActivity(it_calander);
 			break;
 		case 1:
-			Intent it_lib=new Intent(ct, BtSelectActivity.class);
+			Intent it_lib=new Intent(ct, ExampleActivity.class);
 			ct.startActivity(it_lib);
 					
 			break;
