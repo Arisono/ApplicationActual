@@ -13,7 +13,7 @@ public interface Constants {
 	/** @注释： 服务器异常 */
 	public static final int LOAD_EXCEPTION = 2;
 	
-	//1,notes
+	//1,notes----------------------------------------------------------------------------
 	public static final String[] KEYBOARD_SHORTCUTS = {"*", "-", "_", "#", "!", ":", ">"};
     public static final String[] KEYBOARD_SHORTCUTS_BRACKETS = { "(", ")", "[", "]"};
     public static final String[] KEYBOARD_SMART_SHORTCUTS = {"()", "[]"};
@@ -76,5 +76,12 @@ public interface Constants {
     public static final String WIDGET_PATH = "WIDGET_PATH";
     
     
-    //2,music
+    //2,music-----------------------------------------------------------------------------------------
+    //歌手和专辑列表点击都会进入MyMusic 此时要传递参数表明是从哪里进入的
+  	public static final String FROM = "from";
+  	public static final int START_FROM_ARTIST = 1;
+  	public static final int START_FROM_ALBUM = 2;
+  	public static final int START_FROM_LOCAL = 3;
+  	public static final int START_FROM_FOLDER = 4;
+  	public static final int START_FROM_FAVORITE = 5;
 }
