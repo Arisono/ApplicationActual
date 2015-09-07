@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.app.demo.service.activity;
+package com.app.demo.activity.common;
 
 import com.app.demo.R;
 import com.app.demo.service.MyService;
@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 /**
  * @author LiuJie
- * Á½ÖÖ·½Ê½Æô¶¯ÉúÃüÖÜÆÚ·½·¨
+ * ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½
  */
 public class StartService extends Activity {
 	
@@ -111,7 +111,7 @@ public class StartService extends Activity {
 		unbind(null);  
 	}
 	/**
-	 * °ó¶¨ 
+	 * ï¿½ï¿½ 
 	 * @param view 
 	 */
 	private void bind(View view) {
@@ -120,11 +120,11 @@ public class StartService extends Activity {
 	}
 	
 	/** 
-	 * ½â³ý°ó¶¨ 
+	 * ï¿½ï¿½ï¿½ï¿½ 
 	 * @param view 
 	 */  
 	public void unbind(View view) {  
-		/**×¢ÊÍ£º·þÎñÁ¬½ÓÖÐ¶ÏÖ®ºó£¬²»ÄÜ½øÐÐ½â³ý°ó¶¨²Ù×÷£¬»á±¨Òì³£ */
+		/**×¢ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ö®ï¿½ó£¬²ï¿½ï¿½Ü½ï¿½ï¿½Ð½ï¿½ï¿½ó¶¨²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á±¨ï¿½ì³£ */
 		if (binded) {  
 	        unbindService(conn);  
 	        binded = false;  
@@ -132,7 +132,7 @@ public class StartService extends Activity {
 	}  
 	
 	/** 
-     * Æô¶¯·þÎñ 
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
      * @param view 
      */  
     public void start(View view) {  
@@ -141,7 +141,7 @@ public class StartService extends Activity {
     }  
     
     /** 
-     * Í£Ö¹·þÎñ 
+     * Í£Ö¹ï¿½ï¿½ï¿½ï¿½ 
      * @param view 
      */  
     public void stop(View view) {  

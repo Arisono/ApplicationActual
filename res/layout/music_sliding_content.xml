@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+      <RelativeLayout
+        android:id="@+id/modeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        <ImageButton
+            android:id="@+id/btn_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/selector_volume_set"
+            android:src="@drawable/voice" >
+        </ImageButton>
+    </RelativeLayout>
+     <!--底部布局 -->
+      <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+           <!--播放进度条  -->
+           <LinearLayout
+            android:id="@+id/progressLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/progresslayout_bg"
+            android:gravity="center_vertical" >
+             <TextView
+                android:id="@+id/currentTime_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="00:00"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" >
+            </TextView>
+            <!--进度条展示  -->
+            <SeekBar
+                android:id="@+id/playback_seekbar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:maxHeight="2.0dip"
+                android:minHeight="2.0dip"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:progressDrawable="@drawable/music_playback_seekbar"
+                android:thumb="@drawable/music_playback_seekbar_thumb"
+                android:thumbOffset="12.0dip" >
+            </SeekBar>
+            <TextView
+                android:id="@+id/totalTime_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="00:00"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+            </LinearLayout>
+            <!--底部播放按鈕  -->
+             <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/playcontrol_bg"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal" >
+            
+            </LinearLayout>
+        
+      </LinearLayout>
+</RelativeLayout>

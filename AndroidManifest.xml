@@ -48,7 +48,7 @@
             </intent-filter>
         </service>
         <!-- activity -->
-        <activity android:name=".service.activity.StartService" >
+        <activity android:name="com.app.demo.activity.common.StartService" >
         </activity>
         <!--
              min version sdk is 16 

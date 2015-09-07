@@ -84,4 +84,14 @@ public interface Constants {
   	public static final int START_FROM_LOCAL = 3;
   	public static final int START_FROM_FOLDER = 4;
   	public static final int START_FROM_FAVORITE = 5;
+  	//**preference
+  	public static final String SP_NAME = "com.ldw.music_preference";
+  	public static final String SP_BG_PATH = "bg_path";
+	public static final String SP_SHAKE_CHANGE_SONG = "shake_change_song";
+	public static final String SP_AUTO_DOWNLOAD_LYRIC = "auto_download_lyric";
+	public static final String SP_FILTER_SIZE = "filter_size";
+	public static final String SP_FILTER_TIME = "filter_time";
+	
+  	
+  	
 }
