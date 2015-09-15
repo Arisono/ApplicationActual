@@ -13,9 +13,9 @@ public final class R {
 	}
 	public static final class drawable {
 		public static final int ic_launcher = 0x7f02006b;
-		public static final int item_divider_horizontal = 0x7f02007e;
-		public static final int item_divider_vertical = 0x7f02007f;
-		public static final int text_view_background_selector = 0x7f0200ab;
+		public static final int item_divider_horizontal = 0x7f02008b;
+		public static final int item_divider_vertical = 0x7f02008c;
+		public static final int text_view_background_selector = 0x7f0200c1;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060007;

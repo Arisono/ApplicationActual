@@ -92,6 +92,8 @@ public interface Constants {
 	public static final String SP_FILTER_SIZE = "filter_size";
 	public static final String SP_FILTER_TIME = "filter_time";
 	
+	public static final String BROADCAST_CHANGEBG = "com.ldw.music.changebg";
+	
   	
   	
 }

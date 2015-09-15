@@ -114,4 +114,9 @@ public class MainContentActivity extends FragmentActivity implements Constants {
 			}
 		}
 	};
+	
+	
+	public interface OnBackListener {
+		public abstract void onBack();
+	}
 }

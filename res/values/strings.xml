@@ -9,6 +9,11 @@
     <string name="tab_setting">我</string>
     <string name="top_title">首页</string>
     <string name="action_settings">设置</string>
+    <!--music  -->
+    <string name="music_home_title">音乐世界</string>
+    <string name="lyric_empty">没有歌词,点击手动下载</string>
+    <string name="totalTime_tv">00:00</string>
+    <string name="muisc_line"> - </string>
     <!-- ios dialog -->
     <string name="dialog_message">消息</string>
     <string name="dialog_image">图片</string>
