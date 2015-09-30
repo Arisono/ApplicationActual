@@ -3,6 +3,8 @@
     <!--music-->
     <color name="half_transparent">#3f000000</color>
      <color name="holo_blue_light">#ff33b5e5</color>
+     <color name="divider_color">#6fffffff</color>
+     <color name="dialog_text_hint">#ffb0b0b0</color>
     <!-- top bar -->
     <color name="theme_yellow">#FFFFCC</color>
     <color name="zone_title_bg">#ffee71a1</color>
@@ -19,6 +21,8 @@
     <color name="lighter_grey">#ffE0E0E0</color>
     <color name="primary">#388E3C</color>
     <color name="light_primary">#81C784</color>
+    <color name="top_bar_black">#262A3B</color>
+    
     <color name="dark_primary">#2E7D32</color>
     <color name="secondary">#EF6C00</color>
     <color name="light_secondary">#FF9800</color>

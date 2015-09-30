@@ -65,8 +65,8 @@ public final class R {
 		public static final int vpi__bright_foreground_holo_light = 0x7f090003;
 		public static final int vpi__bright_foreground_inverse_holo_dark = 0x7f090006;
 		public static final int vpi__bright_foreground_inverse_holo_light = 0x7f090007;
-		public static final int vpi__dark_theme = 0x7f090137;
-		public static final int vpi__light_theme = 0x7f090138;
+		public static final int vpi__dark_theme = 0x7f09013a;
+		public static final int vpi__light_theme = 0x7f09013b;
 	}
 	public static final class dimen {
 		public static final int default_circle_indicator_radius = 0x7f07000a;
@@ -84,20 +84,20 @@ public final class R {
 		public static final int default_title_indicator_top_padding = 0x7f070016;
 	}
 	public static final class drawable {
-		public static final int vpi__tab_indicator = 0x7f0200ce;
-		public static final int vpi__tab_selected_focused_holo = 0x7f0200cf;
-		public static final int vpi__tab_selected_holo = 0x7f0200d0;
-		public static final int vpi__tab_selected_pressed_holo = 0x7f0200d1;
-		public static final int vpi__tab_unselected_focused_holo = 0x7f0200d2;
-		public static final int vpi__tab_unselected_holo = 0x7f0200d3;
-		public static final int vpi__tab_unselected_pressed_holo = 0x7f0200d4;
+		public static final int vpi__tab_indicator = 0x7f0200d3;
+		public static final int vpi__tab_selected_focused_holo = 0x7f0200d4;
+		public static final int vpi__tab_selected_holo = 0x7f0200d5;
+		public static final int vpi__tab_selected_pressed_holo = 0x7f0200d6;
+		public static final int vpi__tab_unselected_focused_holo = 0x7f0200d7;
+		public static final int vpi__tab_unselected_holo = 0x7f0200d8;
+		public static final int vpi__tab_unselected_pressed_holo = 0x7f0200d9;
 	}
 	public static final class id {
-		public static final int bottom = 0x7f080016;
-		public static final int none = 0x7f080013;
-		public static final int top = 0x7f080017;
-		public static final int triangle = 0x7f080014;
-		public static final int underline = 0x7f080015;
+		public static final int bottom = 0x7f080017;
+		public static final int none = 0x7f080014;
+		public static final int top = 0x7f080018;
+		public static final int triangle = 0x7f080015;
+		public static final int underline = 0x7f080016;
 	}
 	public static final class integer {
 		public static final int default_circle_indicator_orientation = 0x7f0b0000;

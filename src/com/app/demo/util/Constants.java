@@ -93,7 +93,7 @@ public interface Constants {
 	public static final String SP_FILTER_TIME = "filter_time";
 	
 	public static final String BROADCAST_CHANGEBG = "com.ldw.music.changebg";
-	
-  	
-  	
+	public static final String SERVICE_NAME = "com.ldw.music.service.MediaService";
+	public static final String BROADCAST_NAME = "com.ldw.music.broadcast";
+	public static final String BROADCAST_QUERY_COMPLETE_NAME = "com.ldw.music.querycomplete.broadcast";
 }

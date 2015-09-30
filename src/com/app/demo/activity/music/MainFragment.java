@@ -42,8 +42,6 @@ public class MainFragment extends Fragment implements Constants {
     		Bundle savedInstanceState) {
     	View view=inflater.inflate(R.layout.music_frame_main_gridlayout, container, false);
     	ViewUtils.inject(view);
-    	
-    	
     	return view;
     }
       

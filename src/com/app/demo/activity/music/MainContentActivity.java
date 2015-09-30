@@ -1,5 +1,8 @@
 package com.app.demo.activity.music;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +13,8 @@ import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.app.demo.R;
-import com.app.demo.R.layout;
 import com.app.demo.util.Constants;
+import com.app.demo.view.SlidingMenu;
 
 /**
  * @author :LiuJie 2015年8月25日 下午7:36:05
@@ -22,8 +25,11 @@ public class MainContentActivity extends FragmentActivity implements Constants {
 	public static final String ALARM_CLOCK_BROADCAST = "alarm_clock_broadcast";
 	
 	private int mScreenWidth;
-	
+	public SlidingMenu mSlidingMenu;
 	public MainFragment mMainFragment;
+	//监听集合
+	private List<OnBackListener> mBackListeners = 
+			new ArrayList<OnBackListener>();
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -115,6 +121,12 @@ public class MainContentActivity extends FragmentActivity implements Constants {
 		}
 	};
 	
+	
+	public void registerBackListener(OnBackListener listener) {
+		if (!mBackListeners.contains(listener)) {
+			mBackListeners.add(listener);
+		}
+	}
 	
 	public interface OnBackListener {
 		public abstract void onBack();

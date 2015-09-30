@@ -6,13 +6,13 @@
     <include layout="@layout/topbar_home_title" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dip"
+        android:layout_height="160dip"
         android:background="@color/light_primary" >
         <RadioGroup
             android:id="@+id/rg_deposit_radio"
             android:layout_width="match_parent"
             android:layout_height="40dip"
-            android:layout_marginBottom="10dip"
+            android:layout_marginBottom="18dip"
             android:layout_marginLeft="20dip"
             android:layout_marginRight="20dip"
             android:layout_marginTop="5dip"
@@ -23,19 +23,23 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
-                android:text="活期"
-                android:checked="true"
-                android:button="@null"
                 android:background="@drawable/shape_radio_button"
-                android:textColor="@color/white" />
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:text="活期"
+                android:textColor="@color/light_primary" />
             <RadioButton
                 android:id="@+id/rb_regular"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
-                android:text="定期"
+                android:background="@drawable/shape_radio_button"
                 android:button="@null"
-                 android:background="@drawable/shape_radio_button"
+                android:gravity="center"
+                android:text="定期"
+                 android:textSize="17sp"
                 android:textColor="@color/white" />
         </RadioGroup>
         <!--  -->
@@ -48,7 +52,7 @@
                 android:id="@+id/tv_interest_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dip"
+                android:layout_marginLeft="20dip"
                 android:text="@string/tools_interest_title"
                 android:textColor="@color/white" />
             <TextView
@@ -56,11 +60,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_interest_title"
-                android:layout_marginLeft="15dip"
-                android:layout_marginTop="15dip"
-                android:text="10000"
+                android:layout_marginLeft="20dip"
+                android:layout_marginTop="10dip"
+                android:text="0.00"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="30sp" />
             <View
                 android:id="@+id/v_line"
                 android:layout_width="0.1dip"
@@ -81,11 +85,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_total_title"
                 android:layout_marginLeft="15dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="10dip"
                 android:layout_toRightOf="@+id/v_line"
-                android:text="100000"
+                android:text="0.00"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="30sp" />
         </RelativeLayout>
     </RelativeLayout>
     <!--  -->
@@ -99,6 +103,32 @@
             android:id="@+id/rl_money"
             android:layout_width="match_parent"
             android:layout_height="50dip" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="存款总额(元)"
+                android:textSize="18sp" />
+            <EditText 
+                android:id="@+id/et_total_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入存款金额"
+                android:background="@null"
+                android:textSize="15sp"
+                android:textColorHint="@color/light_grey"
+               android:layout_toLeftOf="@+id/iv_delte_total"
+                android:layout_centerVertical="true"/>
+            <ImageView android:id="@+id/iv_delte_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/iconfont_shanchu"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:visibility="invisible"
+                />
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -108,6 +138,32 @@
             android:id="@+id/rl_day"
             android:layout_width="match_parent"
             android:layout_height="50dip" >
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="存款期限(天)"
+                android:textSize="18sp" />
+             <EditText 
+                android:id="@+id/et_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入存款天数"
+                android:background="@null"
+                android:textSize="15sp"
+                android:textColorHint="@color/light_grey"
+               android:layout_toLeftOf="@+id/iv_delte_days"
+                android:layout_centerVertical="true"/>
+            <ImageView android:id="@+id/iv_delte_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/iconfont_shanchu"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:visibility="invisible"
+                />
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -117,6 +173,32 @@
             android:id="@+id/rl_rate"
             android:layout_width="match_parent"
             android:layout_height="50dip" >
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="年利率(%)"
+                android:textSize="18sp" />
+               <EditText 
+                android:id="@+id/et_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入存款利率"
+                android:background="@null"
+                android:textSize="15sp"
+                android:textColorHint="@color/light_grey"
+               android:layout_toLeftOf="@+id/iv_delte_rate"
+                android:layout_centerVertical="true"/>
+            <ImageView android:id="@+id/iv_delte_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/iconfont_shanchu"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:visibility="invisible"
+                />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

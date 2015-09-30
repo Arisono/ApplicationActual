@@ -2,6 +2,12 @@ package com.app.demo.app;
 
 import java.io.File;
 
+
+
+
+
+import com.app.demo.activity.music.ServiceManager;
+
 import android.app.Application;
 import android.os.Environment;
 import android.util.Log;
@@ -16,11 +22,13 @@ public class AppContext extends Application {
 	public static String lrcPath = "/lrc";
 	private static String rootPath = "/ApplicationActual";
 	public static boolean mIsSleepClockSetting = false;
+	public static ServiceManager mServiceManager = null;
 	
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		initPath();
+		mServiceManager = new ServiceManager(this);
 	}
 	
 	/**

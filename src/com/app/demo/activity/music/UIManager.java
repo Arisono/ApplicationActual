@@ -38,6 +38,7 @@ public class UIManager implements Constants,OnBackListener {
 	/** mViewPager为第一层 mViewPagerSub为第二层（例如从文件夹或歌手进入列表，点击列表会进入第二层） */
 	private ViewPager mViewPager, mViewPagerSub;
 	private List<View> mListViews, mListViewsSub;
+	private MainUIManager mMainUIManager;
 	
 	public UIManager(Activity activity,View view) {
 		this.mActivity = activity;
@@ -109,7 +110,15 @@ public class UIManager implements Constants,OnBackListener {
 		setContentType(type, null);
 	}
 	public void setContentType(int type, Object obj) {
-		
+		 mMainActivity.registerBackListener(this);
+		 switch (type) {
+		 //
+		 case START_FROM_LOCAL:
+			
+			break;
+		default:
+			break;
+		}
 	}
 	
 	
