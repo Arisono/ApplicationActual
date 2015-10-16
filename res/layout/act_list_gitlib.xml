@@ -44,7 +44,31 @@
             fbutton:buttonColor="@color/fbutton_color_green_sea"
             fbutton:shadowEnabled="false" />
     </LinearLayout>
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <com.app.demo.view.refresh.PullToRefreshLayout 
+         android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+         <include layout="@layout/refresh_head" />
+         <com.app.demo.view.refresh.PullableListView 
+	        android:id="@+id/prl_lib_listView"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:background="@color/white"
+	        android:divider="@color/transparent"
+	        android:dividerHeight="15dp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:paddingBottom="10dp"
+	        android:paddingTop="10dp"
+	        android:fastScrollEnabled="true"
+	        android:focusable="true"
+	     >
+         </com.app.demo.view.refresh.PullableListView>
+         <include layout="@layout/load_more" />
+    </com.app.demo.view.refresh.PullToRefreshLayout>
+    
+    
+   <!--  <com.handmark.pulltorefresh.library.PullToRefreshListView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/prl_lib_listView"
         android:layout_width="match_parent"
@@ -60,5 +84,5 @@
         android:focusable="true"
         android:padding="5dp"
         ptr:ptrAnimationStyle="flip" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshListView> -->
 </LinearLayout>

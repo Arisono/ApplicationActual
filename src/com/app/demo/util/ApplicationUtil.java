@@ -70,4 +70,7 @@ public class ApplicationUtil {
 		NetworkInfo ni = cm.getActiveNetworkInfo();
 		return ni != null && ni.isConnectedOrConnecting();
 	}
+	
+	
+	
 }

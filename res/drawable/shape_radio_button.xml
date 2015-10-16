@@ -14,7 +14,8 @@
         <item android:state_selected="false">
             <shape>
             <solid android:color="@color/light_primary" />
-            <stroke android:width="0.5dp" android:color="@color/white" />
+            <stroke android:width="0.5dp" android:color="@color/white" 
+               />
           <!--   <gradient android:angle="45" android:centerColor="#99ff99" android:endColor="#FFF8DC" android:startColor="#FFF8DC" /> -->
             <padding android:bottom="0.5dp" android:left="0.5dp" android:right="0.5dp" android:top="0.5dp" />
         </shape>

@@ -55,7 +55,7 @@
                 android:layout_marginLeft="20dip"
                 android:text="@string/tools_interest_title"
                 android:textColor="@color/white" />
-            <TextView
+            <com.app.demo.view.AutofitTextView
                 android:id="@+id/tv_interest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +63,8 @@
                 android:layout_marginLeft="20dip"
                 android:layout_marginTop="10dip"
                 android:text="0.00"
+                android:maxLines="1"
+                android:width="150dp"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
             <View
@@ -79,7 +81,7 @@
                 android:layout_toRightOf="@+id/v_line"
                 android:text="@string/tools_total_title"
                 android:textColor="@color/white" />
-            <TextView
+            <com.app.demo.view.AutofitTextView
                 android:id="@+id/tv_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,6 +90,10 @@
                 android:layout_marginTop="10dip"
                 android:layout_toRightOf="@+id/v_line"
                 android:text="0.00"
+                android:maxLines="1"
+                android:width="150dp"
+                android:singleLine="true"
+                android:ellipsize="none"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
         </RelativeLayout>
@@ -101,6 +107,7 @@
         android:orientation="vertical" >
         <RelativeLayout
             android:id="@+id/rl_money"
+             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="50dip" >
             <TextView
@@ -114,16 +121,21 @@
             <EditText 
                 android:id="@+id/et_total_money"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="输入存款金额"
                 android:background="@null"
                 android:textSize="15sp"
+                android:gravity="right|center_vertical"
+                android:textColor="@color/black"
+                android:inputType="number" 
+                   android:maxLength="7"   
                 android:textColorHint="@color/light_grey"
-               android:layout_toLeftOf="@+id/iv_delte_total"
+                android:textCursorDrawable="@drawable/color_cursor_edit"
+               android:layout_toLeftOf="@+id/iv_delete_total"
                 android:layout_centerVertical="true"/>
-            <ImageView android:id="@+id/iv_delte_total"
+            <ImageView android:id="@+id/iv_delete_total"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@drawable/iconfont_shanchu"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -136,6 +148,7 @@
             android:background="@color/light_grey" />
         <RelativeLayout
             android:id="@+id/rl_day"
+             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="50dip" >
              <TextView
@@ -149,16 +162,21 @@
              <EditText 
                 android:id="@+id/et_days"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                 android:layout_height="match_parent"
                 android:hint="输入存款天数"
                 android:background="@null"
                 android:textSize="15sp"
+                   android:inputType="number" 
+                    android:maxLength="4" 
+                    android:textCursorDrawable="@drawable/color_cursor_edit"
+                  android:gravity="right|center_vertical"
+                android:textColor="@color/black"
                 android:textColorHint="@color/light_grey"
-               android:layout_toLeftOf="@+id/iv_delte_days"
+               android:layout_toLeftOf="@+id/iv_delete_days"
                 android:layout_centerVertical="true"/>
-            <ImageView android:id="@+id/iv_delte_days"
+            <ImageView android:id="@+id/iv_delete_days"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@drawable/iconfont_shanchu"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -171,6 +189,7 @@
             android:background="@color/light_grey" />
         <RelativeLayout
             android:id="@+id/rl_rate"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="50dip" >
               <TextView
@@ -184,16 +203,21 @@
                <EditText 
                 android:id="@+id/et_rate"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                 android:layout_height="match_parent"
                 android:hint="输入存款利率"
                 android:background="@null"
                 android:textSize="15sp"
+                 android:maxLength="2" 
+                 android:inputType="number" 
+                 android:textCursorDrawable="@drawable/color_cursor_edit"
+                android:gravity="right|center_vertical"
+                android:textColor="@color/black"
                 android:textColorHint="@color/light_grey"
-               android:layout_toLeftOf="@+id/iv_delte_rate"
+               android:layout_toLeftOf="@+id/iv_delete_rate"
                 android:layout_centerVertical="true"/>
-            <ImageView android:id="@+id/iv_delte_rate"
+            <ImageView android:id="@+id/iv_delete_rate"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@drawable/iconfont_shanchu"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"

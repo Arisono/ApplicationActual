@@ -17,7 +17,6 @@ import com.android.volley.toolbox.Volley;
 
 import com.app.demo.R;
 import com.app.demo.model.Weather;
-import com.app.demo.model.WeatherInfo;
 import com.app.demo.util.GsonRequest;
 import com.app.demo.util.XMLRequest;
 
@@ -25,9 +24,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-/**VolleyÍ¨ÐÅ¿ò¼Ü
+/**VolleyÍ¨ï¿½Å¿ï¿½ï¿½
  * @author LiuJie
- * ²âÊÔµÚÒ»¸öÁªÍøÇëÇóµÄÀý×Ó
+ * ï¿½ï¿½ï¿½Ôµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class VolleyActivity extends Activity {
 	//public String url="http://api.yi18.net/drug/list?page=2&limit=10&type=id";
@@ -122,10 +121,10 @@ public class VolleyActivity extends Activity {
 		        new Response.Listener<Weather>() {  
 		            @Override  
 		            public void onResponse(Weather weather) {  
-		                WeatherInfo weatherInfo = weather.getWeatherinfo();  
-		                Log.d("TAG", "city is " + weatherInfo.getCity());  
-		                Log.d("TAG", "temp is " + weatherInfo.getTemp());  
-		                Log.d("TAG", "time is " + weatherInfo.getTime());  
+////		                WeatherInfo weatherInfo = weather.getWeatherinfo();  
+//		                Log.d("TAG", "city is " + weatherInfo.getCity());  
+//		                Log.d("TAG", "temp is " + weatherInfo.getTemp());  
+//		                Log.d("TAG", "time is " + weatherInfo.getTime());  
 		            }  
 		        }, new Response.ErrorListener() {  
 		            @Override  

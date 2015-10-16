@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,11 +15,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.app.demo.R;
 import com.app.demo.base.BaseComplexActivity;
+import com.app.demo.view.refresh.PullToRefreshLayout;
+import com.app.demo.view.refresh.PullToRefreshLayout.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -28,8 +32,11 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  */
 public class ExampleActivity extends BaseComplexActivity {
 	
+	@ViewInject(R.id.refresh_view)
+	private PullToRefreshLayout layout_refresh;
+	
 	@ViewInject(R.id.prl_lib_listView)
-	private PullToRefreshListView list;
+	private ListView list;
 	
 	@ViewInject(R.id.bt_collect)
 	private Button bt_collect;
@@ -61,13 +68,32 @@ public class ExampleActivity extends BaseComplexActivity {
 	    		           R.id.tv_address_url,
 	    		           R.id.tv_address_intent});
 	     list.setAdapter(adapter);
+	     
+	     layout_refresh.setOnRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
+                 
+				new Handler().postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+                         pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);					
+					}
+				},1000);
+			}
+			
+			@Override
+			public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+				 pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);									
+			}
+		});
 	}
 	
 	
 
 	public void setListener() {
 		list.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -192,6 +218,13 @@ public class ExampleActivity extends BaseComplexActivity {
 		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
 		data.add(item);
 		
+	
+		item=new HashMap<String,Object>();
+		item.put("libname", "EventBus");
+		item.put("no",19);
+		item.put("intent", "com.app.demo.activity.eventbus.EventBusActivity");
+		item.put("url", "http://download.csdn.net/detail/shexiaoheng/8212209");
+		data.add(item);
 	}
 	
 	public void getCreativeData(){

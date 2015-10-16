@@ -48,6 +48,12 @@
             </intent-filter>
         </service>
         <!-- activity -->
+        <activity
+            android:name="com.app.demo.activity.eventbus.EventBusActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.app.demo.activity.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <activity android:name="com.app.demo.activity.common.StartService" >
         </activity>
         <!--

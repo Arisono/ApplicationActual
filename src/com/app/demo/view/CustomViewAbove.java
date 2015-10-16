@@ -33,6 +33,7 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 
+@SuppressWarnings("deprecation")
 public class CustomViewAbove extends ViewGroup {
 
 	private static final String TAG = "CustomViewAbove";
