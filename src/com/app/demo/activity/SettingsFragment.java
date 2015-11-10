@@ -17,6 +17,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 
+@SuppressWarnings("deprecation")
 public class SettingsFragment extends PreferenceFragment implements
 		SharedPreferences.OnSharedPreferenceChangeListener {
   
@@ -101,6 +102,7 @@ public class SettingsFragment extends PreferenceFragment implements
 	     //点击打开对话框
 		 rootDir.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			
+			@SuppressWarnings("unused")
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				FragmentManager fragManager=getFragmentManager();

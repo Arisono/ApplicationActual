@@ -108,6 +108,7 @@ public class PullToRefreshLayout extends RelativeLayout
 	private boolean canPullDown = true;
 	private boolean canPullUp = true;
 
+	@SuppressWarnings("unused")
 	private Context mContext;
 
 	/**

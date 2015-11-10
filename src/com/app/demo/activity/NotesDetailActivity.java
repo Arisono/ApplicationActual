@@ -3,23 +3,10 @@ package com.app.demo.activity;
 
 
 import java.io.File;
-
-
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.UUID;
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -29,8 +16,6 @@ import com.app.demo.model.WriteilySingleton;
 import com.app.demo.util.Constants;
 import com.app.demo.view.HighlightingEditor;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -50,14 +35,14 @@ import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class NotesDetailActivity extends ActionBarActivity {
-	
 	public static final String EMPTY_STRING = "";
 	private File note;
 	private File newNote;
     private Context context;
     private EditText noteTitle;
     private HighlightingEditor content;
-    private ScrollView scrollView;
+    @SuppressWarnings({ "unused"})
+	private ScrollView scrollView;
     private ViewGroup keyboardBarView;
     
     private String targetDirectory;//目标路径

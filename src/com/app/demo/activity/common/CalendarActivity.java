@@ -59,6 +59,7 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	private int day_c = 0;
 	private String currentDate = "";
 	
+	@SuppressWarnings("unused")
 	private int select_cell;
 	//当前选中的日期
 	private String selectDay;
@@ -104,13 +105,12 @@ public class CalendarActivity extends Activity implements OnGestureListener {
 	
 	
 	//添加 gridview
+	@SuppressWarnings("deprecation")
 	public void addGridView() {
 		//取得屏幕的宽度和高度
 		WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
-        @SuppressWarnings("deprecation")
 		int Width = display.getWidth(); 
-        @SuppressWarnings("deprecation")
 		int Height = display.getHeight();
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);

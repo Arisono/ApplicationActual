@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 
 
+
 import com.app.demo.R;
 import com.app.demo.util.Constants;
 
@@ -26,7 +27,8 @@ public class PreviewActivity extends ActionBarActivity {
 	private WebView previewWebView;
     private String markdownRaw;
     private String markdownHtml;
-    private String currentDir;
+    @SuppressWarnings("unused")
+	private String currentDir;
     private File note;
     private boolean isEditIncoming = false;
 	@Override

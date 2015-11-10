@@ -20,7 +20,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * @author LiuJie
- * ÐÂ½¨ÈÕ³Ì
+ * ï¿½Â½ï¿½ï¿½Õ³ï¿½
  */
 public class NewSchedule extends BaseAcivity {
     
@@ -34,7 +34,7 @@ public class NewSchedule extends BaseAcivity {
 	@Override
 	public void setView() {
 		
-		setContentView(R.layout.act_new_shedule_view);// Èí¼üÅÌ¹ÜÀíÀà
+		setContentView(R.layout.act_new_shedule_view);// ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½
 		ViewUtils.inject(this);
 		imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 		
@@ -72,7 +72,7 @@ public class NewSchedule extends BaseAcivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.calendar_new_sheduler_menu, menu);// TODO Auto-generated method stub
-		/**@×¢ÊÍ£º·µ»Øtrue ÆÁ±Î¸¸Àà   2015Äê5ÔÂ12ÈÕ */
+		/**@×¢ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½true ï¿½ï¿½ï¿½Î¸ï¿½ï¿½ï¿½   2015ï¿½ï¿½5ï¿½ï¿½12ï¿½ï¿½ */
 		return true;
 	}
 	
@@ -95,16 +95,17 @@ public class NewSchedule extends BaseAcivity {
 	}
 	
 	
+	@SuppressWarnings("unused")
 	private void showOrHideIMM() {
 //		if (mFace.getTag() == null) {
-//			// Òþ²ØÈí¼üÅÌ
+//			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //			imm.hideSoftInputFromWindow(mContent.getWindowToken(), 0);
-			// ÏÔÊ¾±íÇé
+			// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 //			showFace();
 //		} else {
-			// ÏÔÊ¾Èí¼üÅÌ
+			// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½
 			imm.showSoftInput(mContent, 0);
-			// Òþ²Ø±íÇé
+			// ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½
 //			hideFace();
 //		}
 	}

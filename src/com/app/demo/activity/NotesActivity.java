@@ -2,30 +2,6 @@ package com.app.demo.activity;
 
 import java.io.File;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import com.app.demo.R;
 import com.app.demo.broadcast.CurrentFolderChangedReceiver;
 import com.app.demo.broadcast.RenameBroadcastReceiver;
@@ -51,7 +27,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 public class NotesActivity extends AppCompatActivity {

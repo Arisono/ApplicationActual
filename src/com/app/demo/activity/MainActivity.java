@@ -98,9 +98,9 @@ public class MainActivity extends BaseAcivity {
 					break;
 				}
 			
-				if (!page.isInitDataSuccess) {
+				//if (!page.isInitDataSuccess) {
 					 page.onResume();
-				}
+				//}
 			}
 			
 			@Override

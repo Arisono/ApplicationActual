@@ -48,14 +48,7 @@ public abstract class BaseAcivity extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		switch (item.getItemId()) {
-//		case R.id.menu_about:
-//			return true;
-//		case R.id.menu_feedback:
-//		    return true;
-//		case R.id.menu_share:
-//			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

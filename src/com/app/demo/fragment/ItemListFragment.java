@@ -70,7 +70,7 @@ public class ItemListFragment extends ListFragment {
 	                   //handler的方式
 	                    myHandler.sendEmptyMessage(0);
 	                
-	                } catch (InterruptedException e)  
+	                } catch (Exception e)  
 	                {  
 	                    e.printStackTrace();  
 	                }  

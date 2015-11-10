@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 
 /**
  * @author LiuJie
- *  自定义volley网络请求类。继承request
  */
 public class GsonRequest<T> extends Request<T> {
 

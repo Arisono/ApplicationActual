@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -23,9 +22,7 @@ import com.app.demo.R;
 import com.app.demo.base.BaseComplexActivity;
 import com.app.demo.view.refresh.PullToRefreshLayout;
 import com.app.demo.view.refresh.PullToRefreshLayout.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnClick;
 /**
  * @author :LiuJie 时间: 2015年5月19日 下午7:48:35
  * @注释:案例类
@@ -38,11 +35,11 @@ public class ExampleActivity extends BaseComplexActivity {
 	@ViewInject(R.id.prl_lib_listView)
 	private ListView list;
 	
-	@ViewInject(R.id.bt_collect)
+	/*@ViewInject(R.id.bt_collect)
 	private Button bt_collect;
 	@ViewInject(R.id.bt_jinlian)
 	private Button bt_jinlian;
-	@ViewInject(R.id.ly_topView)
+	@ViewInject(R.id.ly_topView)*/
 	private LinearLayout ly_topView;
 	
 	private SimpleAdapter adapter; 
@@ -243,7 +240,7 @@ public class ExampleActivity extends BaseComplexActivity {
 	}
 	
 	
-	@OnClick((R.id.bt_collect))
+	/*@OnClick((R.id.bt_collect))
 	public void collectByOnClick(View v){
 		data.clear();
 		getData();
@@ -269,7 +266,7 @@ public class ExampleActivity extends BaseComplexActivity {
 			 list.setAdapter(adapter);
 		}
 		adapter.notifyDataSetChanged();
-	}
+	}*/
 	
 	
 	@Override

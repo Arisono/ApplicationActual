@@ -6,44 +6,7 @@
     android:background="@color/whitesmoke"
     android:orientation="vertical" >
     <include layout="@layout/topbar_home_title" />
-    <LinearLayout
-        android:id="@+id/ly_topView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/transparent"
-        android:orientation="horizontal"
-        android:visibility="gone" >
-        <info.hoang8f.widget.FButton
-            android:id="@+id/bt_collect"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_weight="1"
-            android:text="收藏"
-            android:textColor="@android:color/white"
-            fbutton:buttonColor="@color/fbutton_color_alizarin"
-            fbutton:shadowEnabled="false" />
-        <info.hoang8f.widget.FButton
-            android:id="@+id/bt_jinlian"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="6dp"
-            android:layout_weight="1"
-            android:text="精练"
-            android:textColor="@android:color/white"
-            fbutton:buttonColor="@color/fbutton_color_green_sea"
-            fbutton:shadowEnabled="false" />
-    </LinearLayout>
+ 
     <com.app.demo.view.refresh.PullToRefreshLayout 
          android:id="@+id/refresh_view"
         android:layout_width="match_parent"

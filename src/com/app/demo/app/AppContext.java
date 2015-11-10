@@ -6,7 +6,9 @@ import java.io.File;
 
 
 
+
 import com.app.demo.activity.music.ServiceManager;
+import com.app.demo.net.ResquestManager;
 
 import android.app.Application;
 import android.os.Environment;
@@ -27,7 +29,8 @@ public class AppContext extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		initPath();
+		init_volley();
+		initPath();//音乐
 		mServiceManager = new ServiceManager(this);
 	}
 	
@@ -48,4 +51,8 @@ public class AppContext extends Application {
 			lrcFile.mkdirs();
 		}
 	}
+    
+    private void init_volley(){
+    	ResquestManager.init(this);
+    }
 }
