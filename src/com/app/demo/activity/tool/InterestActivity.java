@@ -72,10 +72,12 @@ public class InterestActivity extends BaseComplexActivity implements OnClickList
 				if (!StringUtils.isEmpty(et_total_money.getText().toString())
 						&&et_total_money.isFocused()) {
 					iv_delete_total.setVisibility(View.VISIBLE);
+					et_total_money.setSelection(et_total_money.getText().toString().length());
 					et_total_money.setTextSize(18);
 				}else{
 					iv_delete_total.setVisibility(View.INVISIBLE);
 					et_total_money.setTextSize(18);
+					et_total_money.setSelection(et_total_money.getHint().length()-1);
 				}
 			}
 		});
@@ -86,9 +88,11 @@ public class InterestActivity extends BaseComplexActivity implements OnClickList
 				if (!StringUtils.isEmpty(et_days.getText().toString())
 						&&et_days.isFocused()) {
 					et_days.setTextSize(18);
+					et_days.setSelection(et_days.getText().toString().length());
 					iv_delete_days.setVisibility(View.VISIBLE);
 				}else{
 					et_days.setTextSize(18);
+					et_days.setSelection(et_days.getHint().length()-1);
 					iv_delete_days.setVisibility(View.INVISIBLE);
 				}				
 			}
@@ -101,9 +105,11 @@ public class InterestActivity extends BaseComplexActivity implements OnClickList
 				if (!StringUtils.isEmpty(et_rate.getText().toString())
 						&&et_rate.isFocused()) {
 					et_rate.setTextSize(18);
+					et_rate.setSelection(et_rate.getText().toString().length());
 					iv_delete_rate.setVisibility(View.VISIBLE);
 				}else{
 					et_rate.setTextSize(18);
+					et_rate.setSelection(et_rate.getHint().length()-1);
 					iv_delete_rate.setVisibility(View.INVISIBLE);
 				}				
 			}

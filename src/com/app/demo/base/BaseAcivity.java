@@ -5,9 +5,9 @@ package com.app.demo.base;
 
 import com.app.demo.R;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -18,7 +18,7 @@ import android.view.MenuItem;
  * @author LiuJie
  * Base  Activity  
  */
-public abstract class BaseAcivity extends Activity {
+public abstract class BaseAcivity extends AppCompatActivity {
 	
 	public Context ct;
 	protected String TAG;

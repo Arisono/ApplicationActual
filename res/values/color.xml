@@ -23,6 +23,8 @@
     <color name="primary">#388E3C</color>
     <color name="light_primary">#81C784</color>
     <color name="top_bar_black">#262A3B</color>
+    <color name="primaryDark">#00796b</color>
+    <color name="accent">#eeff41</color>
     
     <color name="dark_primary">#2E7D32</color>
     <color name="secondary">#EF6C00</color>
