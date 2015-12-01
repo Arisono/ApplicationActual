@@ -1,44 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/com.app.demo"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <include layout="@layout/topbar_home_title" />
-    <!-- 刷新组件 -->
+    <include 
+        android:id="@+id/ll_top_bar"
+        layout="@layout/topbar_home_title" />
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sv_home_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/ll_top_bar"
         android:fillViewport="true"
         ptr:ptrAnimationStyle="flip" >
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/rv_layout_top"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-                <!-- 广告组件 -->
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/vp_image_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_gravity="center"
-                    android:flipInterval="30"
-                    android:persistentDrawingCache="animation" />
-                <com.viewpagerindicator.CirclePageIndicator
-                    android:id="@+id/vp_image_display"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="top" >
-                </com.viewpagerindicator.CirclePageIndicator>
-            </RelativeLayout>
-            <!-- 不规则表格 -->
+            android:layout_height="match_parent">
             <com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -49,7 +30,14 @@
                 android:focusable="false"
                 android:gravity="center"
                 android:listSelector="#00000000"
-                android:padding="4dp" />
-        </LinearLayout>
+                android:padding="4dp">
+            </com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView>
+        </RelativeLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
-</LinearLayout>
+    <include 
+       layout="@layout/inculde_view_slidingdrawer"
+       android:layout_width="150dp"
+       android:layout_height="228dp"
+       android:layout_centerVertical="true"
+       android:layout_alignParentRight="true"/>
+</RelativeLayout>

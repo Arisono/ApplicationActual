@@ -11,7 +11,10 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.app.demo.R;
 import com.app.demo.activity.common.CalendarActivity;
@@ -37,10 +40,12 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	
 	@ViewInject(R.id.listView)
 	private AsymmetricGridView listView;
-	@ViewInject(R.id.vp_image_display)
-	private CirclePageIndicator vpPageIndicator;
-	@ViewInject(R.id.vp_image_head)
-	private ViewPager viewpager;
+	@ViewInject(R.id.iv_folder)
+	private ImageView iv_folder;
+//	@ViewInject(R.id.vp_image_display)
+//	private CirclePageIndicator vpPageIndicator;
+//	@ViewInject(R.id.vp_image_head)
+//	private ViewPager viewpager;
 	private DemoAdapter adapter;
 	private ImagePageAdapter iPageAdapter;
 	private int[] imageIds;
@@ -54,9 +59,8 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case 1:
-				vpPageIndicator.setCurrentItem(currentItem);
-				startScoll();
-				
+//				vpPageIndicator.setCurrentItem(currentItem);
+//				startScoll();
 				break;
 
 			default:
@@ -81,8 +85,8 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 		System.out.println(""+TAG+" initView");
 		View view=inflater.inflate(R.layout.view_radio_home_list, null);
 		listView=(AsymmetricGridView) view.findViewById(R.id.listView);
-		viewpager=(ViewPager) view.findViewById(R.id.vp_image_head);
-		vpPageIndicator=(CirclePageIndicator) view.findViewById(R.id.vp_image_display);
+//		viewpager=(ViewPager) view.findViewById(R.id.vp_image_head);
+//		vpPageIndicator=(CirclePageIndicator) view.findViewById(R.id.vp_image_display);
 		ViewUtils.inject(ct,view);
 		return view;
 	}
@@ -92,48 +96,12 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	 */ 
 	@Override
 	public void initData() {
-		System.out.println(""+TAG+" initData");
 		Log.i(TAG, "HomePage init");
-		/**注释：初始化图片资源ID */
 		imageIds=new int[]{
 				R.drawable.bananer01,
 				R.drawable.bananer02,
 				R.drawable.bananer03
 		};
-		iPageAdapter=new ImagePageAdapter(ct, imageIds);
-		viewpager.setAdapter(iPageAdapter);
-		((CirclePageIndicator) vpPageIndicator).setViewPager(viewpager);
-		vpPageIndicator.setCentered(true);
-		vpPageIndicator.setOnPageChangeListener(new
-				OnPageChangeListener() {
-			
-			@Override
-			public void onPageSelected(int position) {
-//				if (position==imageIds.length) {
-//					position=(position+1)%(imageIds.length);
-//				}
-			    currentItem=position;
-				vpPageIndicator.setCurrentItem(currentItem);
-			}
-			
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				
-			}
-			
-			@Override
-			public void onPageScrollStateChanged(int position) {
-				/**@注释：1 正在滑动  2015年5月12日 */
-				switch (position) {
-				case 1:
-					
-					break;
-				default:
-					break;
-				}
-			}
-		});
-		startScoll();
 		
 		isInitDataSuccess=true;
 		adapter = new DefaultListAdapter(ct, getMoreItems(51));
@@ -141,9 +109,15 @@ public class HomePage extends BasePage implements AdapterView.OnItemClickListene
 	    listView.setRequestedHorizontalSpacing(Utils.dpToPx(ct, 1));
 	    listView.setAdapter(getNewAdapter());
 	    
-	    /**   */
-	   // listView.setDebugging(true);
 	    listView.setOnItemClickListener(this);
+	    
+//	    iv_folder.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//               Toast.makeText(ct, "点击文件夹！", 1000).show();				
+//			}
+//		});
 	}
 	
 	
